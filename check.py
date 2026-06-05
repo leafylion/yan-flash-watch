@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -45,6 +46,24 @@ def parse(html: str) -> list[dict]:
     return out
 
 
+def translate(text: str, src: str = "ja", dst: str = "ko") -> str | None:
+    """Google の無料エンドポイントで翻訳。失敗時は None（→原文のみ通知）。"""
+    if not text:
+        return None
+    q = urllib.parse.urlencode(
+        {"client": "gtx", "sl": src, "tl": dst, "dt": "t", "q": text}
+    )
+    url = "https://translate.googleapis.com/translate_a/single?" + q
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read().decode("utf-8"))
+        return "".join(seg[0] for seg in data[0] if seg[0]).strip()
+    except Exception as e:  # 翻訳は付加価値なので失敗しても通知は止めない
+        print(f"翻訳失敗（原文のみ送信）: {e}", file=sys.stderr)
+        return None
+
+
 def notify(new_entries: list[dict]) -> None:
     webhook = os.environ.get("DISCORD_WEBHOOK")
     if not webhook:
@@ -52,7 +71,9 @@ def notify(new_entries: list[dict]) -> None:
         return
     fields = []
     for e in new_entries[:25]:  # Discord embed は最大 25 fields
-        val = e["text"] or "（本文なし）"
+        ja = e["text"] or "（本文なし）"
+        ko = translate(e["text"])
+        val = f"{ja}\n\n🇰🇷 {ko}" if ko else ja
         if len(val) > 1024:
             val = val[:1021] + "..."
         fields.append({"name": e["date"], "value": val})
