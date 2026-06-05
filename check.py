@@ -72,8 +72,11 @@ def notify(new_entries: list[dict]) -> None:
         ],
     }
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    # Discord は Python-urllib の既定 UA を 403 で弾くため、UA を明示する
     req = urllib.request.Request(
-        webhook, data=data, headers={"Content-Type": "application/json"}
+        webhook,
+        data=data,
+        headers={"Content-Type": "application/json", "User-Agent": UA},
     )
     with urllib.request.urlopen(req, timeout=30) as r:
         print(f"Discord 通知送信: HTTP {r.status}")
