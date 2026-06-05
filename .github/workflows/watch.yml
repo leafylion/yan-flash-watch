@@ -8,10 +8,15 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 期間終了時に自分自身を無効化するため
 
 concurrency:
   group: watch
   cancel-in-progress: false
+
+# この日付（UTC）を過ぎたら cron を自動停止する。延長したいときはここを書き換える。
+env:
+  WATCH_UNTIL: "2026-06-20"
 
 jobs:
   check:
@@ -19,12 +24,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Stop after end date
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ "$(date -u +%F)" > "$WATCH_UNTIL" ]]; then
+            echo "expired=true" >> "$GITHUB_OUTPUT"
+            echo "監視期間終了（$WATCH_UNTIL）。このワークフローを無効化します。"
+            gh workflow disable watch.yml --repo "$GITHUB_REPOSITORY"
+          else
+            echo "expired=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run check
+        if: steps.guard.outputs.expired != 'true'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python3 check.py
 
       - name: Commit snapshot if changed
+        if: steps.guard.outputs.expired != 'true'
         run: |
           if [[ -n "$(git status --porcelain state/)" ]]; then
             git config user.name "github-actions[bot]"
