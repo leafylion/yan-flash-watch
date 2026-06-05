@@ -57,7 +57,11 @@ def notify(new_entries: list[dict]) -> None:
             val = val[:1021] + "..."
         fields.append({"name": e["date"], "value": val})
     payload = {
-        "username": "yan-flash watch",
+        # username / avatar_url はあえて指定しない。
+        # → Discord の webhook 設定（名前・アイコン）がそのまま使われる。
+        # コード側で固定したい場合は下記を有効化:
+        #   "username": "好きな名前",
+        #   "avatar_url": "https://example.com/icon.png",
         "embeds": [
             {
                 "title": "妖精乱舞 攻略ページが更新されました",
