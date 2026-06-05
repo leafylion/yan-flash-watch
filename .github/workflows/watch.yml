@@ -1,0 +1,37 @@
+name: yan-flash watch
+
+on:
+  schedule:
+    # 20分ごと（GitHub の cron は混雑時に遅延・スキップされ得る点に注意）
+    - cron: "*/20 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: watch
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run check
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python3 check.py
+
+      - name: Commit snapshot if changed
+        run: |
+          if [[ -n "$(git status --porcelain state/)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state/
+            git commit -m "snapshot: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          else
+            echo "スナップショットに変化なし。"
+          fi
