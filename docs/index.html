@@ -16,6 +16,9 @@
     margin:0; background:var(--bg); color:var(--text);
     font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
     line-height:1.75; font-size:16px;
+    /* 한글은 어절(단어) 단위로 줄바꿈 — 음절 중간이 끊기는 것 방지.
+       긴 영문/URL 토큰만 필요 시 끊기도록 overflow-wrap 병행. */
+    word-break:keep-all; overflow-wrap:break-word;
   }
 
   /* ---- 레이아웃 ---- */
@@ -141,8 +144,10 @@
   .cap ul{margin:6px 0 0; padding-left:18px}
   .cap li{margin:3px 0}
 
-  .lastup{font-size:.85rem; color:var(--muted); text-align:center; margin:-14px 0 20px}
-  .lastup .t{color:var(--accent2); font-weight:700}
+  .lastup{font-size:.85rem; color:var(--muted); text-align:center; line-height:1.6;
+    max-width:680px; margin:-8px auto 22px}
+  .lastup .t{color:var(--accent2); font-weight:700; white-space:nowrap}
+  .lastup .body{display:block; margin-top:2px; color:var(--text)}
 
   .ext{display:inline-block; margin:8px 0; font-size:.86rem; color:var(--accent);
     text-decoration:none; border:1px solid var(--border); border-radius:8px;
@@ -538,7 +543,7 @@
       if (!d) return;
       const el = document.getElementById('lastup');
       const txt = d.ko || d.ja || '';
-      el.innerHTML = `🕒 원문 마지막 업데이트 <span class="t">${d.date}</span>` + (txt ? ` — ${txt}` : '');
+      el.innerHTML = `🕒 원문 마지막 업데이트 · <span class="t">${d.date}</span>` + (txt ? `<span class="body">${txt}</span>` : '');
     })
     .catch(() => {});
 </script>
