@@ -14,6 +14,16 @@
 **필요한 GitHub Secret:** `ANTHROPIC_API_KEY` (없으면 번역은 건너뛰고 스냅샷만 갱신),
 `DISCORD_WEBHOOK`. 워처는 `WATCH_UNTIL`(기본 2026-06-20) 이후 자동 정지.
 
+### 트리거 (정시성 보강)
+
+GitHub Actions의 `schedule` 트리거는 지연·누락이 잦다(매시 정각 고부하 시 특히). 그래서
+**맥 로컬 launchd** 가 10분마다 `workflow_dispatch`(지연 거의 없음)로 워크플로를 직접 깨운다.
+- 디스패처: `~/.local/bin/yan-flash-dispatch.sh` (→ `gh workflow run watch.yml`)
+- LaunchAgent: `~/Library/LaunchAgents/com.leafylion.yanflash-dispatch.plist` (StartInterval 600)
+- 로그: `~/.local/share/yan-flash-dispatch.log`
+- 맥이 켜져 있을 때만 동작. 끄려면 `launchctl bootout gui/$(id -u)/com.leafylion.yanflash-dispatch`.
+- (watch.yml 의 schedule 도 백업으로 그대로 둠)
+
 ## 수동 갱신 절차 (API 없이 손으로 할 때)
 
 ```bash
