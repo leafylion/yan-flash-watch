@@ -19,6 +19,7 @@
 GitHub Actions의 `schedule` 트리거는 지연·누락이 잦다(매시 정각 고부하 시 특히). 그래서
 **맥 로컬 launchd** 가 10분마다 `workflow_dispatch`(지연 거의 없음)로 워크플로를 직접 깨운다.
 - 디스패처: `~/.local/bin/yan-flash-dispatch.sh` (→ `gh workflow run watch.yml`)
+  - KST 03:00~08:59 는 디스패치 스킵(블랙아웃, 새벽 알림 방지) — watch.yml schedule 과 동일
 - LaunchAgent: `~/Library/LaunchAgents/com.leafylion.yanflash-dispatch.plist` (StartInterval 600)
 - 로그: `~/.local/share/yan-flash-dispatch.log`
 - 맥이 켜져 있을 때만 동작. 끄려면 `launchctl bootout gui/$(id -u)/com.leafylion.yanflash-dispatch`.
