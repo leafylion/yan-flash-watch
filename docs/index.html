@@ -422,19 +422,35 @@
 </main>
 
 <script>
-  // 스크롤 위치에 따라 목차 활성 표시
+  // 스크롤 위치 기반 목차 활성 표시 (클릭 점프 시에도 정확히 하이라이트)
   const links = [...document.querySelectorAll('nav.toc a')];
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const a = map.get(e.target.id);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-12% 0px -78% 0px', threshold: 0 });
-  map.forEach((a, id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+  const targets = links
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
+  const OFFSET = 130; // 상단에서 이 px 선을 지난 마지막 섹션을 "현재"로 본다
+
+  function setActive(id) {
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  }
+
+  function syncActive() {
+    let currentId = targets.length ? targets[0].id : null;
+    for (const el of targets) {
+      if (el.getBoundingClientRect().top - OFFSET <= 0) currentId = el.id;
+      else break;
+    }
+    // 페이지 맨 아래 도달 시 마지막 섹션 강제 활성
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      currentId = targets[targets.length - 1]?.id;
+    }
+    if (currentId) setActive(currentId);
+  }
+
+  document.addEventListener('scroll', syncActive, { passive: true });
+  window.addEventListener('resize', syncActive, { passive: true });
+  // 클릭 즉시 하이라이트 (스무스 스크롤 도중 잘못 잡히는 것 방지)
+  links.forEach(a => a.addEventListener('click', () => setActive(a.getAttribute('href').slice(1))));
+  syncActive();
 
   // 이미지 클릭 → 전체화면 라이트박스
   const lb = document.createElement('div');
