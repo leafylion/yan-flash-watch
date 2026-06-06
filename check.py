@@ -119,7 +119,7 @@ def main() -> None:
         sys.exit(1)
 
     old = json.loads(STATE.read_text(encoding="utf-8"))["entries"] if STATE.exists() else []
-    old_keys = {(e["date"], e["text"]) for e in old}
+    old_dates = {e["date"] for e in old}
 
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(
@@ -152,12 +152,22 @@ def main() -> None:
     if not old:
         print(f"ベースライン {len(entries)} 件を記録。初回は通知しません。")
         return
-    # 最新の1件だけ通知する。過去項目の編集差分は無視（最新項目が変わったときのみ送信）。
-    if (latest["date"], latest["text"]) not in old_keys:
-        print(f"最新項目を検出 → 通知: {latest['date']} | {latest['text'][:50]}")
-        notify([latest])
+    # 前回チェック以降に「新しく追加された項目」をすべて通知する。
+    # 判定は日付で行う: 既存の日付に無い項目だけ = 新規。
+    #   - 通常は1件、ブラックアウト等で実行が空いた後は溜まった複数件をまとめて送る。
+    #   - 既存項目の本文編集（同じ日付のまま文言が変わる）は再通知しない。
+    fresh = sorted(
+        (e for e in entries if e["date"] not in old_dates),
+        key=lambda e: e["date"],
+        reverse=True,  # 최신이 위로
+    )
+    if fresh:
+        print(f"新規 {len(fresh)} 件を検出 → 通知")
+        for e in fresh:
+            print(f"  + {e['date']} | {e['text'][:50]}")
+        notify(fresh)
     else:
-        print("最新項目に変化なし — 通知スキップ。")
+        print("新規項目なし — 通知スキップ。")
 
 
 if __name__ == "__main__":
