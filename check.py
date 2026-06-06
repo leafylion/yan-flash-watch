@@ -70,13 +70,18 @@ def notify(new_entries: list[dict]) -> None:
         print("DISCORD_WEBHOOK 未設定 — 通知をスキップ", file=sys.stderr)
         return
     fields = []
-    for e in new_entries[:25]:  # Discord embed は最大 25 fields
+    for e in new_entries[:24]:  # Discord embed は最大 25 fields（最後の1枠は翻訳リンク用）
         ja = e["text"] or "（本文なし）"
         ko = translate(e["text"])
         val = f"{ja}\n\n🇰🇷 {ko}" if ko else ja
         if len(val) > 1024:
             val = val[:1021] + "..."
         fields.append({"name": e["date"], "value": val})
+    # 通知の最後に韓国語訳ページへのリンクを添える
+    fields.append({
+        "name": "🇰🇷 한글 번역 페이지",
+        "value": "https://leafylion.github.io/yan-flash-watch/",
+    })
     payload = {
         # username / avatar_url はあえて指定しない。
         # → Discord の webhook 設定（名前・アイコン）がそのまま使われる。
