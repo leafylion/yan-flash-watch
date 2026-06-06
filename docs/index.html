@@ -110,6 +110,9 @@
   .cap ul{margin:6px 0 0; padding-left:18px}
   .cap li{margin:3px 0}
 
+  .lastup{font-size:.85rem; color:var(--muted); text-align:center; margin:-14px 0 20px}
+  .lastup .t{color:var(--accent2); font-weight:700}
+
   .ext{display:inline-block; margin:8px 0; font-size:.86rem; color:var(--accent);
     text-decoration:none; border:1px solid var(--border); border-radius:8px;
     padding:6px 10px; background:var(--card2)}
@@ -153,6 +156,8 @@
   <div class="sub">Phase 1 · 2 · 3 한글 공략</div>
   <div class="src">출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" target="_blank" rel="noopener">yan-flash.com/ultimate/yosei-ranbu</a> · 원문(일본어)을 번역·정리</div>
 </header>
+
+<div class="lastup" id="lastup"></div>
 
 <!-- 공통 표기: 직업 아이콘=담당자, 숫자=순번, 바깥 A·B·C·1~4=필드 마커 방위, 화살표=이동/넉백 -->
 
@@ -426,6 +431,17 @@
   });
   lb.addEventListener('click', () => lb.classList.remove('open'));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  // 원문 마지막 업데이트(更新履歴 최신) 표시
+  fetch('update-info.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      if (!d) return;
+      const el = document.getElementById('lastup');
+      const txt = d.ko || d.ja || '';
+      el.innerHTML = `🕒 원문 마지막 업데이트 <span class="t">${d.date}</span>` + (txt ? ` — ${txt}` : '');
+    })
+    .catch(() => {});
 </script>
 </body>
 </html>

@@ -128,6 +128,28 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    # 번역 페이지에 표시할 "마지막 업데이트(원문 更新履歴 최신)" 정보 기록.
+    # 최신 항목이 바뀐 경우에만 새로 번역해 docs/update-info.json 에 쓴다.
+    docs_info = Path(__file__).parent / "docs" / "update-info.json"
+    latest = max(entries, key=lambda e: e["date"])
+    prev = {}
+    if docs_info.exists():
+        try:
+            prev = json.loads(docs_info.read_text(encoding="utf-8"))
+        except Exception:
+            prev = {}
+    if prev.get("date") != latest["date"] or prev.get("ja") != latest["text"]:
+        docs_info.parent.mkdir(parents=True, exist_ok=True)
+        docs_info.write_text(
+            json.dumps(
+                {"date": latest["date"], "ja": latest["text"], "ko": translate(latest["text"]) or ""},
+                ensure_ascii=False,
+                indent=2,
+            ) + "\n",
+            encoding="utf-8",
+        )
+        print(f"docs/update-info.json 갱신: {latest['date']}")
+
     if not old:
         print(f"ベースライン {len(entries)} 件を記録。初回は通知しません。")
         return
