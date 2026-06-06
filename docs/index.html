@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>절 요성난무 (絶妖星乱舞) — Phase 1·2·3 한글 공략</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --card2:#1d2129; --border:#2a2f3a;
+    --text:#e6e8ec; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#ffd166;
+    --warn:#ff6b6b; --ok:#5ad19a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+
+  /* ---- 레이아웃 ---- */
+  nav.toc{
+    position:fixed; top:0; left:0; width:252px; height:100vh; overflow-y:auto;
+    background:#0c0e12; border-right:1px solid var(--border);
+    padding:22px 14px 40px; z-index:30;
+  }
+  nav.toc .title{font-size:1rem; font-weight:700; color:var(--text); margin:0 0 4px}
+  nav.toc .title .jp{display:block; color:var(--muted); font-size:.72rem; font-weight:400; margin-top:2px}
+  nav.toc .grp{
+    font-size:.72rem; letter-spacing:.06em; color:var(--accent);
+    margin:18px 0 6px; font-weight:700;
+  }
+  nav.toc a{
+    display:block; color:var(--muted); text-decoration:none; font-size:.86rem;
+    padding:5px 10px; border-radius:7px; line-height:1.35; border-left:2px solid transparent;
+  }
+  nav.toc a:hover{background:var(--card2); color:var(--text)}
+  nav.toc a.active{background:var(--card2); color:var(--accent2); border-left-color:var(--accent2); font-weight:700}
+
+  main{margin-left:252px; min-width:0}
+  .wrap{max-width:860px; margin:0 auto; padding:34px 26px 100px}
+  h2[id],h3[id],section[id]{scroll-margin-top:20px}
+
+  @media (max-width:860px){
+    nav.toc{
+      position:sticky; top:0; width:100%; height:auto; max-height:46vh;
+      border-right:none; border-bottom:1px solid var(--border); padding:12px 14px;
+    }
+    nav.toc .grp{margin:10px 0 4px}
+    main{margin-left:0}
+    h2[id],h3[id],section[id]{scroll-margin-top:12px}
+  }
+
+  /* ---- 콘텐츠 ---- */
+  header.top{text-align:center; margin-bottom:30px}
+  header.top h1{font-size:1.85rem; margin:0 0 6px}
+  header.top .sub{color:var(--muted); font-size:.95rem}
+  header.top .src{margin-top:10px; font-size:.82rem}
+  header.top .src a{color:var(--accent); text-decoration:none}
+
+  .phase{
+    background:linear-gradient(180deg,var(--card),var(--bg));
+    border:1px solid var(--border); border-radius:16px;
+    padding:8px 22px 22px; margin:26px 0;
+  }
+  h2.phase-title{
+    font-size:1.4rem; margin:18px 0 4px; padding:10px 14px;
+    background:var(--accent); color:#0b0d12; border-radius:10px; display:inline-block;
+  }
+  h2.mech{
+    font-size:1.18rem; margin:30px 0 6px; padding-bottom:6px;
+    border-bottom:2px solid var(--border); color:var(--accent2);
+  }
+  h3.sub{font-size:1.02rem; margin:20px 0 4px; color:var(--ok)}
+  p{margin:8px 0}
+  ol,ul{margin:8px 0; padding-left:22px}
+  li{margin:6px 0}
+  .note{color:var(--muted); font-size:.9rem}
+  .jp{color:var(--muted); font-size:.82rem; font-weight:normal}
+  strong{color:var(--accent2)}
+
+  /* 이미지: 원본보다 확대하지 않음(width:auto) → 작은 이미지는 작고 선명하게 유지 */
+  img.shot{display:block; margin:12px 0; width:auto; height:auto;
+    max-width:100%; max-height:78vh;
+    border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
+  .imgrow{display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; align-items:flex-start}
+  .imgrow img{width:auto; height:auto; max-width:100%; max-height:340px;
+    border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
+  img.shot:hover,.imgrow img:hover{border-color:var(--accent)}
+
+  /* 클릭 시 전체화면 확대 */
+  .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none;
+    align-items:center; justify-content:center; z-index:100; cursor:zoom-out; padding:24px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%; max-height:100%; width:auto; height:auto;
+    border-radius:8px; box-shadow:0 0 40px rgba(0,0,0,.7); image-rendering:auto}
+  .lightbox .hint{position:fixed; top:14px; right:18px; color:var(--muted); font-size:.8rem}
+
+  .callout{border-left:4px solid var(--accent); background:var(--card2);
+    padding:10px 14px; border-radius:8px; margin:14px 0}
+  .callout.warn{border-left-color:var(--warn)}
+  .tag{font-weight:700}
+
+  .ext{display:inline-block; margin:8px 0; font-size:.86rem; color:var(--accent);
+    text-decoration:none; border:1px solid var(--border); border-radius:8px;
+    padding:6px 10px; background:var(--card2)}
+  .pill{display:inline-block; font-size:.78rem; color:var(--bg); background:var(--accent2);
+    border-radius:999px; padding:2px 10px; margin-left:8px; vertical-align:middle; font-weight:700}
+  code{background:var(--card2); padding:2px 6px; border-radius:5px; font-size:.88em}
+  footer{color:var(--muted); font-size:.82rem; text-align:center; margin-top:40px}
+</style>
+</head>
+<body>
+
+<!-- ===================== 목차 ===================== -->
+<nav class="toc">
+  <div class="title">절 요성난무<span class="jp">絶妖星乱舞 · P1~P3</span></div>
+
+  <div class="grp">PHASE 1</div>
+  <a href="#p1-barira">바리바리 루인가</a>
+  <a href="#p1-statue1">신들의 상 (1회차)</a>
+  <a href="#p1-statue2">신들의 상 (2회차) + 중력탄</a>
+  <a href="#p1-zubi">즈비즈바 텔레포</a>
+  <a href="#p1-sankai">산개 최신</a>
+  <a href="#p1-enrage">시간 초과</a>
+  <a href="#p1-practice">P2 미싱 연습용</a>
+
+  <div class="grp">PHASE 2</div>
+  <a href="#p2-arms">종말의 두 팔</a>
+  <a href="#p2-missing">미싱 (최신)</a>
+  <a href="#p2-trine">트라인</a>
+  <a href="#p2-wings">파괴의 날개</a>
+
+  <div class="grp">PHASE 3</div>
+  <a href="#p3-rebuild">재구축 &amp; 결전</a>
+  <a href="#p3-baul">바울 오브 아고니</a>
+</nav>
+
+<main>
+<div class="wrap">
+
+<header class="top">
+  <h1>절 요성난무 <span class="jp">(絶妖星乱舞)</span></h1>
+  <div class="sub">Phase 1 · 2 · 3 한글 공략</div>
+  <div class="src">출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" target="_blank" rel="noopener">yan-flash.com/ultimate/yosei-ranbu</a> · 원문(일본어)을 번역·정리</div>
+</header>
+
+<!-- ===================== PHASE 1 ===================== -->
+<section class="phase" id="phase-1">
+  <h2 class="phase-title">PHASE 1</h2>
+
+  <h2 class="mech" id="p1-barira">바리바리 루인가 <span class="jp">ばりばりルインガ</span></h2>
+  <p>탱버스터 (90도 부채꼴 범위)</p>
+  <p>1회차는 <strong>어그로 1위</strong>, 2회차는 <strong>어그로 2위</strong>에게 온다.</p>
+
+  <h2 class="mech" id="p1-statue1">신들의 상 (1회차) <span class="jp">神々の像（1回目）— 디버프 전달 수정판</span></h2>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780664219421-81c080f8.webp" alt="신들의 상 1회차 1">
+    <img src="https://yan-flash.com/api/uploads/1780415140519-079669c2.webp" alt="신들의 상 1회차 2">
+    <img src="https://yan-flash.com/api/uploads/1780415150106-17646635.webp" alt="신들의 상 1회차 3">
+    <img src="https://yan-flash.com/api/uploads/1780415157693-a7688115.webp" alt="신들의 상 1회차 4">
+    <img src="https://yan-flash.com/api/uploads/1780477037893-6dd133d7.webp" alt="신들의 상 1회차 5">
+  </div>
+  <ol>
+    <li>탱힐 또는 딜러에게 <strong>선</strong>이 붙고, 그 뒤 상(像)으로부터 <strong>넉백</strong>이 발생한다.</li>
+    <li>블리자가 + 파이가의 <strong>진짜/가짜 장판</strong> (산개인지 쉐어인지 주의) <span class="note">※ 산개는 상하 반전</span></li>
+    <li>상으로부터 탱힐 2명 + 딜러 2명, 총 4명에게 <strong>빔</strong>이 오므로 가로 일렬로 선다. <span class="note">(빔을 받은 위치가 타워 출현 위치가 됨)</span></li>
+    <li>빔을 받지 <strong>않은</strong> 사람이 타워에 들어간다.</li>
+    <li>「츠기츠기 트랩(차례차례 트랩)」 시전이 끝나면 랜덤으로 2명(탱힐 1명·딜러 1명)에게 디버프가 붙는다.<br>
+      0초에 자기 중심으로 폭발하므로, 디버프 전달을 위해 <strong>동·서로 나눠 쉐어로 처리</strong>한다.<br>
+      디버프 보유자는 <strong>바깥에서 안쪽으로</strong> 날아가도록 한다.</li>
+    <li>그 후 「수수께끼 매직(なぞなぞマジック)」이 오므로 <strong>케프카의 진짜/가짜</strong>를 확인하고 기믹 처리.</li>
+  </ol>
+
+  <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
+  <p>전체 공격.</p>
+
+  <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ（무영창）</span></h2>
+  <p>심판의 빛 이후 자동공격(AA) 1회를 끼고 <strong>탱버스터 3회</strong>.</p>
+  <p class="note">탱커 무적 버프 권장(?)</p>
+
+  <h2 class="mech" id="p1-statue2">신들의 상 (2회차) <span class="jp">神々の像（2回目）— 디버프 전달 수정판 + 중력탄</span></h2>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780472046333-1f5d6c9a.webp" alt="신들의 상 2회차 1">
+    <img src="https://yan-flash.com/api/uploads/1780472058998-ff131a24.webp" alt="신들의 상 2회차 2">
+    <img src="https://yan-flash.com/api/uploads/1780472076721-5727ee1c.webp" alt="신들의 상 2회차 3">
+  </div>
+  <p>전원에게 <strong>선</strong>이 붙는다.</p>
+  <ul>
+    <li>상을 봤을 때 <strong>오른쪽 아래(노랑)</strong> → 남쪽에서 쉐어 처리 후 각자 산개</li>
+    <li>상을 봤을 때 <strong>왼쪽 위(보라)</strong> → 남쪽에서 쉐어 처리 후 중앙으로</li>
+  </ul>
+  <p>바리바리 루인가(탱 스위치? 무적이면 사고가 적을 듯)와 함께 <strong>반갈 장판</strong>이 오므로 상의 이펙트를 확인.</p>
+  <p>다시 전원에게 선이 붙는다. <strong>산개는 상하 반전</strong> → 반갈 장판.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780472098266-ae0efe0f.webp" alt="중력탄 처리 1">
+    <img src="https://yan-flash.com/api/uploads/1780472107145-42a25bda.webp" alt="중력탄 처리 2">
+  </div>
+  <p>디버프를 전달하기 위해 <strong>서쪽에 탱힐 / 동쪽에 딜러</strong>가 대기하고, 넉백으로 <strong>그라비가(중력탄)</strong>에 맞는다.<br>
+  디버프 보유자는 뒤따라 늪(沼)에 들어간다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780472122484-d41a66e5.webp" alt="중력탄 처리 3">
+    <img src="https://yan-flash.com/api/uploads/1780472131201-ad55b0b3.webp" alt="중력탄 처리 4">
+  </div>
+
+  <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
+  <p>전체 공격.</p>
+
+  <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ（무영창）</span></h2>
+  <p>탱버스터 3회.</p>
+
+  <h2 class="mech" id="p1-zubi">즈비즈바 텔레포 <span class="jp">ずびずばテレポ</span></h2>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780493537210-5286b4f9.webp" alt="즈비즈바 텔레포 기준 배치">
+  <ul>
+    <li><strong>같은</strong> 화살표 디버프인 경우 → <span style="color:var(--warn)">빨간 테두리</span> 포지션으로</li>
+    <li><strong>다른</strong> 화살표 디버프인 경우 → <span style="color:var(--accent)">파란 테두리</span> 포지션으로</li>
+  </ul>
+  <p class="note">자기에게 붙은 화살표를 따라가면 포지션을 찾기 쉬울 수 있음.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780476493649-398c3c2d.webp" alt="즈비즈바 산개 1">
+    <img src="https://yan-flash.com/api/uploads/1780476939044-17801152.webp" alt="즈비즈바 산개 2">
+    <img src="https://yan-flash.com/api/uploads/1780479425670-abfcee5c.webp" alt="즈비즈바 산개 3">
+  </div>
+  <p>선과 관계없이 <strong>이미지대로 산개</strong>.</p>
+  <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
+
+  <h2 class="mech" id="p1-sankai">산개 최신 <span class="jp">散会最新 ※ 즈비즈바 텔레포 기준</span><span class="pill">권장</span></h2>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780665649807-43f951eb.webp" alt="산개 최신 1">
+    <img src="https://yan-flash.com/api/uploads/1780665664588-ff33c45f.webp" alt="산개 최신 2">
+    <img src="https://yan-flash.com/api/uploads/1780665674029-847173d5.webp" alt="산개 최신 3">
+  </div>
+  <div class="callout">
+    <span class="tag">사과문</span><br>
+    이전까지는 즈비즈바 텔레포에서 캐스터·힐러 등을 크게 움직이게 해서 이동이 매우 빡빡했습니다.<br>
+    액티브(딜 유지) 측면도 고려해 최신 산개·쉐어를 게재했습니다. 지금까지 불편을 끼쳐 죄송합니다.<br>
+    앞으로 이 산개를 쓸 때는 <strong>최신 산개</strong>를 확인하도록 주변에 알려 주시면 감사하겠습니다.
+  </div>
+
+  <h2 class="mech" id="p1-enrage">시간 초과 <span class="jp">時間切れ</span></h2>
+  <p><strong>14.9% 이하</strong>에서 페이즈 전환.</p>
+
+  <h2 class="mech" id="p1-practice">P2 미싱 연습용 <span class="jp">P2ミッシング練習用</span></h2>
+  <p>안전하게 미싱 시도 횟수를 늘리고 싶은 사람용.<br>
+  아무 생각 없이 <strong>십자(十)로 서 있기만</strong> 하면 됨. <span class="note">(데미지는 아프니 주의)</span></p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780513699114-3c580a86.webp" alt="P2 미싱 연습용 배치">
+  <a class="ext" href="https://x.com/Ran_DBanG/status/2061839545449201775" target="_blank" rel="noopener">🎬 참고 영상: 즈비즈바 텔레포 완전 뇌사법 — @Ran_DBanG</a>
+</section>
+
+<!-- ===================== PHASE 2 ===================== -->
+<section class="phase" id="phase-2">
+  <h2 class="phase-title">PHASE 2</h2>
+
+  <h2 class="mech" id="p2-arms">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
+  <p>탱버스터 (2인 공동 탱킹 전제).</p>
+
+  <h2 class="mech" id="p2-missing">미싱 (최신) <span class="jp">①ミッシング最新</span><span class="pill">권장</span></h2>
+  <p class="tag">규칙</p>
+  <ol>
+    <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
+    <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong> / 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
+    <li>1회차부터 규칙에 따라, 쉐어 대상은 우선순위 순으로 타워에 들어감 (탱힐은 <strong>왼쪽 타워</strong>, 딜러는 <strong>오른쪽 타워</strong>)</li>
+    <li>홀수 회차의 <strong>왼쪽은 부채꼴, 오른쪽은 원형</strong></li>
+    <li>타워 안 우선순위: <code>H1 &gt; H2 &gt; MT &gt; ST &gt; D1 &gt; D2 &gt; D3 &gt; D4</code></li>
+    <li>타워 밖은 위치 고정 (왼쪽 TH, 오른쪽 D)</li>
+    <li>과거·미래 <strong>분신</strong> 유도 → 부채꼴 담당 + 근접</li>
+    <li><strong>3회차</strong> 타워 처리 후 자신에게 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> <span class="note">※ 깜빡 방지</span></li>
+  </ol>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780653166253-3a7b3467.webp" alt="미싱 최신 배치도">
+
+  <h3 class="sub">과거의 종언 / 미래의 종언 <span class="jp">過去の終焉 / 未来の終焉</span></h3>
+  <ul>
+    <li><strong>과거의 종언</strong>: 장판이 터진 뒤, 타워 사이에서 「소멸의 다리(消滅の脚)」 시전 시작까지 대기.</li>
+    <li><strong>미래의 종언</strong>: 장판이 터진 뒤, 타워 반대편에서 「소멸의 다리」 시전 시작까지 대기 → 시전이 보이면 타워 쪽으로 달려 들어감.</li>
+    <li><strong>4회차</strong> 과거·미래는 <strong>A에 집합</strong>하여 「소멸의 다리」를 기믹에 맞춰 회피.</li>
+  </ul>
+
+  <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
+  <p>전체 공격.</p>
+
+  <h2 class="mech" id="p2-trine">트라인 <span class="jp">トライン</span></h2>
+  <p>1회차에 떨어진 삼각형에 들어가기 위해, <strong>3회차에 떨어진 삼각형에서 대기</strong>하다가 폭발 후 이동.</p>
+  <p>힐러·딜러 조는 <strong>남동</strong>에서 안전지대를 찾고, 탱커는 <strong>북서</strong>에서 안전지대를 찾으면 휘말리지 않고 처리 가능.</p>
+  <a class="ext" href="https://x.com/FFXIV_NEWS_JP/status/2062423560560464058" target="_blank" rel="noopener">🔗 참고: @FFXIV_NEWS_JP 트윗</a>
+
+  <h2 class="mech" id="p2-wings">파괴의 날개 <span class="jp">破壊の翼</span></h2>
+  <p><strong>한쪽 날개</strong>가 빛나면 → 반대쪽 <strong>반갈</strong>(반쪽 장판).</p>
+  <p><strong>양쪽 날개</strong>가 빛나면 → 보스로부터 <strong>가까운 사람과 먼 사람</strong>에게 강공격. <span class="note">휘말림 주의.</span></p>
+
+  <h2 class="mech">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
+  <p>탱버스터 후 <strong>시간 초과</strong>.</p>
+</section>
+
+<!-- ===================== PHASE 3 ===================== -->
+<section class="phase" id="phase-3">
+  <h2 class="phase-title">PHASE 3</h2>
+
+  <h2 class="mech" id="p3-rebuild">재구축 &amp; 결전 <span class="jp">再構築&amp;決戦</span></h2>
+  <p>케프카가 <strong>카오스</strong>와 <strong>엑스데스</strong>를 소환한 뒤, 보스로부터 가까운 사람에게 <strong>라이트 파티(4인 2조)로 나누는 디버프</strong>를 부여.</p>
+  <p>미리 자리잡기: <strong>카오스 쪽</strong> MT·H1·D1·D3 / <strong>엑스데스 쪽</strong> ST·H2·D2·D4</p>
+
+  <h2 class="mech" id="p3-baul">바울 오브 아고니 <span class="jp">バウル・オブ・アゴニー</span></h2>
+  <p>전체 공격 후 <strong>혼돈의 불 · 혼돈의 물 · 혼돈의 바람</strong>(정면 받기 / 배면 받기) 디버프가 부여되고, 필드에 <strong>불 · 물 · 바람 이펙트</strong>가 출현.</p>
+  <p>이펙트는 반드시 <strong>바람을 사이에 두고</strong> 물과 불이 배치되며(불·물의 위치가 바뀌는 경우도 있음), 필드 마커로 치면 <strong>숫자 방향</strong>에 출현한다. 또한 불과 물은 반드시 <strong>대각</strong>으로 생성되고, 바람의 대각에는 아무것도 없도록 배치된다.</p>
+
+  <div class="callout">
+    <p style="margin-top:0"><span class="tag">디버프 / 이펙트 정리</span></p>
+    <ul style="margin-bottom:0">
+      <li><strong>혼돈의 바람</strong> … 넉백을 받아 해제하는 디버프. 정면 또는 배면에서 넉백을 받는 2종류가 있음. 아래의 불·물을 가진 사람은 서로 불·물을 맞혀 해제하고, 해당 디버프가 없는 사람은 기믹 마지막의 <strong>진공파</strong>로 해제.</li>
+      <li><strong>혼돈의 불</strong> … 2명에게 랜덤 부여. 효과시간 종료 후 자기 중심 <strong>원형(AoE)</strong> 범위.</li>
+      <li><strong>혼돈의 물</strong> … 2명에게 랜덤 부여. 효과시간 종료 후 <strong>도넛</strong> 범위. (불·물 디버프는 반드시 탱힐 2명·딜러 2명에게 랜덤 부여)</li>
+      <li><strong>불 이펙트</strong> … 혼돈의 불 종료 후 가까운 2명에게 <strong>도넛</strong> 범위 발생. 이 범위를 <strong>혼돈의 물</strong> 보유자에게 맞혀 바람을 해제.</li>
+      <li><strong>물 이펙트</strong> … 혼돈의 물 종료 후 가까운 2명에게 <strong>원형(AoE)</strong> 범위 발생. 이 범위를 <strong>혼돈의 불</strong> 보유자에게 맞혀 바람을 해제.</li>
+      <li><strong>바람 이펙트</strong> … 혼돈의 바람을 해제하면 몇 초 후, 가까운 사람에게 <strong>쉐어 범위 공격</strong>.</li>
+    </ul>
+  </div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780657018528-fb38a708.webp" alt="바울 오브 아고니 1">
+  <p>불·물 디버프가 붙은 페어(혼돈조)와 <strong>남은 시간(초)</strong>을 확인한다.<br>
+  이번 예시는 <strong>불 = MT·D3</strong>, <strong>물 = H2·D4</strong>에 붙고, 불 쪽 시간이 더 짧다고 가정 (물이 더 짧은 경우도 있음).</p>
+  <ul>
+    <li>ST는 엑스데스가 범위 선더가를 시전하므로, <strong>시간이 짧은 디버프와 반대 이펙트</strong> 쪽으로 유도. (이번엔 불이 짧으므로 <strong>물 이펙트</strong>로 유도 — 불·물 이펙트는 반드시 대각으로 생성)</li>
+    <li>불 이펙트를 <strong>1:1로 사이에 끼우듯</strong> 위치를 잡아 원형(AoE) → 도넛 범위를 발생시킨다.</li>
+    <li>우선순위는 <strong>안쪽부터</strong> <code>MT &gt; ST &gt; H1 &gt; H2 &gt; D1 &gt; D2 &gt; D3 &gt; D4</code></li>
+    <li>이때 불 이펙트에서 발생하는 원형 범위에 <strong>물 대상자</strong>가 들어가 맞아 디버프를 해제 (해제 시 혼돈의 바람 방향에 주의).</li>
+  </ul>
+  <p>어느 디버프도 없는 사람은 <strong>바람 이펙트</strong>를 유도.<br>
+  탱힐이 메인 유도를 맡아 안쪽부터 <code>MT &gt; ST &gt; H1 &gt; H2</code>, 이를 방해하지 않는 거리감으로 딜러가 쉐어에 참가. (딜러 우선순위는 안쪽부터 <code>D1 &gt; D2 &gt; D3 &gt; D4</code>)</p>
+  <p class="note">모든 상황에서 MT가 가장 안쪽인 이유: 카오스를 중앙에 고정해 바람 이펙트 중에도 때릴 수 있게 하기 위함.</p>
+  <p>기믹 종료 후 엑스데스가 <strong>탱버스터</strong>를 시전하므로 <strong>ST는 무적 권장</strong>.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780654482412-5f11e2d1.webp" alt="바울 오브 아고니 2">
+  <p>카오스가 <strong>호리즌탈 임플로전 / 버티컬 임플로전</strong>을 시전하므로<br>
+  MT는 <strong>남아 있는 2개 이펙트가 있는 쪽</strong>으로 카오스를 향하게 한다.<br>
+  ST는 엑스데스를 중앙으로 유도해 둔다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780654494183-cb618a51.webp" alt="바울 오브 아고니 3">
+  <p>혼돈의 물 디버프로 <strong>도넛 → 원형(AoE)</strong> 범위가 발생하므로, <strong>기존 불 디버프 보유자</strong>가 여기에 맞아 디버프를 해제 (방향 주의).<br>
+  바람 이펙트도 동일하게 처리한다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780654505760-6e217952.webp" alt="바울 오브 아고니 4">
+  <p>ST는 <strong>바람 이펙트에 겹치도록</strong> 엑스데스를 유도하고, MT는 카오스를 유도해 둔다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780654517914-0b373b9b.webp" alt="바울 오브 아고니 5">
+  <p>D3는 카오스의 <strong>엄브럴 스매시</strong>를 바람 이펙트의 반대쪽으로 유도.<br>
+  <strong>진공파</strong>가 오므로 디버프 보유자는 방향에 주의해 넉백을 받는다.<br>
+  디버프가 없는 사람은 <strong>넉백 방지 스킬(암즈렝스 / 확정 시전)</strong>을 쓰고 엑스데스의 타깃 서클 밖에서 대기.<br>
+  우선순위는 <strong>탱힐이 왼쪽</strong>에서 안쪽(奥)부터 <code>MT → ST → H1 → H2</code>, <strong>딜러는 오른쪽</strong>에서 안쪽부터 <code>D1 → D2 → D3 → D4</code>.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780654526837-361872e9.webp" alt="바울 오브 아고니 6">
+  <a class="ext" href="https://x.com/mitsurugi137/status/2062857003723276776" target="_blank" rel="noopener">🎬 참고 영상: 3P 물·불 DN식 — @mitsurugi137</a>
+</section>
+
+<footer>
+  원문(일본어) 출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" style="color:var(--accent)">yan-flash.com/ultimate/yosei-ranbu</a><br>
+  Phase 1 · 2 · 3 한글 번역 — 이미지는 원본 서버에서 직접 로드됩니다. (삭제 예정 처리법은 제외)
+</footer>
+
+</div>
+</main>
+
+<script>
+  // 스크롤 위치에 따라 목차 활성 표시
+  const links = [...document.querySelectorAll('nav.toc a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = map.get(e.target.id);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-12% 0px -78% 0px', threshold: 0 });
+  map.forEach((a, id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+  // 이미지 클릭 → 전체화면 라이트박스
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<span class="hint">닫기: 클릭 / Esc</span><img alt="">';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img');
+  document.querySelectorAll('img.shot, .imgrow img').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+</script>
+</body>
+</html>
