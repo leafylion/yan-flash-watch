@@ -99,6 +99,9 @@
   .callout{border-left:4px solid var(--accent); background:var(--card2);
     padding:10px 14px; border-radius:8px; margin:14px 0}
   .callout.warn{border-left-color:var(--warn)}
+  .callout.legend{border-left-color:var(--ok)}
+  .callout.legend ul{list-style:none; padding-left:0; font-size:.92rem}
+  @media (max-width:560px){ .callout.legend ul{columns:1 !important} }
   .tag{font-weight:700}
 
   .ext{display:inline-block; margin:8px 0; font-size:.86rem; color:var(--accent);
@@ -144,6 +147,21 @@
   <div class="sub">Phase 1 · 2 · 3 한글 공략</div>
   <div class="src">출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" target="_blank" rel="noopener">yan-flash.com/ultimate/yosei-ranbu</a> · 원문(일본어)을 번역·정리</div>
 </header>
+
+<!-- ===================== 이미지 범례 ===================== -->
+<div class="callout legend">
+  <p style="margin:0 0 6px"><span class="tag">📌 배치도 이미지 공통 표기</span> <span class="note">(이미지 안 일본어 라벨)</span></p>
+  <ul style="margin:0; columns:2; -webkit-columns:2; column-gap:24px">
+    <li><strong>頭</strong> = 쉐어(머리 나누기)</li>
+    <li><strong>散 / 散会</strong> = 산개</li>
+    <li><strong>扇</strong> = 부채꼴 / <strong>円</strong> = 원형</li>
+    <li><strong>内 / 外</strong> = 안쪽 / 바깥쪽</li>
+    <li><strong>N回目</strong> = N회차</li>
+    <li><strong>線</strong> = 선 / <strong>塔</strong> = 타워</li>
+    <li><strong>矢印</strong> = 화살표</li>
+    <li><strong>MT·ST·H1·H2·D1~D4</strong> = 직업 포지션(공통)</li>
+  </ul>
+</div>
 
 <!-- ===================== PHASE 1 ===================== -->
 <section class="phase" id="phase-1">
