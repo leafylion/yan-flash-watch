@@ -46,21 +46,47 @@ jobs:
             echo "expired=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # 1) 更新履歴を監視 → 変化があれば Discord 通知
       - name: Run check
         if: steps.guard.outputs.expired != 'true'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python3 check.py
 
-      - name: Commit snapshot if changed
+      # 2) 攻略本文をフェーズ別にスナップショット（翻訳の差分検知用）
+      - name: Snapshot guide body
+        if: steps.guard.outputs.expired != 'true'
+        run: python3 tools/fetch_guide.py
+
+      # 3) 本文が変わっていれば Claude(API) で docs/index.html を最新化
+      - name: Translate if body changed
+        if: steps.guard.outputs.expired != 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: claude-opus-4-8
+        run: |
+          git diff -- state/guide/ > /tmp/guide.diff || true
+          if [[ -s /tmp/guide.diff ]]; then
+            echo "本文に変更あり。"
+            if [[ -z "$ANTHROPIC_API_KEY" ]]; then
+              echo "ANTHROPIC_API_KEY 未設定 — 翻訳をスキップ（スナップショットのみ更新）。"
+            else
+              python3 tools/translate.py /tmp/guide.diff
+            fi
+          else
+            echo "本文に変更なし — 翻訳スキップ。"
+          fi
+
+      # 4) state/ と docs/ の変更をまとめてコミット & プッシュ（→ Pages 自動再ビルド）
+      - name: Commit & push if changed
         if: steps.guard.outputs.expired != 'true'
         run: |
-          if [[ -n "$(git status --porcelain state/)" ]]; then
+          if [[ -n "$(git status --porcelain state/ docs/)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/
-            git commit -m "snapshot: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git add state/ docs/
+            git commit -m "auto: 妖精乱舞 攻略 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push
           else
-            echo "スナップショットに変化なし。"
+            echo "変更なし。"
           fi

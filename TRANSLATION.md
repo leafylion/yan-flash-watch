@@ -1,13 +1,20 @@
 # 妖精乱舞 攻略 한글 번역 (docs/index.html)
 
 `yan-flash.com/ultimate/yosei-ranbu` 공략을 한국어로 번역한 결과물입니다.
-원문이 업데이트되면 **반자동**으로 최신화합니다 — 변경 감지는 GitHub Actions
-워처(`check.py`)가 하고, 실제 번역은 사람(/Claude)이 큐레이션해서 반영합니다.
+원문이 업데이트되면 **완전 자동**으로 최신화됩니다 (GitHub Actions `watch.yml`):
 
-자동(구글) 번역이 아니라 **FFXIV 한국 커뮤니티 용어로 로컬라이즈 + 구조 재배치 +
-삭제예정 항목 제외**가 들어간 결과물이므로, 품질 유지를 위해 번역 단계는 손으로 합니다.
+1. `check.py` — 更新履歴 감시 → 변경 시 Discord 알림
+2. `tools/fetch_guide.py` — 攻略 본문을 페이즈별로 스냅샷(`state/guide/`)
+3. `tools/translate.py` — `state/guide/`에 diff가 있으면 Anthropic API로 `docs/index.html` 최신화
+4. `state/`·`docs/` 변경을 commit & push → GitHub Pages 자동 재배포
 
-## 갱신 절차 (업데이트 알림을 받으면)
+> 자동(구글) 번역이 아니라, 아래 **용어집을 시스템 프롬프트로 강제**해 로컬라이즈 품질을
+> 유지합니다. 단 사람 검수가 없으므로 가끔 오역/구조 어긋남이 생길 수 있습니다.
+
+**필요한 GitHub Secret:** `ANTHROPIC_API_KEY` (없으면 번역은 건너뛰고 스냅샷만 갱신),
+`DISCORD_WEBHOOK`. 워처는 `WATCH_UNTIL`(기본 2026-06-20) 이후 자동 정지.
+
+## 수동 갱신 절차 (API 없이 손으로 할 때)
 
 ```bash
 # 1) 최신 본문 스냅샷 갱신
