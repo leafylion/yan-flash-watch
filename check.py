@@ -120,7 +120,6 @@ def main() -> None:
 
     old = json.loads(STATE.read_text(encoding="utf-8"))["entries"] if STATE.exists() else []
     old_keys = {(e["date"], e["text"]) for e in old}
-    new_entries = [e for e in entries if (e["date"], e["text"]) not in old_keys]
 
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(
@@ -153,13 +152,12 @@ def main() -> None:
     if not old:
         print(f"ベースライン {len(entries)} 件を記録。初回は通知しません。")
         return
-    if new_entries:
-        print(f"新規/変更 {len(new_entries)} 件を検出 → 通知")
-        for e in new_entries:
-            print(f"  + {e['date']} | {e['text'][:50]}")
-        notify(new_entries)
+    # 最新の1件だけ通知する。過去項目の編集差分は無視（最新項目が変わったときのみ送信）。
+    if (latest["date"], latest["text"]) not in old_keys:
+        print(f"最新項目を検出 → 通知: {latest['date']} | {latest['text'][:50]}")
+        notify([latest])
     else:
-        print("変化なし。")
+        print("最新項目に変化なし — 通知スキップ。")
 
 
 if __name__ == "__main__":
