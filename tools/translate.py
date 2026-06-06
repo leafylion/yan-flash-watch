@@ -40,20 +40,40 @@ SYSTEM = """\
 4. 이미지 src는 https://yan-flash.com + /api/uploads/... 형식을 유지한다.
 5. 섹션이 추가/삭제되면 좌측 목차(nav.toc)의 링크와 id도 같이 맞춘다.
 6. 라이트박스/목차 활성화 <script>, CSS는 절대 건드리지 않는다.
-7. 헤더 아래 "📌 배치도 이미지 공통 표기" 범례(div.callout.legend) 블록은 그대로 유지한다.
-   (이미지는 픽셀 편집하지 않고, 이미지 안 일본어 라벨은 이 범례로 설명한다.)
+7. 각 이미지(또는 이미지 그룹) 바로 아래에 `<div class="cap">…</div>` 캡션을 둔다.
+   - 이미지 안에 일본어 문장/라벨이 있으면 그 내용을 한국어로 번역해 캡션에 적는다.
+   - 아이콘·숫자·방위뿐이면 표기 안내만 간단히 적는다(예: 직업 아이콘=담당자, 숫자=순번, A·B·C·1~4=방위).
+   - 첨부된 이미지를 직접 보고 캡션을 작성/갱신한다. 이미지가 교체됐으면 새 이미지에 맞게 캡션을 다시 쓴다.
+   - 캡션 형식: `<div class="cap"><span class="h">🖼 이미지 안 표기</span>…</div>` (긴 설명은 <ul><li> 사용).
 
 출력: 완성된 index.html 전체를 그대로 출력한다. 코드펜스(```)나 설명 문장 없이 <!DOCTYPE html>로 시작하는 HTML만 출력한다.\
 """
 
 
-def call_api(prompt: str) -> str:
+HOST = "https://yan-flash.com"
+IMG_RE = re.compile(r'/api/uploads/[0-9a-f-]+\.webp')
+
+
+def changed_images(diff: str, limit: int = 16) -> list[str]:
+    """diff에서 추가(+)된 줄의 이미지 URL을 수집(중복 제거, 최대 limit장)."""
+    urls, seen = [], set()
+    for line in diff.splitlines():
+        if not line.startswith("+"):
+            continue
+        for m in IMG_RE.findall(line):
+            if m not in seen:
+                seen.add(m)
+                urls.append(HOST + m)
+    return urls[:limit]
+
+
+def call_api(content) -> str:
     key = os.environ["ANTHROPIC_API_KEY"]
     payload = {
         "model": MODEL,
         "max_tokens": 32000,
         "system": SYSTEM,
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": [{"role": "user", "content": content}],
     }
     req = urllib.request.Request(
         API_URL,
@@ -100,7 +120,20 @@ def main() -> None:
 
 위 변경분을 번역본에 반영한 완성된 index.html 전체를 출력하라."""
 
-    out = call_api(prompt)
+    # 변경/추가된 이미지를 비전으로 첨부 → 캡션을 보고 작성/갱신
+    imgs = changed_images(diff)
+    content = [{"type": "text", "text": prompt}]
+    for url in imgs:
+        content.append({"type": "image", "source": {"type": "url", "url": url}})
+    if imgs:
+        content.append({
+            "type": "text",
+            "text": f"위 {len(imgs)}장은 이번에 추가/교체된 이미지다. "
+                    "각 이미지를 보고 해당 <img> 아래 <div class=\"cap\"> 캡션을 작성/갱신하라.",
+        })
+    print(f"첨부 이미지 {len(imgs)}장")
+
+    out = call_api(content)
     out = re.sub(r'^\s*```(?:html)?\s*', '', out)
     out = re.sub(r'\s*```\s*$', '', out).strip()
 
