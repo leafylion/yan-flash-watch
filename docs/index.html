@@ -155,6 +155,10 @@
   .pill{display:inline-block; font-size:.78rem; color:var(--bg); background:var(--accent2);
     border-radius:999px; padding:2px 10px; margin-left:8px; vertical-align:middle; font-weight:700}
   code{background:var(--card2); padding:2px 6px; border-radius:5px; font-size:.88em}
+  /* P3 타임라인 표 */
+  table.tl{border-collapse:collapse; width:100%; margin:12px 0; font-size:.9rem}
+  table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
+  table.tl th{background:var(--card2); color:var(--accent2)}
   footer{color:var(--muted); font-size:.82rem; text-align:center; margin-top:40px}
 </style>
 </head>
@@ -184,6 +188,11 @@
   <div class="grp">PHASE 3</div>
   <a href="#p3-kessen1">결전 1회차</a>
   <a href="#p3-baul">바울 오브 아고니</a>
+
+  <div class="grp">PHASE 3-2 (작성 중)</div>
+  <a href="#p3-kessen2">결전 2회차</a>
+  <a href="#p3-blackhole">블랙홀 유도 순서</a>
+  <a href="#p3-timeline">P3 타임라인</a>
 </nav>
 
 <main>
@@ -198,6 +207,12 @@
 <div class="lastup" id="lastup"></div>
 
 <!-- 공통 표기: 직업 아이콘=담당자, 숫자=순번, 바깥 A·B·C·1~4=필드 마커 방위, 화살표=이동/넉백 -->
+
+<div class="callout">
+  <span class="tag">버스트 권장</span><br>
+  이 콘텐츠는 <strong>0초 버스트</strong>를 권장한다. 페이즈 2의 시간 초과(엔레이지)가 6분 20초이므로, 페이즈 1부터 0초 버스트를 이어가면 최종적으로 약 <strong>5~6초분</strong>의 버스트 화력을 더 벌 수 있다.<br>
+  이 5~6초는 매우 크며, 강력한 어빌리티를 1회 더 끼워 넣을 수 있는지에 직결된다.
+</div>
 
 <!-- ===================== PHASE 1 ===================== -->
 <section class="phase" id="phase-1">
@@ -483,6 +498,161 @@
   <code>/p 시계 방향</code><br>
   <code>/p 반시계 방향</code><br>
   매크로를 누르면 사고가 적다.</p>
+  <p>그 후 엑스데스가 <strong>선더가 탱버스터</strong>를 시전하므로 <strong>스위치</strong>.</p>
+</section>
+
+<!-- ===================== PHASE 3-2 (작성 중) ===================== -->
+<section class="phase" id="phase-3-2">
+  <h2 class="phase-title">PHASE 3-2 (작성 중)</h2>
+
+  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目 ※작성 중</span></h2>
+  <p>1회차와 마찬가지로 라이트 파티(4인 2조)로 나눈다.</p>
+  <p>그 후 엑스데스로부터 <strong>선더가</strong>가 오므로 탱커는 <strong>무적(또는 스위치)</strong>.</p>
+  <p>다음으로 카오스가 <strong>지진(じしん)</strong>을 시전해 <strong>전체 공격 + 디버프</strong>를 부여한다.</p>
+  <p>탱힐과 딜러 각 1명씩에게 <strong>「혼돈의 오니(混沌の汚泥)」</strong>가 부여된다.<br>
+  이는 체력을 완전 회복시키지 않으면 즉사하는 특수 디버프로, 순서대로 풀 회복시켜 해제해 간다.<br>
+  디버프 해제 타이밍에 중앙의 흙 크리스탈에서 <strong>전체 공격 + 흙 받는 피해 증가</strong>가 오므로, 회복 타이밍을 관리해야 한다.</p>
+  <p>또한 전원에게 <strong>타깃 마커 1~3</strong>과 <strong>「혼돈의 흙(混沌の土)」</strong>이 부여된다. 타깃 마커는 <strong>1번이 3명, 2번이 3명, 3번이 2명</strong>에게 붙는다.<br>
+  이는 HP가 1이 되지 않으면 해제할 수 없는 디버프로, 마커 순서대로 HP가 1이 되는 기믹에 맞아 해제해 간다.</p>
+  <ul>
+    <li>타깃 마커 <strong>1</strong>이 붙은 3명: <code>/mk attack &lt;me&gt;</code> · <code>/micon "attack1" marking</code></li>
+    <li>타깃 마커 <strong>2</strong>가 붙은 3명: <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code></li>
+    <li>타깃 마커 <strong>3</strong>이 붙은 2명: <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code></li>
+  </ul>
+
+  <h3 class="sub" id="p3-blackhole">블랙홀 선 유도 순서 <span class="jp">ブラックホール</span></h3>
+  <p>아래 표는 <strong>블랙홀에서 뻗어나오는 선을 받아 유도하는 순서</strong>다.</p>
+  <table class="tl">
+    <colgroup><col><col><col><col><col><col><col><col><col><col></colgroup>
+    <thead>
+      <tr>
+        <th colspan="2">블랙홀 1회차</th>
+        <th colspan="3">블랙홀 2회차</th>
+        <th colspan="3">블랙홀 3회차</th>
+        <th colspan="2">블랙홀 4회차</th>
+      </tr>
+      <tr>
+        <th>1회차</th><th>2회차</th>
+        <th>1회차</th><th>2회차</th><th>3회차</th>
+        <th>1회차</th><th>2회차</th><th>3회차</th>
+        <th>1회차</th><th>2회차</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://yan-flash.com/api/uploads/1780829643280-28387947.webp" alt="블랙홀 1-1"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829667929-8eeb0562.webp" alt="블랙홀 1-2"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829675507-5bd24377.webp" alt="블랙홀 2-1"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829725893-7e7d1cfe.webp" alt="블랙홀 2-2"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829733146-55c34a28.webp" alt="블랙홀 2-3"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829739830-d6673c50.webp" alt="블랙홀 3-1"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829975591-1f0cf637.webp" alt="블랙홀 3-2"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829982914-25e36b0b.webp" alt="블랙홀 3-3"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829999694-2051aa8c.webp" alt="블랙홀 4-1"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829682509-fd79c79b.webp" alt="블랙홀 1-2b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829689947-9d3729d0.webp" alt="블랙홀 2-1b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829696660-ab401a9b.webp" alt="블랙홀 2-2b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829909662-3986639a.webp" alt="블랙홀 2-3b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829916980-32fddc61.webp" alt="블랙홀 3-1b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829924515-8224c709.webp" alt="블랙홀 3-2b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780830006586-7b0f347f.webp" alt="블랙홀 3-3b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780830013988-561edf96.webp" alt="블랙홀 4-1b"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780830020753-2c9a21de.webp" alt="블랙홀 4-2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829704100-e65c0c30.webp" alt="블랙홀 2-1c"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829710640-db7e0ade.webp" alt="블랙홀 2-2c"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829717225-0d33712b.webp" alt="블랙홀 2-3c"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829934989-181b048b.webp" alt="블랙홀 3-1c"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829949528-6e411003.webp" alt="블랙홀 3-2c"></td>
+        <td><img src="https://yan-flash.com/api/uploads/1780829962056-b7b2233f.webp" alt="블랙홀 3-3c"></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span>각 칸은 블랙홀 회차(가로)·유도 순서(세로 1~3번째)별 배치도. 둥근 육각 아이콘 안의 숫자는 <b>타깃 마커 종류</b>를 나타낸다: <b>①(공격 마커)</b>=마커 1, <b>②(속박 마커)</b>=마커 2, <b>③(정지 마커)</b>=마커 3. 화살표가 그려진 아이콘은 <b>선을 받아 유도하는 사람의 이동 방향</b>(블랙홀에서 바깥쪽으로 끌어내는 경로), 사선이 그어진 금지 아이콘(🚫)은 <b>해당 칸에서 유도하지 않음/대기</b>를 의미한다. 1회차→4회차 순으로 진행하며, 같은 회차 내에서는 위→아래 순서로 차례차례 선을 받아 유도한다.</div>
+
+  <h3 class="sub" id="p3-timeline">페이즈 3 타임라인 <span class="jp">フェーズ3のタイムライン</span></h3>
+  <p>페이즈 3의 타임라인은 다음과 같다.</p>
+  <table class="tl">
+    <colgroup><col style="width:42%"><col></colgroup>
+    <thead>
+      <tr><th>기믹 이름</th><th>내용</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>결전</td>
+        <td>라이트 파티(4인 2조)로 나뉜다</td>
+      </tr>
+      <tr>
+        <td>선더가 → 지진</td>
+        <td>탱버스터를 스위치로 처리<br>전체 공격 + 혼돈의 오니·혼돈의 흙 부여(타깃 번호 부여)<br>전체 회복으로 되돌리면서 혼돈의 오니를 하나씩 해제</td>
+      </tr>
+      <tr>
+        <td>빈빈빈타 <span class="jp">ビンビンビンタ</span></td>
+        <td>케프카를 정면에서 봤을 때 왼손을 들면 오른쪽 안전지대 + 중앙에서 부채꼴 쉐어, 오른손을 들면 왼쪽 안전지대 + 중앙에서 부채꼴 롤 쉐어</td>
+      </tr>
+      <tr>
+        <td>블랙홀 1회차</td>
+        <td>위 표를 참고해 처리</td>
+      </tr>
+      <tr>
+        <td>선더가(강공격)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>빈빈빈타 + 더빙 이딕트 <span class="jp">ダビングイーディクト</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>블랙홀 2회차</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>있는 그대로의 보쿠친 + 더빙 이딕트 <span class="jp">ありのままのボクチン</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>선더가(강공격)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>블랙홀 3회차</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>빈빈빈타 + 화이트홀 + 호리즌탈 or 버티컬 임플로전</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>블랙홀 4회차</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>있는 그대로의 보쿠친</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>블리자가 + 동동코 발구르기 + 착탄하라 <span class="jp">どんどこ地団駄+着弾せよ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>블리자가 + 돌출하라 <span class="jp">突出せよ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>메테오 시간 초과</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
 <footer>
@@ -553,7 +723,8 @@
   lb.innerHTML = '<span class="hint">닫기: 클릭 / Esc</span><img alt="">';
   document.body.appendChild(lb);
   const lbImg = lb.querySelector('img');
-  document.querySelectorAll('img.shot, .imgrow img').forEach(img => {
+  document.querySelectorAll('img.shot, .imgrow img, table.tl img').forEach(img => {
+    img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
   });
   lb.addEventListener('click', () => lb.classList.remove('open'));
