@@ -46,17 +46,22 @@ def decode_next_chunks(raw: str) -> str:
 
 
 def extract_phases(full: str) -> dict[str, str]:
-    """phases 配列の {"phase":N,...,"contentHtml":"$XX"} を辿り、各 chunk 本文を取り出す。"""
+    """phases 配列の各エントリ {"phase":N, ... ,"contentHtml":"$XX"} から chunk 本文を取り出す。
+
+    サイト側でキーが増減しても壊れにくいよう、phase 番号と contentHtml の間の平文キー
+    （badge, label, tocLabel 等）は任意に許容する。contentHtml が null のフェーズ
+    （未公開）は "$xx" 形式に一致しないため自動的に除外される。
+    """
     mapping = re.findall(
-        r'\{"phase":(\d+),"label":"(.*?)","contentHtml":"\$([0-9a-f]+)"', full
+        r'"phase":(\d+),[^{}]*?"contentHtml":"\$([0-9a-f]+)"', full
     )
     result = {}
-    for phase, label, chunk_id in mapping:
+    for phase, chunk_id in mapping:
         m = re.search(rf'\b{chunk_id}:T[0-9a-f]+,', full)
         if not m:
             continue
         start = m.end()
-        nxt = re.search(r'\b[0-9a-f]{2}:(T[0-9a-f]+,|\[)', full[start:])
+        nxt = re.search(r'\b[0-9a-f]{2,3}:(T[0-9a-f]+,|\[)', full[start:])
         body = full[start:start + nxt.start()] if nxt else full[start:]
         result[phase] = body.strip()
     return result
