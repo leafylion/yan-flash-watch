@@ -180,7 +180,6 @@
   <a href="#p2-arms">종말의 두 팔</a>
   <a href="#p2-missing">미싱 (최신)</a>
   <a href="#p2-trine">트라인</a>
-  <a href="#p2-wings">파괴의 날개</a>
 
   <div class="grp">PHASE 3</div>
   <a href="#p3-kessen1">결전 1회차</a>
@@ -322,20 +321,30 @@
   <h2 class="mech" id="p2-arms">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
   <p>탱버스터 (2인 공동 탱킹 전제).</p>
 
-  <h2 class="mech" id="p2-missing">미싱 (최신) <span class="jp">①ミッシング最新</span><span class="pill">권장</span></h2>
-  <p class="tag">규칙</p>
+  <h2 class="mech" id="p2-missing">미싱 (최신) <span class="jp">ミッシング最新</span><span class="pill">권장</span></h2>
+  <p>미싱 시전이 끝나면 <strong>쉐어 2명 · 원형(円) AoE 3명 · 부채꼴(扇) AoE 3명</strong>에게 디버프가 부여된다.<br>
+  쉐어는 반드시 탱힐에서 1명, 딜러에서 1명에게 붙는다.<br>
+  원형 AoE는 탱힐 또는 딜러 한쪽에 몰려 붙고, 부채꼴도 마찬가지다.<br>
+  따라서 탱힐은 〈쉐어·원·원·원〉 또는 〈쉐어·부채·부채·부채〉, 딜러도 〈쉐어·원·원·원〉 또는 〈쉐어·부채·부채·부채〉가 된다.<br>
+  미리 페어(MT·H1 / ST·H2 / D1·D3 / D2·D4)를 짜두고, 쉐어가 붙은 페어가 8회 출현하는 타워 중 1회차에 들어간다.<br>
+  이후 타워를 정해진 규칙으로 처리하고, 새로 붙은 마커로 같은 처리를 반복하는 기믹이다.<br>
+  아래 규칙은 H1·H2·D3·D4가 편해지는 처리법이다.<br>
+  이 국면은 <strong><u>특히 힐러의 힐이 상당히 빡빡하므로, 가능한 한 처리 부하를 낮춘 규칙</u></strong>으로 구성했다.</p>
+
+  <h3 class="sub">규칙</h3>
   <ol>
     <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
-    <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong> / 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
-    <li>1회차부터 규칙에 따라, 쉐어 대상은 우선순위 순으로 타워에 들어감 (탱힐은 <strong>왼쪽 타워</strong>, 딜러는 <strong>오른쪽 타워</strong>)</li>
-    <li>홀수 회차의 <strong>왼쪽은 부채꼴, 오른쪽은 원형</strong></li>
-    <li>타워 안 우선순위: <code>H1 &gt; H2 &gt; MT &gt; ST &gt; D1 &gt; D2 &gt; D3 &gt; D4</code></li>
-    <li>타워 밖은 위치 고정 (왼쪽 TH, 오른쪽 D)</li>
-    <li>과거·미래 <strong>분신</strong> 유도 → 부채꼴 담당 + 근접</li>
-    <li><strong>3회차</strong> 타워 처리 후 자신에게 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> <span class="note">※ 깜빡 방지</span></li>
+    <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong>, 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
+    <li>홀수 회차는 <strong>왼쪽이 부채꼴, 오른쪽이 원형</strong></li>
+    <li>타워 처리. 같은 마커의 왼쪽부터 우선순위는 <code>H1 &gt; H2 &gt; MT &gt; ST &gt; D1 &gt; D2 &gt; D3 &gt; D4</code></li>
+    <li>타워 외 페어는 위치 고정 (왼쪽 TH, 오른쪽 D). 과거·미래 분신 유도는 부채꼴 담당 + 근접</li>
+    <li><strong>3회차</strong> 타워 처리 후 자신의 디버프로 분기.<br>
+      · 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code><br>
+      · 부채꼴이 붙은 경우 <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code><br>
+      8회차 타워 처리는 마커를 보고 왼쪽부터 우선순위로 처리한다.</li>
   </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780653166253-3a7b3467.webp" alt="미싱 최신 배치도">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭</b> = 쉐어, <b>扇</b> = 부채꼴 타워, <b>円</b> = 원형 타워. 빨강=홀수 회차, 파랑=짝수 회차 페어. 직업 아이콘=담당자.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780785742322-20f3b40b.webp" alt="미싱 최신 배치도 (1~8회차)">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭</b> = 쉐어, <b>扇</b> = 부채꼴 타워, <b>円</b> = 원형 타워. 라벨 색 빨강=홀수 회차, 파랑=짝수 회차. <b>未来過去誘導</b> = 미래·과거(분신) 유도, <b>消滅の脚誘導</b> = 소멸의 다리 유도. 직업 아이콘=담당자, 숫자=순번.</div>
 
   <h3 class="sub">과거의 종언 / 미래의 종언 <span class="jp">過去の終焉 / 未来の終焉</span></h3>
   <ul>
@@ -344,27 +353,36 @@
     <li><strong>4회차</strong> 과거·미래는 <strong>A에 집합</strong>하여 「소멸의 다리」를 기믹에 맞춰 회피.</li>
   </ul>
 
+  <h3 class="sub">상세 위치 <span class="jp">※ 이미지를 클릭해서 확인하세요</span></h3>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780787348293-e4d917fe.webp" alt="홀수 회차 상세 위치">
+    <img src="https://yan-flash.com/api/uploads/1780787357724-3a240ca9.webp" alt="짝수 회차 상세 위치">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>奇数回</b> = 홀수 회차(왼쪽), <b>偶数回</b> = 짝수 회차(오른쪽). 빨강·파랑 점=각 타워에서의 서는 위치(빨강=대상자, 파랑=동반자), 색 원/도넛=타워·장판 범위, 주황 링=쉐어 표식. 보스(별 아이콘)는 위쪽 중앙.</div>
+  <p>홀수 회차의 세밀한 뉘앙스 … 쉐어 왼쪽은 타깃 서클과 타워의 중심에 서는 느낌. 쉐어 오른쪽은 타깃 서클과 타워가 겹쳐 만들어지는 럭비공 모양을 반으로 잘라, 그 오른쪽 절반의 중심에 선다.<br>
+  짝수 회차의 세밀한 뉘앙스 … 홀수 회차와 마찬가지로, 부채꼴은 럭비공을 반으로 자른 한쪽의 중심에 선다.</p>
+
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
-  <p>전체 공격.</p>
+  <p>전체 공격.<br>
+  <strong>여기서 디버프를 가지고 있으면 즉사</strong>.</p>
 
   <h2 class="mech" id="p2-trine">트라인 <span class="jp">トライン</span></h2>
-  <p>1회차에 떨어진 삼각형에 들어가기 위해, <strong>3회차에 떨어진 삼각형에서 대기</strong>하다가 폭발 후 이동.</p>
-  <p>힐러·딜러 조는 <strong>남동</strong>에서 안전지대를 찾고, 탱커는 <strong>북서</strong>에서 안전지대를 찾으면 휘말리지 않고 처리 가능.</p>
+  <p>1회차에 떨어진 삼각형에 들어가므로 확인. 그 도중에 <strong>파괴의 날개(반갈 장판)</strong>가 오므로 회피. 3회차는 한가운데에 확정으로 떨어진다.<br>
+  <strong>파괴의 날개(가까운 사람과 먼 사람에게 강공격)</strong>가 오므로, 힐러·딜러 조는 <strong>남 &gt; 동</strong>에서 안전지대를 찾고, 탱커는 <strong>북 &gt; 서</strong>에서 안전지대를 찾으면 휘말리지 않고 처리 가능.</p>
   <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780766912469-9a274b99.webp" alt="트라인 처리 1">
-    <img src="https://yan-flash.com/api/uploads/1780766921049-4e0930a6.webp" alt="트라인 처리 2">
+    <img src="https://yan-flash.com/api/uploads/1780769140207-51410acb.webp" alt="트라인 처리 1">
+    <img src="https://yan-flash.com/api/uploads/1780769147533-14880e02.webp" alt="트라인 처리 2">
+    <img src="https://yan-flash.com/api/uploads/1780769310091-f110a198.webp" alt="트라인 처리 3">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>노란 삼각형마다 적힌 숫자(1·2·3)=떨어진 순번. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 직업 아이콘=담당자.
+  <div class="cap"><span class="h">🖼 이미지</span>노란 삼각형마다 적힌 숫자(1·2·3)=떨어진 순번(터지는 순서). 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 보라 원=파괴의 날개(반갈/강공격) 범위, 직업 아이콘=담당자(파랑=탱, 빨강·초록=힐러·딜러).
     <ul>
-      <li><b>1번째 이미지</b>: 첫 컷. 탱(파랑 아이콘)은 북서(D·1 사이), 힐러·딜러(초록·빨강 아이콘)는 남동(B·1 사이)에 위치. 1번째 삼각형에 들어가기 위해 3번째로 떨어진 삼각형에서 대기.</li>
-      <li><b>2번째 이미지</b>: 폭발 후 이동한 모습. 위쪽 삼각형 숫자가 「1」로 바뀌고 아래쪽은 「2」로 바뀜 → 안전한 삼각형으로 차례차례 이동하는 흐름을 나타냄.</li>
+      <li><b>1번째 이미지</b>: 탱(파랑 아이콘)은 북서, 힐러·딜러(빨강·초록)는 남(아래)에 모여 1번째 삼각형으로 향하는 흐름. 보라 원(파괴의 날개)을 피해 안전한 삼각형으로 이동.</li>
+      <li><b>2번째 이미지</b>: 폭발 후 숫자가 바뀐 모습. 탱은 동쪽(우측)으로 보라 원 유도, 힐러·딜러는 남쪽 삼각형 쪽으로 이동.</li>
+      <li><b>3번째 이미지</b>: 다음 단계. 탱(파랑)은 동쪽 보라 원 안에, 힐러·딜러는 남서 삼각형 쪽으로 빠지는 위치.</li>
     </ul>
   </div>
+  <p class="note">현재 북서의 트라인에 버그가 있으므로 주의.</p>
   <a class="ext" href="https://x.com/FFXIV_NEWS_JP/status/2062423560560464058" target="_blank" rel="noopener">🔗 참고: @FFXIV_NEWS_JP 트윗</a>
-
-  <h2 class="mech" id="p2-wings">파괴의 날개 <span class="jp">破壊の翼</span></h2>
-  <p><strong>한쪽 날개</strong>가 빛나면 → 반대쪽 <strong>반갈</strong>(반쪽 장판).</p>
-  <p><strong>양쪽 날개</strong>가 빛나면 → 보스로부터 <strong>가까운 사람과 먼 사람</strong>에게 강공격. <span class="note">휘말림 주의.</span></p>
 
   <h2 class="mech">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
   <p>탱버스터 후 <strong>시간 초과</strong>.</p>
