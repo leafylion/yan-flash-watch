@@ -71,9 +71,11 @@ def changed_images(diff: str, limit: int = 16) -> list[str]:
     return urls[:limit]
 
 
-def call_api(content, retries: int = 5) -> str:
+def call_api(content, retries: int = 3) -> str:
     """Anthropic API 호출. 일시적 네트워크/5xx/429 오류는 백오프로 재시도한다.
-    (RemoteDisconnected, 타임아웃 등으로 가끔 끊기므로 견고하게.)"""
+    (RemoteDisconnected, 타임아웃 등으로 가끔 끊기므로 견고하게.)
+    timeout 은 opus 가 큰 HTML 을 생성할 시간을 주되(240s), 행(hang)이 25분씩
+    이어지지 않도록 재시도 3회로 제한한다."""
     key = os.environ["ANTHROPIC_API_KEY"]
     body = json.dumps({
         "model": MODEL,
@@ -90,7 +92,7 @@ def call_api(content, retries: int = 5) -> str:
     for attempt in range(retries):
         try:
             req = urllib.request.Request(API_URL, data=body, headers=headers)
-            with urllib.request.urlopen(req, timeout=300) as r:
+            with urllib.request.urlopen(req, timeout=240) as r:
                 data = json.loads(r.read().decode("utf-8"))
             return "".join(block.get("text", "") for block in data.get("content", []))
         except HTTPError as e:
