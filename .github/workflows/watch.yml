@@ -48,12 +48,27 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python3 check.py
 
-      # 2) 攻略本文をフェーズ別にスナップショット（翻訳の差分検知用）
+      # 2) 通知用スナップショット(latest.json)は「常に」コミット。
+      #    → 後続の翻訳が失敗しても、検出済みの項目が記録されるので同じ通知が重複しない。
+      - name: Commit notify state (always)
+        if: steps.guard.outputs.expired != 'true'
+        run: |
+          if [[ -n "$(git status --porcelain state/latest.json docs/update-info.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state/latest.json docs/update-info.json
+            git commit -m "auto(notify): 更新履歴 스냅샷 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          else
+            echo "更新履歴に変化なし。"
+          fi
+
+      # 3) 攻略本文をフェーズ別にスナップショット（翻訳の差分検知用）
       - name: Snapshot guide body
         if: steps.guard.outputs.expired != 'true'
         run: python3 tools/fetch_guide.py
 
-      # 3) 本文が変わっていれば Claude(API) で docs/index.html を最新化
+      # 4) 本文が変わっていれば Claude(API) で docs/index.html を最新化（失敗しうる）
       - name: Translate if body changed
         if: steps.guard.outputs.expired != 'true'
         env:
@@ -64,24 +79,26 @@ jobs:
           if [[ -s /tmp/guide.diff ]]; then
             echo "本文に変更あり。"
             if [[ -z "$ANTHROPIC_API_KEY" ]]; then
-              echo "ANTHROPIC_API_KEY 未設定 — 翻訳をスキップ（スナップショットのみ更新）。"
-            else
-              python3 tools/translate.py /tmp/guide.diff
+              echo "ANTHROPIC_API_KEY 未設定 — 翻訳をスキップ（差分は次回へ持ち越し）。"
+              git checkout -- state/guide
+              exit 0
             fi
+            python3 tools/translate.py /tmp/guide.diff
           else
             echo "本文に変更なし — 翻訳スキップ。"
           fi
 
-      # 4) state/ と docs/ の変更をまとめてコミット & プッシュ（→ Pages 自動再ビルド）
-      - name: Commit & push if changed
+      # 5) 翻訳本文(guide スナップショット + docs/index.html)は「翻訳成功時のみ」コミット。
+      #    → 失敗時は state/guide が未コミットのまま残り、次回また差分として再試行される。
+      - name: Commit translation (on success)
         if: steps.guard.outputs.expired != 'true'
         run: |
-          if [[ -n "$(git status --porcelain state/ docs/)" ]]; then
+          if [[ -n "$(git status --porcelain state/guide docs/index.html)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/ docs/
-            git commit -m "auto: 妖精乱舞 攻略 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git add state/guide docs/index.html
+            git commit -m "auto(translate): 攻略 본문 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push
           else
-            echo "変更なし。"
+            echo "本文の翻訳変更なし。"
           fi
