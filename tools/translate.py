@@ -16,7 +16,9 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
+from urllib.error import HTTPError
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -69,26 +71,46 @@ def changed_images(diff: str, limit: int = 16) -> list[str]:
     return urls[:limit]
 
 
-def call_api(content) -> str:
+def call_api(content, retries: int = 5) -> str:
+    """Anthropic API 호출. 일시적 네트워크/5xx/429 오류는 백오프로 재시도한다.
+    (RemoteDisconnected, 타임아웃 등으로 가끔 끊기므로 견고하게.)"""
     key = os.environ["ANTHROPIC_API_KEY"]
-    payload = {
+    body = json.dumps({
         "model": MODEL,
         "max_tokens": 32000,
         "system": SYSTEM,
         "messages": [{"role": "user", "content": content}],
+    }).encode("utf-8")
+    headers = {
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
     }
-    req = urllib.request.Request(
-        API_URL,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "x-api-key": key,
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=300) as r:
-        data = json.loads(r.read().decode("utf-8"))
-    return "".join(block.get("text", "") for block in data.get("content", []))
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(API_URL, data=body, headers=headers)
+            with urllib.request.urlopen(req, timeout=300) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            return "".join(block.get("text", "") for block in data.get("content", []))
+        except HTTPError as e:
+            detail = ""
+            try:
+                detail = e.read().decode("utf-8", "replace")[:300]
+            except Exception:
+                pass
+            # 4xx(429 제외)는 재시도해도 소용없음 → 즉시 중단
+            if e.code != 429 and e.code < 500:
+                print(f"API 오류 {e.code} (비재시도): {detail}", file=sys.stderr)
+                raise
+            last = e
+            print(f"API {e.code} (시도 {attempt + 1}/{retries}): {detail}", file=sys.stderr)
+        except Exception as e:  # RemoteDisconnected, timeout, URLError 등
+            last = e
+            print(f"API 연결 오류 (시도 {attempt + 1}/{retries}): {e}", file=sys.stderr)
+        if attempt < retries - 1:
+            time.sleep(5 * (attempt + 1))  # 5, 10, 15, 20s
+    raise last
 
 
 def main() -> None:
