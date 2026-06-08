@@ -155,6 +155,9 @@
   .pill{display:inline-block; font-size:.78rem; color:var(--bg); background:var(--accent2);
     border-radius:999px; padding:2px 10px; margin-left:8px; vertical-align:middle; font-weight:700}
   code{background:var(--card2); padding:2px 6px; border-radius:5px; font-size:.88em}
+  pre{background:var(--card2); border:1px solid var(--border); border-radius:8px;
+    padding:12px 14px; overflow-x:auto; font-size:.84rem; line-height:1.55; margin:12px 0}
+  pre code{background:none; padding:0}
   /* P3 타임라인 표 */
   table.tl{border-collapse:collapse; width:100%; margin:12px 0; font-size:.9rem}
   table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
@@ -617,7 +620,7 @@
       </tr>
       <tr>
         <td>있는 그대로의 보쿠친 + 더빙 이딕트 <span class="jp">ありのままのボクチン</span></td>
-        <td></td>
+        <td>케프카가 중앙을 가르는 장판을 발생시키고, 거기에 카오스가 반갈 공격을 해 온다.<br>케프카가 출현한 순간에 (시야를) 향한다.</td>
       </tr>
       <tr>
         <td>선더가(강공격)</td>
@@ -625,11 +628,11 @@
       </tr>
       <tr>
         <td>블랙홀 3회차</td>
-        <td></td>
+        <td>위 표를 참고해 처리</td>
       </tr>
       <tr>
         <td>빈빈빈타 + 화이트홀 + 호리즌탈 or 버티컬 임플로전</td>
-        <td></td>
+        <td>카오스를 45도 기울여 호리즌탈·버티컬 도중에 안전지대로 이동하기 쉽게 한다<br>거기서 빈빈빈타를 해 오므로 손을 확인</td>
       </tr>
       <tr>
         <td>블랙홀 4회차</td>
@@ -648,11 +651,24 @@
         <td></td>
       </tr>
       <tr>
-        <td>메테오 시간 초과</td>
+        <td>메테오 &amp; 바울 오브 아고니 시간 초과 <span class="jp">メテオ&amp;バウル・オブ・アゴニー時間切れ</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+
+  <pre><code>/mlock
+/p 《Attack１》선 받기&lt;se.1&gt;&lt;wait.5&gt;
+/p 《Attack１》《Attack２》선 받기&lt;se.1&gt;&lt;wait.23&gt;
+/p 《Attack１》《Attack２》《Attack３》선 받기&lt;se.1&gt;&lt;wait.7&gt;
+/p 《Bind１》, 《Attack１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
+/p 《Bind２》, 《Attack２》의 선 받을 준비&lt;se.1&gt;&lt;wait.23&gt;
+/p 《Bind１》《Bind２》《Bind３》선 받기&lt;se.1&gt;&lt;wait.7&gt;
+/p 《stop1》, 《Bind１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
+/p 《stop２》, 《Bind２》의 선 받을 준비&lt;se.1&gt;&lt;wait.20&gt;
+/p 《stop１》《stop２》선 받기&lt;se.1&gt;&lt;wait.5&gt;
+/p 《stop２》선 받기&lt;se.1&gt;</code></pre>
+  <a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고: 로드스톤 블로그</a>
 </section>
 
 <footer>
