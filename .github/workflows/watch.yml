@@ -83,7 +83,12 @@ jobs:
               git checkout -- state/guide
               exit 0
             fi
-            python3 tools/translate.py /tmp/guide.diff
+            # 翻訳が失敗しても job は失敗扱いにしない(=失敗メールを出さない)。
+            # 差分を戻して次回また再試行させる。
+            if ! python3 tools/translate.py /tmp/guide.diff; then
+              echo "::warning::翻訳に失敗しました。今回はスキップし、差分を戻して次回再試行します。"
+              git checkout -- state/guide
+            fi
           else
             echo "本文に変更なし — 翻訳スキップ。"
           fi

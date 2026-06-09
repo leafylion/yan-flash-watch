@@ -71,15 +71,42 @@ def changed_images(diff: str, limit: int = 16) -> list[str]:
     return urls[:limit]
 
 
+def parse_sse(resp) -> str:
+    """Anthropic 스트리밍(SSE) 응답에서 text_delta 를 모아 합친다."""
+    chunks = []
+    for raw in resp:  # 줄 단위로 들어옴
+        line = raw.decode("utf-8", "replace").strip()
+        if not line.startswith("data:"):
+            continue
+        payload = line[5:].strip()
+        try:
+            evt = json.loads(payload)
+        except Exception:
+            continue
+        t = evt.get("type")
+        if t == "content_block_delta":
+            d = evt.get("delta", {})
+            if d.get("type") == "text_delta":
+                chunks.append(d.get("text", ""))
+        elif t == "error":
+            raise RuntimeError(f"API error event: {evt.get('error')}")
+        elif t == "message_stop":
+            break
+    return "".join(chunks)
+
+
 def call_api(content, retries: int = 3) -> str:
-    """Anthropic API 호출. 일시적 네트워크/5xx/429 오류는 백오프로 재시도한다.
-    (RemoteDisconnected, 타임아웃 등으로 가끔 끊기므로 견고하게.)
-    timeout 은 opus 가 큰 HTML 을 생성할 시간을 주되(240s), 행(hang)이 25분씩
-    이어지지 않도록 재시도 3회로 제한한다."""
+    """Anthropic API 를 **스트리밍**으로 호출한다.
+
+    큰 HTML 을 한 번에 생성하면 비스트리밍 응답은 생성 완료까지 아무 데이터도
+    오지 않아 read timeout 으로 죽는다(이전 실패 원인). 스트리밍이면 토큰이 계속
+    흘러와 연결이 살아 있으므로, timeout 은 '스트림이 멈춘' 경우에만 걸린다.
+    일시적 연결 오류/5xx/429 는 백오프로 재시도, 4xx(429 제외)는 즉시 중단."""
     key = os.environ["ANTHROPIC_API_KEY"]
     body = json.dumps({
         "model": MODEL,
         "max_tokens": 32000,
+        "stream": True,
         "system": SYSTEM,
         "messages": [{"role": "user", "content": content}],
     }).encode("utf-8")
@@ -92,16 +119,17 @@ def call_api(content, retries: int = 3) -> str:
     for attempt in range(retries):
         try:
             req = urllib.request.Request(API_URL, data=body, headers=headers)
-            with urllib.request.urlopen(req, timeout=240) as r:
-                data = json.loads(r.read().decode("utf-8"))
-            return "".join(block.get("text", "") for block in data.get("content", []))
+            with urllib.request.urlopen(req, timeout=120) as r:  # per-read; 스트림이 흐르면 안 걸림
+                text = parse_sse(r)
+            if not text.strip():
+                raise RuntimeError("스트림에서 텍스트를 받지 못함(빈 응답)")
+            return text
         except HTTPError as e:
             detail = ""
             try:
                 detail = e.read().decode("utf-8", "replace")[:300]
             except Exception:
                 pass
-            # 4xx(429 제외)는 재시도해도 소용없음 → 즉시 중단
             if e.code != 429 and e.code < 500:
                 print(f"API 오류 {e.code} (비재시도): {detail}", file=sys.stderr)
                 raise
@@ -111,7 +139,7 @@ def call_api(content, retries: int = 3) -> str:
             last = e
             print(f"API 연결 오류 (시도 {attempt + 1}/{retries}): {e}", file=sys.stderr)
         if attempt < retries - 1:
-            time.sleep(5 * (attempt + 1))  # 5, 10, 15, 20s
+            time.sleep(5 * (attempt + 1))
     raise last
 
 
