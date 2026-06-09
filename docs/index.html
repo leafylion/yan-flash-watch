@@ -199,6 +199,7 @@
   <a href="#p3-timeline">P3 타임라인</a>
   <a href="#p3-binbin">빈빈빈타</a>
   <a href="#p3-blackhole1">블랙홀 1회차</a>
+  <a href="#p3-blackhole2">블랙홀 2회차</a>
 </nav>
 
 <main>
@@ -655,13 +656,13 @@
     <li>블랙홀 3회차의 <strong>3번째</strong>에서, 속박2와 정지2가 선을 교환한다.</li>
   </ul>
 
-  <p>선이 나오는 블랙홀은 반드시 <strong>동서남북</strong>에 출현하므로, <strong>북쪽부터 시계 방향 우선도</strong>로 받고, 빔의 방향은 반드시 <strong>시계 방향</strong>이 되도록 향한다.<br>
+  <p>선이 나오는 블랙홀은 반드시 <strong>동서남북</strong>에 출현하므로, <strong>북쪽부터 시계 방향 우선순</strong>으로 받고, 빔의 방향은 반드시 <strong>시계 방향</strong>이 되도록 향한다.<br>
   아래는 블랙홀의 출현 위치다.</p>
   <div class="imgrow">
     <img src="https://yan-flash.com/api/uploads/1780987545784-e9b0ec05.webp" alt="블랙홀 출현 위치 1">
     <img src="https://yan-flash.com/api/uploads/1780987581137-a938f729.webp" alt="블랙홀 출현 위치 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀(검은 구멍)이 필드 전체에 동심원 형태로 다수 배치된 모습. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위(A=북, B=동, C=남, D=서). 선이 나오는 블랙홀은 반드시 <b>동서남북(A·B·C·D 방향)</b>에 출현하므로, 북(A)부터 시계 방향 우선도로 선을 받아 빔을 시계 방향으로 향하게 한다.
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀(검은 구멍)이 필드 전체에 동심원 형태로 다수 배치된 모습. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위(A=북, B=동, C=남, D=서). 선이 나오는 블랙홀은 반드시 <b>동서남북(A·B·C·D 방향)</b>에 출현하므로, 북(A)부터 시계 방향 우선순으로 선을 받아 빔을 시계 방향으로 향하게 한다.
     <ul>
       <li><b>1번째 이미지</b>: 동심원 배치 전체에 블랙홀이 빽빽이 깔린 모습(가장자리에 가시 모양).</li>
       <li><b>2번째 이미지</b>: 같은 배치를 동심원 3겹 링이 강조된 형태로 표시. 각 링 위에 블랙홀이 정렬돼 있어 거리감/위치 파악용.</li>
@@ -781,33 +782,13 @@
   <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 아래 파랑 글씨 <b>サンダガ注意</b> = "선더가 주의". 좌상단·좌하단 블랙홀에서 <b>빨강 점선=선</b>이 뻗어 나와 <b>공격1(②·3)·공격2(①·4)</b> 탱이 받아 바깥으로 유도. 중앙 주황 원=화이트홀(시계 회전 표식), 우하단 보라 원 안 별=그라비가/장판 범위, 바깥 <b>A·B·C·1~4</b>=방위. 직업 아이콘=담당자, 육각 안 숫자=타깃 마커 순번.</div>
   <p>2번째 선을 처리한 직후, <strong>바로 선더가가 오므로 주의</strong>.<br>
   탱커 외의 멤버는 <strong>엑스데스에서 떨어지도록</strong> 한다.</p>
-</section>
 
-<footer>
-  원문(일본어) 출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" style="color:var(--accent)">yan-flash.com/ultimate/yosei-ranbu</a><br>
-  Phase 1 · 2 · 3 한글 번역 — 이미지는 원본 서버에서 직접 로드됩니다. (삭제 예정 처리법은 제외)
-</footer>
-
-</div>
-</main>
-
-<script>
-  // 스크롤 위치 기반 목차 활성 표시 (클릭 점프 시에도 정확히 하이라이트)
-  const links = [...document.querySelectorAll('nav.toc a')];
-  const targets = links
-    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
-    .filter(Boolean);
-  // 제목은 클릭 점프 시 scroll-margin-top(=20px 부근)에 안착한다.
-  // ANCHOR 를 그보다 살짝 위로만 둔다(작게!). 130px 처럼 크게 두면, 내용이 짧은
-  // 섹션은 다음 제목까지 그 선 위로 들어와 엉뚱한 섹션이 잡힌다(종말의 두 팔 버그).
-  // 32px: 클릭한 제목(top≈20)은 잡히고, 다음 제목(짧아도 제목 높이+여백으로 최소 ~50px+ 아래)은 안 잡힌다.
-  const ANCHOR = 32;
-  let lockUntil = 0; // 스무스 스크롤 동안 스파이 잠금(깜빡임 방지)
-
-  function setActive(id) {
-    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-  }
-
-  function syncActive() {
-    if (performance.now() < lockUntil) return;
-    let currentId =
+  <p>선더가가 터짐과 동시에 거대 케프카가 이동하므로, MT는 더빙(ダビング)을 유도하기 위해 케프카의 반대 방향으로 카오스를 향하게 한다.<br>
+  케프카가 든 손을 확인해 안전지대로 이동하고, <strong>쉐어 또는 롤 산개</strong>로 처리한다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780990267665-4cab1596.webp" alt="블랙홀 1회차 후 빈빈빈타 — 쉐어 패턴">
+    <img src="https://yan-flash.com/api/uploads/1780990332952-97553e42.webp" alt="블랙홀 1회차 후 빈빈빈타 — 롤 산개 패턴">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span>선더가 후 거대 케프카(위쪽 황금 아이콘)가 이동한 상태에서의 빈빈빈타 처리. 위쪽 빨강 별=선더가(강공격) 표식, 중앙 빨강 십자 장판=케프카가 가른 안전지대 분할, 노랑 부채꼴=카오스의 반갈 장판, 바깥 <b>A·B·C·1~4</b>=방위.
+    <ul>
+      <li><b>1번째 이미지(쉐어)</b>: 케프카가 향해서 <b>오른쪽 손</b>을 들어 <b>왼쪽이 안전지대</b>. 전원이 한쪽에 모여 <b>부채꼴 쉐어</b>로 처리. 아이콘 안 숫자(1·2·3)=쉐어 그룹 순번.
