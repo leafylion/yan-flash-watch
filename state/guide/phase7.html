@@ -1,22 +1,18 @@
 <h2>決戦2回目※作成中</h2>
 
-<p>1回目と同じくライトパーティに分ける</p>
+<p>1回目と同じくライトパーティに分けます。<br>その後、エクスデスからサンダガ（エクスデスから近い人）が来るので、タンクは無敵を使う（もしくはスイッチ）。</p>
 
-<p>その後、エクスデスからサンダガが来るのでタンクは無敵（もしくはスイッチ）</p>
+<p>次にカオスがじしんを行い、全体攻撃＋デバフを付与します。<br>タンヒラとDPSからそれぞれ1名ずつに「混沌の汚泥」が付与されます。<br>これは体力を全回復させないと即死する特殊なデバフで、順番に全回復させて解除していきます。<br>デバフ解除のタイミングで中央の土のクリスタルから全体攻撃＋土被ダメージ増加が来るため、回復のタイミングを管理する必要があります。</p>
 
-<p>次にカオスがじしんを行い全体攻撃+デバフを付与します。</p>
+<p>また全員にターゲットマーカー1〜3と「混沌の土」が付与され、マーカーは1番が3人、2番が3人、3番が2人につきます。<br>これはHPが1にならないと解除できないデバフで、マーカーの順に、HPが1になる攻撃を受けて解除していくギミックになります。</p>
 
-<p>タンヒラとDPSにそれぞれ1名ずつに「混沌の汚泥」が付与される。<br>これは体力を全回復させないと即死する特殊なデバフで、順番に全回復させて解除していく。<br>デバフ解除のタイミングで中央の土のクリスタルから全体攻撃＋土被ダメージ増加が来るため、回復のタイミングを管理する必要がある。</p>
+<p>ファーストターゲットが付いた3人は<br>/mk attack &lt;me&gt;<br>/micon "attack1" marking</p>
 
-<p>また全員にターゲットマーカー1〜3と「混沌の土」が付与される。ターゲットマーカーが1番が3人、2番が3人、3番が2人につく。<br>これはHPが1にならないと解除できないデバフで、マーカーの順にHPが1になるギミックに当たって解除していく。</p>
+<p>セカンドターゲットが付いた3人は<br>/mk bind &lt;me&gt;<br>/micon "bind1" marking</p>
 
-<p>ターゲットマーカー1が付いた3人は<br>/mk attack &lt;me&gt;<br>/micon "attack1" marking</p>
+<p>サードターゲットが付いた2人は<br>/mk stop &lt;me&gt;<br>/micon "stop1" marking</p>
 
-<p>ターゲットマーカー2が付いた3人は<br>/mk bind &lt;me&gt;<br>/micon "bind1" marking</p>
-
-<p>ターゲットマーカー3が付いた2人は<br>/mk stop &lt;me&gt;<br>/micon "stop1" marking</p>
-
-<p>以下の表はブラックホールから伸びる線を取り誘導する順番です。</p>
+<p>このマーカーに従って、ブラックホールから伸びる線を優先順位の高い人から時計回りに取っていきます。<br>ブラックホールはまとまって計4回出現し、それぞれの中で線が 2本 → 3本 → 3本 → 2本 発生します（合計10本）。<br>下表は、各線をどのマーカー・どの順で取って混沌の土を解除していくかを示したものです。</p>
 <table style="min-width: 250px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="2" rowspan="1">
 <p>ブラホ1回目</p>
 </th><th colspan="3" rowspan="1">
@@ -26,25 +22,25 @@
 </th><th colspan="2" rowspan="1">
 <p>ブラホ4回目</p>
 </th></tr><tr><td colspan="1" rowspan="1">
-<p>1回目</p>
+<p>1本目</p>
 </td><td colspan="1" rowspan="1">
-<p>2回目</p>
+<p>2本目</p>
 </td><td colspan="1" rowspan="1">
-<p>1回目</p>
+<p>1本目</p>
 </td><td colspan="1" rowspan="1">
-<p>2回目</p>
+<p>2本目</p>
 </td><td colspan="1" rowspan="1">
-<p>3回目</p>
+<p>3本目</p>
 </td><td colspan="1" rowspan="1">
-<p>1回目</p>
+<p>1本目</p>
 </td><td colspan="1" rowspan="1">
-<p>2回目</p>
+<p>2本目</p>
 </td><td colspan="1" rowspan="1">
-<p>3回目</p>
+<p>3本目</p>
 </td><td colspan="1" rowspan="1">
-<p>1回目</p>
+<p>1本目</p>
 </td><td colspan="1" rowspan="1">
-<p>2回目</p>
+<p>2本目</p>
 </td></tr><tr><td colspan="1" rowspan="1">
 <img class="rounded max-w-full" src="/api/uploads/1780829643280-28387947.webp"></td><td colspan="1" rowspan="1">
 <img class="rounded max-w-full" src="/api/uploads/1780829667929-8eeb0562.webp"></td><td colspan="1" rowspan="1">
@@ -82,7 +78,13 @@
 </td><td colspan="1" rowspan="1">
 <p></p>
 </td></tr></tbody></table>
-<p>フェーズ3のタイムラインはこんな感じ</p>
+<p>注意点として、線の交換が計4回発生します。<br>・ブラホ2回目の2本目で、攻撃1とバインド1が線を交換します。<br>・ブラホ2回目の3本目で、攻撃2とバインド2が線を交換します。<br>・ブラホ3回目の2本目で、バインド1とストップ1が線を交換します。<br>・ブラホ3回目の3本目で、バインド2とストップ2が線を交換します。</p>
+
+<p>線が出るブラックホールは必ず東西南北に出現するので、北から時計回りの優先度で取り、ビームの方向は必ず時計回りになるように向けます。<br>以下はブラックホールの出現位置です。</p>
+
+<img class="rounded max-w-full" src="/api/uploads/1780987545784-e9b0ec05.webp">
+<img class="rounded max-w-full" src="/api/uploads/1780987581137-a938f729.webp">
+<p>以下はフェーズ3のタイムラインです</p>
 <table style="min-width: 50px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1">
 <p>ギミック名</p>
 </th><th colspan="1" rowspan="1">
@@ -94,7 +96,7 @@
 </td></tr><tr><td colspan="1" rowspan="1">
 <p>サンダガ→じしん</p>
 </td><td colspan="1" rowspan="1">
-<p>タンク強攻撃をスイッチで処理<br>全体攻撃+混沌の汚泥と混沌の土を付与（ターゲット番号付与）<br>全体回復で戻しつつ、混沌の汚泥を1つずつ解除する</p>
+<p>タンク強攻撃をで処理（エクスデスから近い人）<br>全体攻撃+混沌の汚泥と混沌の土を付与（ターゲット番号付与）<br>全体回復で戻しつつ、混沌の汚泥を1つずつ解除する</p>
 </td></tr><tr><td colspan="1" rowspan="1">
 <p>ビンビンビンタ</p>
 </td><td colspan="1" rowspan="1">
@@ -152,7 +154,7 @@
 </td><td colspan="1" rowspan="1">
 <p></p>
 </td></tr></tbody></table>
-<p></p>
+<p>また以下のマクロをブラックホール1回目から使えば、パーティにお知らせすることができるので野良だと有用です。</p>
 <pre><code>/mlock
 /p 《Attack１》線取り&lt;se.1&gt;&lt;wait.5&gt;
 /p 《Attack１》《Attack２》線取り&lt;se.1&gt;&lt;wait.23&gt;
