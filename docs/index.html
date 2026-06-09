@@ -185,7 +185,8 @@
 
   <div class="grp">PHASE 2</div>
   <a href="#p2-arms">종말의 두 팔</a>
-  <a href="#p2-missing">미싱 (최신)</a>
+  <a href="#p2-missing1">① 미싱 (우선순 처리)</a>
+  <a href="#p2-missing2">② 미싱 (남쪽 조정+남북)</a>
   <a href="#p2-trine">트라인</a>
 
   <div class="grp">PHASE 3</div>
@@ -193,13 +194,16 @@
   <a href="#p3-baul-tlb3">바울 오브 아고니 (TLB3)</a>
   <a href="#p3-baul">바울 오브 아고니 (정공법)</a>
 
-  <div class="grp">PHASE 3-2 (작성 중)</div>
+  <div class="grp">PHASE 3-2</div>
   <a href="#p3-kessen2">결전 2회차</a>
   <a href="#p3-blackhole">블랙홀 선 유도 순서</a>
   <a href="#p3-timeline">P3 타임라인</a>
   <a href="#p3-binbin">빈빈빈타</a>
   <a href="#p3-blackhole1">블랙홀 1회차</a>
   <a href="#p3-blackhole2">블랙홀 2회차</a>
+  <a href="#p3-blackhole3">블랙홀 3회차</a>
+  <a href="#p3-blackhole4">블랙홀 4회차</a>
+  <a href="#p3-dondoko">동동코 발구르기</a>
 </nav>
 
 <main>
@@ -304,6 +308,7 @@
   <div class="cap"><span class="h">🖼 이미지</span>같은/다른 화살표 경우별 산개 위치 다이어그램. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위, 빨강/파랑 테두리=위 본문 기준. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
   <p>선과 관계없이 <strong>이미지대로 산개</strong>.</p>
   <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
+  <a class="ext" href="https://forum.square-enix.com/ffxiv/threads/529064" target="_blank" rel="noopener">🔗 참고: 스퀘어 에닉스 포럼 스레드 #529064</a>
 
   <h2 class="mech" id="p1-sankai">산개 최신 <span class="jp">散開最新 ※ 즈비즈바 텔레포 기준</span><span class="pill">권장</span></h2>
   <div class="imgrow">
@@ -342,7 +347,7 @@
   <h2 class="mech" id="p2-arms">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
   <p>탱버스터 (2인 공동 탱킹 전제).</p>
 
-  <h2 class="mech" id="p2-missing">미싱 (최신) <span class="jp">ミッシング最新</span><span class="pill">권장</span></h2>
+  <h2 class="mech" id="p2-missing1">① 미싱 — 우선순 처리 <span class="jp">①ミッシング 優先順処理</span></h2>
   <p>미싱 시전이 끝나면 <strong>쉐어 2명 · 원형(円) AoE 3명 · 부채꼴(扇) AoE 3명</strong>에게 디버프가 부여된다.<br>
   쉐어는 반드시 탱힐에서 1명, 딜러에서 1명에게 붙는다.<br>
   원형 AoE는 탱힐 또는 딜러 한쪽에 몰려 붙고, 부채꼴도 마찬가지다.<br>
@@ -357,16 +362,16 @@
   <ol>
     <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
     <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong>, 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
-    <li>홀수 회차는 <strong>왼쪽이 부채꼴, 오른쪽이 원형</strong></li>
-    <li>타워 처리. 같은 마커의 왼쪽부터 우선순위는 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
-    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 D). 과거·미래 분신 유도는 부채꼴 담당 + 근접</li>
+    <li>홀수 회차의 <strong>왼쪽 아래는 부채꼴, 오른쪽 아래는 원형</strong>. 쉐어는 우선순위로 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
+    <li>짝수 회차는 <strong>왼쪽부터</strong> 우선순위로 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
+    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 딜러). 과거·미래 분신 유도는 부채꼴 담당 2명과 근접 2명</li>
     <li><strong>3회차</strong> 타워 처리 후 자신의 디버프로 분기.<br>
       · 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code><br>
       · 부채꼴이 붙은 경우 <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code><br>
-      8회차 타워 처리는 같은 마커가 붙은 사람끼리의 우선순위로 처리한다. <span class="note">※ 왼쪽 1·오른쪽 2 순</span></li>
+      8회차 타워 처리는 마커의 숫자 기준(왼쪽 1／오른쪽 2)으로 처리한다.</li>
   </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780918733089-12263766.webp" alt="미싱 최신 배치도 (1~8회차)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭</b> = 쉐어, <b>扇</b> = 부채꼴 타워, <b>円</b> = 원형 타워(라벨 색 빨강=홀수 회차, 파랑=짝수 회차). <b>未来過去誘導</b> = 미래·과거(분신) 유도, <b>消滅の脚誘導</b> = 소멸의 다리 유도. 직업 아이콘=담당자, 숫자=순번. 타워는 매 회차마다 45도씩 회전한다.
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781042545688-4a95c4ef.webp" alt="① 미싱 우선순 처리 배치도 (1~8회차)">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭(쉐어)</b>, <b>扇(부채꼴 타워)</b>, <b>円(원형 타워)</b> 라벨에 <b>→</b>로 다음 회차에 붙는 디버프를 표시(예: <b>頭→扇</b> = 이번엔 쉐어, 다음엔 부채꼴). 라벨 색 빨강=홀수 회차, 파랑=짝수 회차. 좌우 <b>消滅の脚誘導</b> = 소멸의 다리 유도, <b>未来過去誘導</b> = 미래·과거(분신) 유도. 직업 아이콘=담당자, 숫자=순번. 타워는 매 회차마다 45도씩 회전한다.
     <ul>
       <li>홀수 회차(1·3·5·7): 위쪽에 빨강 <b>頭(쉐어)</b> 2그룹, 아래쪽에 노랑 부채꼴(扇)·파랑 원형(円). 짝수 회차(2·4·6·8): 빨강·파랑 큰 원이 격자로 겹치는 분신 AoE 배치로, 분신 AoE가 상당히 크니 주의해서 선다.</li>
     </ul>
@@ -391,6 +396,38 @@
   </div>
   <p>홀수 회차의 세밀한 뉘앙스 … 쉐어 왼쪽은 타깃 서클과 타워의 중심에 서는 느낌. 쉐어 오른쪽은 타깃 서클과 타워가 겹쳐 만들어지는 럭비공 모양을 반으로 잘라, 그 오른쪽 절반의 중심에 선다.<br>
   짝수 회차의 세밀한 뉘앙스 … 홀수 회차와 마찬가지로, 부채꼴은 럭비공을 반으로 자른 한쪽의 중심에 선다. 원형은 부채꼴과 대각이 되도록 처리한다. 부채꼴은 이미지를 참조(과거·미래 분신 AoE가 꽤 크므로 그 점만 주의해서 선다).</p>
+
+  <h2 class="mech" id="p2-missing2">② 미싱 — 남쪽 조정 + 입지 남북 <span class="jp">②ミッシング 南調整+立ち位置南北</span></h2>
+  <h3 class="sub">규칙</h3>
+  <ol>
+    <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
+    <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong>, 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
+    <li>홀수 회차의 <strong>왼쪽 아래는 부채꼴, 오른쪽 아래는 원형</strong>. 쉐어는 <strong>직전 타워에서 마커가 겹쳤다면 남쪽 사람이 자리를 이동</strong>한다 (1회차는 왼쪽 탱힐, 오른쪽 딜러).</li>
+    <li>짝수 회차는 <strong>직전 타워에서 마커가 겹쳤다면 남쪽 사람이 이동해 자리를 조정</strong>한다. 그 외에는 같은 타워에서 마커를 처리한다.</li>
+    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 딜러). 과거·미래 분신 유도는 부채꼴 담당 2명과 근접 2명</li>
+    <li><strong>3회차</strong> 타워 처리 후 자신의 디버프로 분기.<br>
+      · 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code><br>
+      · 부채꼴이 붙은 경우 <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code><br>
+      8회차 타워 처리는 마커의 숫자 기준(왼쪽 1／오른쪽 2)으로 처리한다.</li>
+  </ol>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781042690090-92352b73.webp" alt="② 미싱 남쪽 조정 배치도 (1~8회차)">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차. ①과 동일하게 각 컷의 <b>頭(쉐어)·扇(부채꼴)·円(원형)</b> 라벨에 <b>→</b>로 다음 회차 디버프를 표시(예: <b>頭→円</b>, <b>扇→頭</b>). 라벨 색 빨강=홀수 회차, 파랑=짝수 회차. 좌우 <b>消滅の脚誘導</b> = 소멸의 다리 유도, <b>未来過去誘導</b> = 미래·과거 유도. 직업 아이콘=담당자, 숫자=순번.
+    <ul>
+      <li>①과 달리 입지를 <b>남북(상하)으로</b> 잡아, 마커가 겹친 페어는 남쪽 사람이 자리를 옮겨 조정하는 방식이다. 짝수 회차는 빨강·파랑 큰 원이 격자로 겹치는 분신 AoE 배치.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">상세 위치 <span class="jp">※ 이미지를 클릭해서 확인하세요</span></h3>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781043075288-97a42521.webp" alt="② 미싱 홀수 회차 상세 위치">
+    <img src="https://yan-flash.com/api/uploads/1781043082810-284a2bd4.webp" alt="② 미싱 짝수 회차 상세 위치">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>奇数回</b> = 홀수 회차(왼쪽 컷) · <b>偶数回</b> = 짝수 회차(오른쪽 컷). 보스(황금 아이콘)는 중앙. 노랑 부채꼴=타워, 그 안 파랑 원=부채꼴/원형 장판 범위, 빨강·하늘색 점=서는 자리(각 점이 한 명의 위치).
+    <ul>
+      <li><b>홀수 회차</b>: 부채꼴(왼쪽)·원형(오른쪽) 타워가 좌우로 나뉘고, 각 타워 안에 점들이 세로(남북)로 정렬돼 마커가 겹치면 남쪽 사람이 빠지도록 배치.</li>
+      <li><b>짝수 회차</b>: 빨강(분신 AoE) 큰 원이 위쪽 격자로 겹치고, 아래쪽에 파랑 타워 원과 서는 점들이 좌우로 나뉘어 배치.</li>
+    </ul>
+  </div>
 
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
   <p>전체 공격.<br>
@@ -565,11 +602,11 @@
   <p>그 후 엑스데스가 <strong>탱버스터 선더가(엑스데스에 가까운 사람)</strong>를 시전하므로 <strong>스위치</strong>.</p>
 </section>
 
-<!-- ===================== PHASE 3-2 (작성 중) ===================== -->
+<!-- ===================== PHASE 3-2 ===================== -->
 <section class="phase" id="phase-3-2">
-  <h2 class="phase-title">PHASE 3-2 (작성 중)</h2>
+  <h2 class="phase-title">PHASE 3-2</h2>
 
-  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目 ※작성 중</span></h2>
+  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目</span></h2>
   <p>1회차와 마찬가지로 라이트 파티(4인 2조)로 나눈다.<br>
   그 후 엑스데스로부터 <strong>선더가(엑스데스에 가까운 사람)</strong>가 오므로, 탱커는 <strong>무적을 쓴다(또는 스위치)</strong>.</p>
   <p>다음으로 카오스가 <strong>지진(じしん)</strong>을 시전해 <strong>전체 공격 + 디버프</strong>를 부여한다.<br>
@@ -755,35 +792,5 @@
 /p 《stop２》선 받기&lt;se.1&gt;</code></pre>
   <a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고: 로드스톤 블로그</a>
 
-  <h2 class="mech" id="p3-binbin">빈빈빈타 <span class="jp">ビンビンビンタ</span></h2>
-  <p>빈빈빈타는 케프카를 보고, <strong>향해서 왼쪽 손(케프카의 오른손)</strong>을 드는지 <strong>향해서 오른쪽 손(케프카의 왼손)</strong>을 드는지에 따라 <strong>롤 산개</strong>인지 <strong>쉐어</strong>인지로 변화하는 기믹이다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780997880479-4e5ef032.webp" alt="빈빈빈타 — 쉐어 패턴">
-    <img src="https://yan-flash.com/api/uploads/1780997889500-2a0946eb.webp" alt="빈빈빈타 — 롤 산개 패턴">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>케프카(위쪽 황금 아이콘)를 정면에서 본 기준. 중앙 빨강 원=빈빈빈타 판정 범위, 흰 반투명 부채꼴(좌우 잎사귀 모양)=안전지대(들지 않은 손 쪽), 바깥 <b>A·B·C·1~4</b>=방위.
-    <ul>
-      <li><b>1번째 이미지(<span class="jp">頭割り</span>=쉐어)</b>: 빨강 글씨 <b>頭割り</b>(쉐어). 케프카가 향해서 <b>오른쪽 손</b>을 들어 <b>왼쪽(흰 부채꼴 쪽)이 안전</b>. 인원이 우측(B 방향)에 모여 <b>중앙에서 부채꼴 쉐어</b>로 처리. 아이콘 안 숫자(1·2·3)·로마자(Ⅰ·Ⅱ)=마커/순번.</li>
-      <li><b>2번째 이미지(<span class="jp">ロール散開</span>=롤 산개)</b>: 빨강 글씨 <b>ロール散開</b>(롤 산개). 케프카가 향해서 <b>왼쪽 손</b>을 들어 <b>오른쪽(흰 부채꼴 쪽)이 안전</b>. 인원이 좌측(D 방향)으로 흩어져 <b>중앙에서 부채꼴 롤 산개</b>로 처리. 파랑(탱)·초록(힐)·빨강(딜) 아이콘이 각 방향 부채꼴로 나뉨.</li>
-    </ul>
-  </div>
-
-  <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
-  <p>빈빈빈타 후에 엑스데스가 블랙홀을 발생시킨다.<br>
-  블랙홀 1회차의 <strong>1번째 선</strong>은 <strong>공격1</strong>이 선을 받는다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989562748-ab723416.webp" alt="블랙홀 1회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>필드 전체에 블랙홀(검은 구멍)이 동심원으로 배치된 상태. 우상단(B·1 부근) 블랙홀에서 <b>빨강 점선=선</b>이 뻗어 나와 <b>공격1(육각 ①)</b> 탱이 받아 바깥으로 끌고 있음. 중앙 주황 원=화이트홀(시계 방향 회전 표식), 우측 보라 원 안 별 모양=그라비가/장판 범위, 바깥 <b>A·B·C·1~4</b>=방위. 직업 아이콘=담당자, 육각 안 숫자=타깃 마커 순번.</div>
-  <p><strong>2번째 선</strong>은 <strong>공격1과 공격2</strong>가 받는다.<br>
-  1번째 때부터 이미 선이 나올 구슬(블랙홀)은 정해져 있으므로 공격2는 미리 준비해 둔다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989896543-9d3aed60.webp" alt="블랙홀 1회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 아래 파랑 글씨 <b>サンダガ注意</b> = "선더가 주의". 좌상단·좌하단 블랙홀에서 <b>빨강 점선=선</b>이 뻗어 나와 <b>공격1(②·3)·공격2(①·4)</b> 탱이 받아 바깥으로 유도. 중앙 주황 원=화이트홀(시계 회전 표식), 우하단 보라 원 안 별=그라비가/장판 범위, 바깥 <b>A·B·C·1~4</b>=방위. 직업 아이콘=담당자, 육각 안 숫자=타깃 마커 순번.</div>
-  <p>2번째 선을 처리한 직후, <strong>바로 선더가가 오므로 주의</strong>.<br>
-  탱커 외의 멤버는 <strong>엑스데스에서 떨어지도록</strong> 한다.</p>
-
-  <p>선더가가 터짐과 동시에 거대 케프카가 이동하므로, MT는 더빙(ダビング)을 유도하기 위해 케프카의 반대 방향으로 카오스를 향하게 한다.<br>
-  케프카가 든 손을 확인해 안전지대로 이동하고, <strong>쉐어 또는 롤 산개</strong>로 처리한다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780990267665-4cab1596.webp" alt="블랙홀 1회차 후 빈빈빈타 — 쉐어 패턴">
-    <img src="https://yan-flash.com/api/uploads/1780990332952-97553e42.webp" alt="블랙홀 1회차 후 빈빈빈타 — 롤 산개 패턴">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>선더가 후 거대 케프카(위쪽 황금 아이콘)가 이동한 상태에서의 빈빈빈타 처
+  <h2 class="mech" id="p3-binbin">빈빈빈타 <span class="jp">びんびんビンタ</span></h2>
+  <p>빈빈빈타는 케프카를 보고, <strong>향해서 왼쪽 손(케프카의 오른손)</strong>을 드는지 <strong>향해서 오른쪽 손(케프카의 왼손)</strong>을 드는지에 따라 <strong>롤 산개</strong>인
