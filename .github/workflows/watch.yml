@@ -1,13 +1,8 @@
 name: yan-flash watch
 
 on:
-  schedule:
-    # ── 모든 cron은 UTC 기준 (KST = UTC+9) ──
-    # GitHub schedule 은 6/8 09:00 KST(=UTC 6/8 00:00)부터 "백업"으로 동작한다.
-    # 그 이전(6/6~6/7)과 평소 정시 트리거는 맥 launchd 의 workflow_dispatch 가 담당.
-    # 블랙아웃 KST 03:00~08:59 = UTC 18:00~23:59 → UTC 시각을 0~17로만 한정해 자동 제외.
-    # 매시 정각(:00)은 GitHub 부하로 지연·누락이 잦아 :07 로 오프셋.
-    - cron: "7 0-17 8-20 6 *"   # UTC 6/8~6/20 00~17시 = KST 6/8 09:07 ~ 매일 02:59(블랙아웃 제외)
+  # 트리거는 맥 launchd 의 workflow_dispatch 단독(스케줄/블랙아웃은 맥에서 게이트).
+  # GitHub 자체 schedule 은 제거(중복 실행·지연·실패메일 방지).
   workflow_dispatch: {}
 
 permissions:
@@ -20,7 +15,7 @@ concurrency:
 
 # この日付（UTC）を過ぎたら cron を自動停止する。延長したいときはここを書き換える。
 env:
-  WATCH_UNTIL: "2026-06-20"
+  WATCH_UNTIL: "2026-12-31"   # 이 날짜 지나면 워크플로 자동 비활성. 중단하려면 이 날짜를 과거로.
 
 jobs:
   check:
