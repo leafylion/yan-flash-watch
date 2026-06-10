@@ -75,44 +75,65 @@ jobs:
         if: steps.guard.outputs.expired != 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           MODEL: claude-sonnet-4-6   # JP→KO 번역엔 Sonnet 충분(Opus 대비 ~5배 저렴·더 빠름)
+          # 가드 튜닝: 같은 본문 N회 연속 실패 → 서킷 오픈, 이후 COOLDOWN 간격 프로브만.
+          TRANSLATE_MAX_FAILS: "3"
+          TRANSLATE_COOLDOWN_HOURS: "6"
+          TRANSLATE_COST_ALERT_USD: "1.0"
         run: |
           git diff -- state/guide/ > /tmp/guide.diff || true
-          if [[ -s /tmp/guide.diff ]]; then
-            echo "本文に変更あり。"
-            if [[ -z "$ANTHROPIC_API_KEY" ]]; then
-              echo "ANTHROPIC_API_KEY 未設定 — 翻訳をスキップ（差分は次回へ持ち越し）。"
-              git checkout -- state/guide
-              exit 0
-            fi
-            # 翻訳が失敗しても job は失敗扱いにしない(=失敗メールを出さない)。
-            # 差分を戻して次回また再試行させる。
-            if ! python3 tools/translate.py /tmp/guide.diff; then
-              echo "::warning::翻訳に失敗しました。今回はスキップし、差分を戻して次回再試行します。"
-              git checkout -- state/guide
-            fi
-          else
+          if [[ ! -s /tmp/guide.diff ]]; then
             echo "本文に変更なし — 翻訳スキップ。"
+            exit 0
+          fi
+          echo "本文に変更あり。"
+          if [[ -z "$ANTHROPIC_API_KEY" ]]; then
+            echo "ANTHROPIC_API_KEY 未設定 — 翻訳をスキップ（差分は次回へ持ち越し）。"
+            git checkout -- state/guide
+            exit 0
+          fi
+          # translate.py 종료코드: 0=성공, 2=서킷오픈(호출 차단·토큰0), 1=실패.
+          # 어느 경우든 job 자체는 실패시키지 않는다(=실패메일 방지). 가드 상태는 다음 스텝에서 커밋.
+          set +e
+          python3 tools/translate.py /tmp/guide.diff
+          rc=$?
+          set -e
+          if [[ "$rc" -eq 0 ]]; then
+            echo "翻訳成功。"
+          elif [[ "$rc" -eq 2 ]]; then
+            echo "::warning::[guard] 연속 실패로 서킷 오픈 — 이번 회차는 API 호출 차단(토큰 0). 차분은 다음 회차로."
+            git checkout -- state/guide
+          else
+            echo "::warning::翻訳に失敗しました。差分を戻して次回再試行します（연속 실패 시 자동 차단됩니다）。"
+            git checkout -- state/guide
           fi
 
-      # 5) 翻訳本文(guide スナップショット + docs/index.html)は「翻訳成功時のみ」コミット。
-      #    → 失敗時は state/guide が未コミットのまま残り、次回また差分として再試行される。
-      - name: Commit translation (on success)
+      # 5) 커밋 규칙:
+      #    - 가드/토큰 로그(state/translate_guard.json, state/token_log.jsonl)는 성공·실패 무관 **항상** 반영.
+      #      → 연속 실패 카운터가 회차 간 유지되어야 서킷브레이커가 동작한다(스톰 방지의 핵심).
+      #    - 번역 본문(state/guide + docs/index.html)은 **성공 시에만** 함께 커밋(실패 시 step 4에서 롤백됨).
+      - name: Commit translation + guard state
         if: steps.guard.outputs.expired != 'true'
         run: |
-          if [[ -n "$(git status --porcelain state/guide docs/index.html)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/guide docs/index.html
-            git commit -m "auto(translate): 攻略 본문 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            pushed=0
-            for n in 1 2 3; do
-              if git push 2>/dev/null; then pushed=1; break; fi
-              echo "push 경합 — pull --rebase 후 재시도 ($n)"
-              git pull --rebase --autostash 2>/dev/null || git rebase --abort 2>/dev/null || true
-              sleep $((n * 2))
-            done
-            [ "$pushed" = 1 ] || echo "::warning::push 경합 실패 — 다음 실행에서 재시도(잡은 성공 처리)."
-          else
-            echo "本文の翻訳変更なし。"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/translate_guard.json state/token_log.jsonl 2>/dev/null || true
+          git add state/guide docs/index.html 2>/dev/null || true
+          if [[ -z "$(git diff --cached --name-only)" ]]; then
+            echo "커밋할 변경 없음(서킷 오픈 무변동 등)."
+            exit 0
           fi
+          if git diff --cached --name-only | grep -qx 'docs/index.html'; then
+            git commit -m "auto(translate): 攻略 본문 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          else
+            git commit -m "auto(guard): 번역 가드/토큰 로그 갱신 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          fi
+          pushed=0
+          for n in 1 2 3; do
+            if git push 2>/dev/null; then pushed=1; break; fi
+            echo "push 경합 — pull --rebase 후 재시도 ($n)"
+            git pull --rebase --autostash 2>/dev/null || git rebase --abort 2>/dev/null || true
+            sleep $((n * 2))
+          done
+          [ "$pushed" = 1 ] || echo "::warning::push 경합 실패 — 다음 실행에서 재시도(잡은 성공 처리)."
