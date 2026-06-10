@@ -16,8 +16,6 @@
     margin:0; background:var(--bg); color:var(--text);
     font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
     line-height:1.75; font-size:16px;
-    /* 한글은 어절(단어) 단위로 줄바꿈 — 음절 중간이 끊기는 것 방지.
-       긴 영문/URL 토큰만 필요 시 끊기도록 overflow-wrap 병행. */
     word-break:keep-all; overflow-wrap:break-word;
   }
 
@@ -44,16 +42,12 @@
   .wrap{max-width:860px; margin:0 auto; padding:34px 26px 100px}
   h2[id],h3[id],section[id]{scroll-margin-top:20px}
 
-  /* 데스크톱: 토글/백드롭 숨김 (좌측 고정 사이드바 사용) */
   .toc-toggle{display:none}
   .toc-backdrop{display:none}
 
-  /* 모바일: 목차를 햄버거 토글 드롭다운으로. 평소엔 닫혀 본문이 100% 보이고,
-     버튼을 눌렀을 때만 위에서 슬라이드다운. 링크 선택 시 자동으로 닫힌다. */
   @media (max-width:860px){
     main{margin-left:0}
     h2[id],h3[id],section[id]{scroll-margin-top:16px}
-    /* 좁은 화면: 좌우 여백을 줄여 본문 폭 확보(잦은 줄바꿈 완화) */
     .wrap{padding:18px 12px 80px}
     .phase{padding:8px 12px 16px}
     ol,ul{padding-left:20px}
@@ -113,7 +107,6 @@
   .jp{color:var(--muted); font-size:.82rem; font-weight:normal}
   strong{color:var(--accent2)}
 
-  /* 이미지: 원본보다 확대하지 않음(width:auto) → 작은 이미지는 작고 선명하게 유지 */
   img.shot{display:block; margin:12px 0; width:auto; height:auto;
     max-width:100%; max-height:78vh;
     border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
@@ -122,7 +115,6 @@
     border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
   img.shot:hover,.imgrow img:hover{border-color:var(--accent)}
 
-  /* 클릭 시 전체화면 확대 */
   .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none;
     align-items:center; justify-content:center; z-index:100; cursor:zoom-out; padding:24px}
   .lightbox.open{display:flex}
@@ -135,7 +127,6 @@
   .callout.warn{border-left-color:var(--warn)}
   .tag{font-weight:700}
 
-  /* 이미지별 캡션(이미지 안 표기/텍스트 번역) */
   .cap{font-size:.88rem; color:var(--text); background:var(--card2);
     border-left:3px solid var(--ok); border-radius:0 8px 8px 0;
     padding:8px 12px; margin:2px 0 16px; line-height:1.6}
@@ -158,7 +149,6 @@
   pre{background:var(--card2); border:1px solid var(--border); border-radius:8px;
     padding:12px 14px; overflow-x:auto; font-size:.84rem; line-height:1.55; margin:12px 0}
   pre code{background:none; padding:0}
-  /* P3 타임라인 표 */
   table.tl{border-collapse:collapse; width:100%; margin:12px 0; font-size:.9rem}
   table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
   table.tl th{background:var(--card2); color:var(--accent2)}
@@ -427,6 +417,14 @@
       <li><b>홀수 회차</b>: 부채꼴(왼쪽)·원형(오른쪽) 타워가 좌우로 나뉘고, 각 타워 안에 점들이 세로(남북)로 정렬돼 마커가 겹치면 남쪽 사람이 빠지도록 배치.</li>
       <li><b>짝수 회차</b>: 빨강(분신 AoE) 큰 원이 위쪽 격자로 겹치고, 아래쪽에 파랑 타워 원과 서는 점들이 좌우로 나뉘어 배치.</li>
     </ul>
+  </div>
+
+  <div class="callout">
+    <span class="tag">참고</span><br>
+    부채꼴의 각도는 90°이므로, 중심의 수직선 위에 있으면 타워를 밟지 않는 한 원형(円) 담당에게 부채꼴이 닿지 않는다.<br>
+    ※ 너무 멀리 떨어지면 원형 쪽으로 부채꼴이 날아가는 경우가 있음.<br>
+    이를 이해해 두면 어느 포지션이 조금 어긋나더라도 조정이 가능한 경우가 있다.<br>
+    <span class="note">— @ff14_pylene99</span>
   </div>
 
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
@@ -793,4 +791,42 @@
   <a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고: 로드스톤 블로그</a>
 
   <h2 class="mech" id="p3-binbin">빈빈빈타 <span class="jp">びんびんビンタ</span></h2>
-  <p>빈빈빈타는 케프카를 보고, <strong>향해서 왼쪽 손(케프카의 오른손)</strong>을 드는지 <strong>향해서 오른쪽 손(케프카의 왼손)</strong>을 드는지에 따라 <strong>롤 산개</strong>인
+  <p>빈빈빈타는 케프카를 보고, <strong>향해서 왼쪽 손(케프카의 오른손)</strong>을 드는지 <strong>향해서 오른쪽 손(케프카의 왼손)</strong>을 드는지에 따라 <strong>롤 산개</strong>인지 <strong>쉐어</strong>인지가 결정되는 기믹이다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781027712406-786a3570.webp" alt="빈빈빈타 왼손">
+    <img src="https://yan-flash.com/api/uploads/1781027720140-e98f7cf7.webp" alt="빈빈빈타 오른손">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>왼쪽 컷=케프카가 <b>왼손(향해서 왼쪽)</b>을 드는 경우, 오른쪽 컷=케프카가 <b>오른손(향해서 오른쪽)</b>을 드는 경우. 각 컷의 색칠된 반쪽이 안전지대(초록)·위험지대(빨강)를 나타냄. 중앙 화살표·아이콘=쉐어 또는 롤 산개 방향. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
+  <p>빈빈빈타 후에 엑스데스가 블랙홀을 발생시킨다.<br>
+  블랙홀 1회차의 1번째 선은 <strong>공격1</strong>이 선을 받는다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780989562748-ab723416.webp" alt="블랙홀 1회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선. 공격1(①마커) 담당자가 블랙홀에서 뻗어나오는 선을 받아 시계 방향으로 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+  <p>2번째 선은 <strong>공격1</strong>과 <strong>공격2</strong>가 받는다.<br>
+  1번째 때 이미 어느 구슬에서 선이 나올지 결정돼 있으므로, 공격2는 미리 준비해 두자.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780989896543-9d3aed60.webp" alt="블랙홀 1회차 2번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선. 공격1·공격2(①마커) 담당자가 각각 선을 받아 시계 방향으로 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+  <p>2번째 선을 처리한 뒤 바로 <strong>선더가</strong>가 오므로 주의.<br>
+  탱커 이외의 멤버는 엑스데스에서 멀어지도록 한다.</p>
+  <p>선더가 장판이 터짐과 동시에 케프카가 이동하므로, MT는 더빙(ダビング)을 유도하기 위해 케프카의 반대 방향으로 카오스를 향하게 한다.<br>
+  케프카가 든 손을 확인해 안전지대로 이동하고, 쉐어 또는 롤 산개를 처리한다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781028085574-1d1255ff.webp" alt="블랙홀 1회차 후 더빙 안전지대">
+    <img src="https://yan-flash.com/api/uploads/1780990332952-97553e42.webp" alt="블랙홀 1회차 후 빈빈빈타">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>선더가 이후 케프카 이동·더빙 유도 시의 안전지대(초록)·위험지대(빨강) 배치. 케프카가 든 손에 따라 쉐어/롤 산개 위치가 결정된다. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <h2 class="mech" id="p3-blackhole2">블랙홀 2회차 <span class="jp">ブラックホール2回目</span></h2>
+  <p>공격1·공격2·공격3이 시계 방향 우선순으로 선을 받는다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780990594556-834921ff.webp" alt="블랙홀 2회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 1번째 선. 공격1·2·3(①마커) 담당자가 시계 방향 순으로 선을 받음. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+  <p>공격1이 <strong>속박1</strong>에게 선을 넘긴다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781019036241-a1946d39.webp" alt="블랙홀 2회차 2번째 선 — 공격1→속박1 교환">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 2번째 선. 공격1(①)→속박1(②) 선 교환. 속박1 담당자가 새로 선을 받아 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+  <p>공격2가 <strong>속박2</strong>에게 선을 넘긴다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781019146677-e66ded57.webp" alt="블랙홀 2회차 3번째 선 — 공격2→속박2 교환">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 3번째 선. 공격2(①)→속박2(②) 선 교환. 속박2 담당자가 새로 선을 받아 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+  <p>케프카가 이동하므로, 카오스를 케프카 쪽으로 향하거나 등을 돌리도록 유도한다.<br>
+  필드를 가르는 장판이 나오므로, 카오스와 케프카를 보고 안전지대를 판단한다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781019443203-71952f21.webp" alt="블랙홀 2회차 후 필드 분단
