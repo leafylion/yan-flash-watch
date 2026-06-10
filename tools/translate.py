@@ -43,14 +43,17 @@ SYSTEM = """\
    - 삭제 예정 콘텐츠(旧散会 등)만 가리키는 안내 문장은 빼도 된다.
 4. 이미지 src는 https://yan-flash.com + /api/uploads/... 형식을 유지한다.
 5. 섹션이 추가/삭제되면 좌측 목차(nav.toc)의 링크와 id도 같이 맞춘다.
-6. 라이트박스/목차 활성화 <script>, CSS는 절대 건드리지 않는다.
+6. 페이지 하단의 <script> 블록(라이트박스, 목차 스크롤스파이/토글, "원문 마지막 업데이트"
+   배너를 채우는 update-info.json fetch 등)과 CSS, 그리고 헤더 아래 `<div id="lastup">` 배너
+   요소는 절대 삭제·변경하지 않고 그대로 보존한다.
 7. 각 이미지(또는 이미지 그룹) 바로 아래에 `<div class="cap">…</div>` 캡션을 둔다.
    - 이미지 안에 일본어 문장/라벨이 있으면 그 내용을 한국어로 번역해 캡션에 적는다.
    - 아이콘·숫자·방위뿐이면 표기 안내만 간단히 적는다(예: 직업 아이콘=담당자, 숫자=순번, A·B·C·1~4=방위).
    - 첨부된 이미지를 직접 보고 캡션을 작성/갱신한다. 이미지가 교체됐으면 새 이미지에 맞게 캡션을 다시 쓴다.
    - 캡션 형식: `<div class="cap"><span class="h">🖼 이미지 안 표기</span>…</div>` (긴 설명은 <ul><li> 사용).
 
-출력: 완성된 index.html 전체를 그대로 출력한다. 코드펜스(```)나 설명 문장 없이 <!DOCTYPE html>로 시작하는 HTML만 출력한다.\
+출력: 완성된 index.html 전체를 그대로 출력한다. 코드펜스(```)나 설명 문장 없이
+<!DOCTYPE html>로 시작해서 반드시 </html> 까지 **끊김 없이 전부** 출력한다(중간에서 멈추지 말 것).\
 """
 
 
@@ -105,7 +108,7 @@ def call_api(content, retries: int = 3) -> str:
     key = os.environ["ANTHROPIC_API_KEY"]
     body = json.dumps({
         "model": MODEL,
-        "max_tokens": 32000,
+        "max_tokens": 64000,
         "stream": True,
         "system": SYSTEM,
         "messages": [{"role": "user", "content": content}],
@@ -191,9 +194,15 @@ def main() -> None:
     out = re.sub(r'^\s*```(?:html)?\s*', '', out)
     out = re.sub(r'\s*```\s*$', '', out).strip()
 
+    # 잘림(max_tokens 초과 등) 방지: doctype 로 시작하고 </html> 로 끝나야 정상.
+    # 끝이 잘렸으면 절대 커밋하지 않는다(다음 실행에서 재시도).
     if not out.lower().startswith("<!doctype html") or len(out) < 5000:
-        print("ERROR: 응답이 올바른 HTML이 아님. index.html 을 변경하지 않음.", file=sys.stderr)
+        print("ERROR: 응답이 올바른 HTML이 아님(시작 불일치/너무 짧음). 변경 안 함.", file=sys.stderr)
         print(out[:500], file=sys.stderr)
+        sys.exit(1)
+    if "</html>" not in out[-2000:]:
+        print(f"ERROR: 출력이 </html> 로 끝나지 않음(잘림 의심, {len(out)} bytes). 변경 안 함.", file=sys.stderr)
+        print("...꼬리: " + out[-300:], file=sys.stderr)
         sys.exit(1)
 
     INDEX.write_text(out + ("\n" if not out.endswith("\n") else ""), encoding="utf-8")

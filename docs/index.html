@@ -16,6 +16,8 @@
     margin:0; background:var(--bg); color:var(--text);
     font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
     line-height:1.75; font-size:16px;
+    /* 한글은 어절(단어) 단위로 줄바꿈 — 음절 중간이 끊기는 것 방지.
+       긴 영문/URL 토큰만 필요 시 끊기도록 overflow-wrap 병행. */
     word-break:keep-all; overflow-wrap:break-word;
   }
 
@@ -42,12 +44,16 @@
   .wrap{max-width:860px; margin:0 auto; padding:34px 26px 100px}
   h2[id],h3[id],section[id]{scroll-margin-top:20px}
 
+  /* 데스크톱: 토글/백드롭 숨김 (좌측 고정 사이드바 사용) */
   .toc-toggle{display:none}
   .toc-backdrop{display:none}
 
+  /* 모바일: 목차를 햄버거 토글 드롭다운으로. 평소엔 닫혀 본문이 100% 보이고,
+     버튼을 눌렀을 때만 위에서 슬라이드다운. 링크 선택 시 자동으로 닫힌다. */
   @media (max-width:860px){
     main{margin-left:0}
     h2[id],h3[id],section[id]{scroll-margin-top:16px}
+    /* 좁은 화면: 좌우 여백을 줄여 본문 폭 확보(잦은 줄바꿈 완화) */
     .wrap{padding:18px 12px 80px}
     .phase{padding:8px 12px 16px}
     ol,ul{padding-left:20px}
@@ -107,6 +113,7 @@
   .jp{color:var(--muted); font-size:.82rem; font-weight:normal}
   strong{color:var(--accent2)}
 
+  /* 이미지: 원본보다 확대하지 않음(width:auto) → 작은 이미지는 작고 선명하게 유지 */
   img.shot{display:block; margin:12px 0; width:auto; height:auto;
     max-width:100%; max-height:78vh;
     border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
@@ -115,6 +122,7 @@
     border-radius:10px; border:1px solid var(--border); background:#000; cursor:zoom-in}
   img.shot:hover,.imgrow img:hover{border-color:var(--accent)}
 
+  /* 클릭 시 전체화면 확대 */
   .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none;
     align-items:center; justify-content:center; z-index:100; cursor:zoom-out; padding:24px}
   .lightbox.open{display:flex}
@@ -127,6 +135,7 @@
   .callout.warn{border-left-color:var(--warn)}
   .tag{font-weight:700}
 
+  /* 이미지별 캡션(이미지 안 표기/텍스트 번역) */
   .cap{font-size:.88rem; color:var(--text); background:var(--card2);
     border-left:3px solid var(--ok); border-radius:0 8px 8px 0;
     padding:8px 12px; margin:2px 0 16px; line-height:1.6}
@@ -149,6 +158,7 @@
   pre{background:var(--card2); border:1px solid var(--border); border-radius:8px;
     padding:12px 14px; overflow-x:auto; font-size:.84rem; line-height:1.55; margin:12px 0}
   pre code{background:none; padding:0}
+  /* P3 타임라인 표 */
   table.tl{border-collapse:collapse; width:100%; margin:12px 0; font-size:.9rem}
   table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
   table.tl th{background:var(--card2); color:var(--accent2)}
@@ -175,8 +185,7 @@
 
   <div class="grp">PHASE 2</div>
   <a href="#p2-arms">종말의 두 팔</a>
-  <a href="#p2-missing1">① 미싱 (우선순 처리)</a>
-  <a href="#p2-missing2">② 미싱 (남쪽 조정+남북)</a>
+  <a href="#p2-missing">미싱 (최신)</a>
   <a href="#p2-trine">트라인</a>
 
   <div class="grp">PHASE 3</div>
@@ -184,16 +193,10 @@
   <a href="#p3-baul-tlb3">바울 오브 아고니 (TLB3)</a>
   <a href="#p3-baul">바울 오브 아고니 (정공법)</a>
 
-  <div class="grp">PHASE 3-2</div>
+  <div class="grp">PHASE 3-2 (작성 중)</div>
   <a href="#p3-kessen2">결전 2회차</a>
   <a href="#p3-blackhole">블랙홀 선 유도 순서</a>
   <a href="#p3-timeline">P3 타임라인</a>
-  <a href="#p3-binbin">빈빈빈타</a>
-  <a href="#p3-blackhole1">블랙홀 1회차</a>
-  <a href="#p3-blackhole2">블랙홀 2회차</a>
-  <a href="#p3-blackhole3">블랙홀 3회차</a>
-  <a href="#p3-blackhole4">블랙홀 4회차</a>
-  <a href="#p3-dondoko">동동코 발구르기</a>
 </nav>
 
 <main>
@@ -298,7 +301,6 @@
   <div class="cap"><span class="h">🖼 이미지</span>같은/다른 화살표 경우별 산개 위치 다이어그램. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위, 빨강/파랑 테두리=위 본문 기준. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
   <p>선과 관계없이 <strong>이미지대로 산개</strong>.</p>
   <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
-  <a class="ext" href="https://forum.square-enix.com/ffxiv/threads/529064" target="_blank" rel="noopener">🔗 참고: 스퀘어 에닉스 포럼 스레드 #529064</a>
 
   <h2 class="mech" id="p1-sankai">산개 최신 <span class="jp">散開最新 ※ 즈비즈바 텔레포 기준</span><span class="pill">권장</span></h2>
   <div class="imgrow">
@@ -337,7 +339,7 @@
   <h2 class="mech" id="p2-arms">종말의 두 팔 <span class="jp">終末の双腕</span></h2>
   <p>탱버스터 (2인 공동 탱킹 전제).</p>
 
-  <h2 class="mech" id="p2-missing1">① 미싱 — 우선순 처리 <span class="jp">①ミッシング 優先順処理</span></h2>
+  <h2 class="mech" id="p2-missing">미싱 (최신) <span class="jp">ミッシング最新</span><span class="pill">권장</span></h2>
   <p>미싱 시전이 끝나면 <strong>쉐어 2명 · 원형(円) AoE 3명 · 부채꼴(扇) AoE 3명</strong>에게 디버프가 부여된다.<br>
   쉐어는 반드시 탱힐에서 1명, 딜러에서 1명에게 붙는다.<br>
   원형 AoE는 탱힐 또는 딜러 한쪽에 몰려 붙고, 부채꼴도 마찬가지다.<br>
@@ -352,16 +354,16 @@
   <ol>
     <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
     <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong>, 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
-    <li>홀수 회차의 <strong>왼쪽 아래는 부채꼴, 오른쪽 아래는 원형</strong>. 쉐어는 우선순위로 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
-    <li>짝수 회차는 <strong>왼쪽부터</strong> 우선순위로 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
-    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 딜러). 과거·미래 분신 유도는 부채꼴 담당 2명과 근접 2명</li>
+    <li>홀수 회차는 <strong>왼쪽이 부채꼴, 오른쪽이 원형</strong></li>
+    <li>타워 처리. 같은 마커의 왼쪽부터 우선순위는 <code>힐러 &gt; 탱커 &gt; 근접 딜러 &gt; 원거리 딜러</code></li>
+    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 D). 과거·미래 분신 유도는 부채꼴 담당 + 근접</li>
     <li><strong>3회차</strong> 타워 처리 후 자신의 디버프로 분기.<br>
       · 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code><br>
       · 부채꼴이 붙은 경우 <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code><br>
-      8회차 타워 처리는 마커의 숫자 기준(왼쪽 1／오른쪽 2)으로 처리한다.</li>
+      8회차 타워 처리는 같은 마커가 붙은 사람끼리의 우선순위로 처리한다. <span class="note">※ 왼쪽 1·오른쪽 2 순</span></li>
   </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781042545688-4a95c4ef.webp" alt="① 미싱 우선순 처리 배치도 (1~8회차)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭(쉐어)</b>, <b>扇(부채꼴 타워)</b>, <b>円(원형 타워)</b> 라벨에 <b>→</b>로 다음 회차에 붙는 디버프를 표시(예: <b>頭→扇</b> = 이번엔 쉐어, 다음엔 부채꼴). 라벨 색 빨강=홀수 회차, 파랑=짝수 회차. 좌우 <b>消滅の脚誘導</b> = 소멸의 다리 유도, <b>未来過去誘導</b> = 미래·과거(분신) 유도. 직업 아이콘=담당자, 숫자=순번. 타워는 매 회차마다 45도씩 회전한다.
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780918733089-12263766.webp" alt="미싱 최신 배치도 (1~8회차)">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차(왼쪽 위→오른쪽 아래 순). 각 컷의 <b>頭</b> = 쉐어, <b>扇</b> = 부채꼴 타워, <b>円</b> = 원형 타워(라벨 색 빨강=홀수 회차, 파랑=짝수 회차). <b>未来過去誘導</b> = 미래·과거(분신) 유도, <b>消滅の脚誘導</b> = 소멸의 다리 유도. 직업 아이콘=담당자, 숫자=순번. 타워는 매 회차마다 45도씩 회전한다.
     <ul>
       <li>홀수 회차(1·3·5·7): 위쪽에 빨강 <b>頭(쉐어)</b> 2그룹, 아래쪽에 노랑 부채꼴(扇)·파랑 원형(円). 짝수 회차(2·4·6·8): 빨강·파랑 큰 원이 격자로 겹치는 분신 AoE 배치로, 분신 AoE가 상당히 크니 주의해서 선다.</li>
     </ul>
@@ -386,46 +388,6 @@
   </div>
   <p>홀수 회차의 세밀한 뉘앙스 … 쉐어 왼쪽은 타깃 서클과 타워의 중심에 서는 느낌. 쉐어 오른쪽은 타깃 서클과 타워가 겹쳐 만들어지는 럭비공 모양을 반으로 잘라, 그 오른쪽 절반의 중심에 선다.<br>
   짝수 회차의 세밀한 뉘앙스 … 홀수 회차와 마찬가지로, 부채꼴은 럭비공을 반으로 자른 한쪽의 중심에 선다. 원형은 부채꼴과 대각이 되도록 처리한다. 부채꼴은 이미지를 참조(과거·미래 분신 AoE가 꽤 크므로 그 점만 주의해서 선다).</p>
-
-  <h2 class="mech" id="p2-missing2">② 미싱 — 남쪽 조정 + 입지 남북 <span class="jp">②ミッシング 南調整+立ち位置南北</span></h2>
-  <h3 class="sub">규칙</h3>
-  <ol>
-    <li><strong>페어 고정</strong> (MT·H1 / ST·H2 / D1·D3 / D2·D4) <span class="note">※ 미싱 전에 서쪽=탱힐 / 동쪽=딜러로 나눠두면 식별하기 쉬움</span></li>
-    <li>쉐어가 붙은 페어는 <strong>1·2·3·8회차</strong>, 그 외 페어는 <strong>4·5·6·7회차</strong>에 처리</li>
-    <li>홀수 회차의 <strong>왼쪽 아래는 부채꼴, 오른쪽 아래는 원형</strong>. 쉐어는 <strong>직전 타워에서 마커가 겹쳤다면 남쪽 사람이 자리를 이동</strong>한다 (1회차는 왼쪽 탱힐, 오른쪽 딜러).</li>
-    <li>짝수 회차는 <strong>직전 타워에서 마커가 겹쳤다면 남쪽 사람이 이동해 자리를 조정</strong>한다. 그 외에는 같은 타워에서 마커를 처리한다.</li>
-    <li>타워 외 페어는 위치 고정 (왼쪽 탱힐, 오른쪽 딜러). 과거·미래 분신 유도는 부채꼴 담당 2명과 근접 2명</li>
-    <li><strong>3회차</strong> 타워 처리 후 자신의 디버프로 분기.<br>
-      · 원형이 붙은 경우 <code>/mk stop &lt;me&gt;</code> · <code>/micon "stop1" marking</code><br>
-      · 부채꼴이 붙은 경우 <code>/mk bind &lt;me&gt;</code> · <code>/micon "bind1" marking</code><br>
-      8회차 타워 처리는 마커의 숫자 기준(왼쪽 1／오른쪽 2)으로 처리한다.</li>
-  </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781042690090-92352b73.webp" alt="② 미싱 남쪽 조정 배치도 (1~8회차)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>1回目~8回目</b> = 1~8회차. ①과 동일하게 각 컷의 <b>頭(쉐어)·扇(부채꼴)·円(원형)</b> 라벨에 <b>→</b>로 다음 회차 디버프를 표시(예: <b>頭→円</b>, <b>扇→頭</b>). 라벨 색 빨강=홀수 회차, 파랑=짝수 회차. 좌우 <b>消滅の脚誘導</b> = 소멸의 다리 유도, <b>未来過去誘導</b> = 미래·과거 유도. 직업 아이콘=담당자, 숫자=순번.
-    <ul>
-      <li>①과 달리 입지를 <b>남북(상하)으로</b> 잡아, 마커가 겹친 페어는 남쪽 사람이 자리를 옮겨 조정하는 방식이다. 짝수 회차는 빨강·파랑 큰 원이 격자로 겹치는 분신 AoE 배치.</li>
-    </ul>
-  </div>
-
-  <h3 class="sub">상세 위치 <span class="jp">※ 이미지를 클릭해서 확인하세요</span></h3>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781043075288-97a42521.webp" alt="② 미싱 홀수 회차 상세 위치">
-    <img src="https://yan-flash.com/api/uploads/1781043082810-284a2bd4.webp" alt="② 미싱 짝수 회차 상세 위치">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>奇数回</b> = 홀수 회차(왼쪽 컷) · <b>偶数回</b> = 짝수 회차(오른쪽 컷). 보스(황금 아이콘)는 중앙. 노랑 부채꼴=타워, 그 안 파랑 원=부채꼴/원형 장판 범위, 빨강·하늘색 점=서는 자리(각 점이 한 명의 위치).
-    <ul>
-      <li><b>홀수 회차</b>: 부채꼴(왼쪽)·원형(오른쪽) 타워가 좌우로 나뉘고, 각 타워 안에 점들이 세로(남북)로 정렬돼 마커가 겹치면 남쪽 사람이 빠지도록 배치.</li>
-      <li><b>짝수 회차</b>: 빨강(분신 AoE) 큰 원이 위쪽 격자로 겹치고, 아래쪽에 파랑 타워 원과 서는 점들이 좌우로 나뉘어 배치.</li>
-    </ul>
-  </div>
-
-  <div class="callout">
-    <span class="tag">참고</span><br>
-    부채꼴의 각도는 90°이므로, 중심의 수직선 위에 있으면 타워를 밟지 않는 한 원형(円) 담당에게 부채꼴이 닿지 않는다.<br>
-    ※ 너무 멀리 떨어지면 원형 쪽으로 부채꼴이 날아가는 경우가 있음.<br>
-    이를 이해해 두면 어느 포지션이 조금 어긋나더라도 조정이 가능한 경우가 있다.<br>
-    <span class="note">— @ff14_pylene99</span>
-  </div>
 
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
   <p>전체 공격.<br>
@@ -479,33 +441,39 @@
   <p>TLB3식은 <strong>바람과 물을 기준으로 고정된 포지션에 서기만 하는</strong> 처리법입니다.<br>
   아래 이미지는 혼돈의 불 스타트의 경우로, 바람과 물을 기준으로 이미지 위치에 서 있습니다.<br>
   ※ 불과 물의 위치가 바뀌는 패턴도 있습니다. 그 경우 기준을 반전시켜 주세요.</p>
-  <p>혼돈의 불 자체의 데미지는 받으므로 <strong>배리어</strong>를 깔아 둡니다.<br>
-  ST는 <strong>범위 선더가 유도</strong>를 잊지 말고 해 주세요.<br>
-  크리스탈을 처리한 직후 바로 <strong>탱버스터</strong>가 오므로, 다시 엑스데스 근처에서 <strong>무적으로 처리</strong>한다.<br>
-  그 후 엑스데스를 카오스 쪽으로 유도한다.</p>
+  <p>혼돈의 불 자체의 데미지는 받으므로 <strong>배리어</strong>를 깔아 둡니다. ST는 <strong>범위 선더가 유도</strong>를 잊지 말고 해 주세요.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997326025-4b3f7034.webp" alt="바울 TLB3 1 — 혼돈의 불 디버프 보유자 AoE 배치">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>혼돈의 불 디버프 보유자(파도/사람 아이콘 + 빨강 불 라벨)의 자기 중심 빨강 원형(AoE) 범위가 필드 곳곳에 표시. 우측에 초록 마름모 <b>風(바람 크리스탈)</b>, 좌측에 파랑 <b>水(물)</b> 마커. 중앙에 주황 원 안에 모인 그룹(쉐어 정렬), 보라 큰 원=엑스데스/그라비가 범위. 바깥 <b>A·B·C·1~4</b>=방위, 디버프 아이콘 안 숫자=순번.
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780926993156-598c6c7b.webp" alt="바울 TLB3 1 — 카오스 풍 크리스탈 배치">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span><b>カオス(카오스)</b>=중앙 왼쪽 / <b>エクスデス(엑스데스)</b>=중앙 오른쪽. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 빨강 큰 원=혼돈의 불 디버프 보유자 AoE 범위, 디버프 아이콘 안의 <b>α·β</b>·숫자=유도 그룹/순번.
     <ul>
       <li>카오스를 <b>바람 크리스탈 바로 위에 정확히</b> 배치하고, 정확히 45도 방향으로 향하게 해 <b>호리즌탈(세로 안치)／버티컬(가로 안치) 임플로전</b>을 유도한다.</li>
+      <li>아래 디버프 설명(번역): <b>배면 넉백 디버프</b>=배후에서 넉백을 받음. 아래 빨강/파랑(불·물) 보유자는 후술 넉백으로 해제, 그 외는 진공파로 해제. <b>정면 넉백 디버프</b>=정면에서 넉백을 받음(해제 동일). <b>빨강(불) 디버프</b>=끝나면 자기 중심 원형(AoE) 범위, 느린/빠른 두 종류, 안쪽=탱힐·바깥=딜러. <b>파랑(물) 디버프</b>=끝나면 도넛 범위, 느린/빠른, 안쪽=탱힐·바깥=딜러. <b>火(불 크리스탈)</b>=빨강 디버프 끝나면 가까운 사람에게 도넛 범위(넉백 판정 있음). <b>水(물 크리스탈)</b>=물색 디버프 끝나면 가까운 사람에게 AoE 범위(넉백 판정 있음). <b>風(바람 크리스탈)</b>=넉백 디버프 끝나면 가까운 사람에게 AoE 범위, 메인 유도 안쪽부터 <code>MT&lt;ST&lt;H1&lt;H2</code>, 딜러 안쪽부터 <code>D1&lt;D2&lt;D3&lt;D4</code>.</li>
     </ul>
   </div>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997353624-70e3d644.webp" alt="바울 TLB3 2 — 진공파 7할 탱크 LB / 십자 분할">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>필드가 주황 십자선으로 4분할(좌상 파랑·우상 주황·좌하 파랑·우하 주황). 좌측에 파랑 <b>水(물)</b> 마커, 중앙에 보라 원(엑스데스 범위)과 주황 원(시계 회전)이 겹쳐 있고 그 안에 그룹 정렬. 우상단에 디버프 아이콘 1·2 그룹이 모임. 바깥 <b>A·B·C·1~4</b>=방위, 디버프 아이콘 안 숫자=순번. <span class="note">(이 컷의 일본어 라벨은 방위 마커뿐)</span></div>
-
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997445834-f67bee8e.webp" alt="바울 TLB3 3 — 물 크리스탈 처리 (파랑 장판)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>필드 전체에 하늘색(물) 큰 원이 다수 겹쳐 깔린 상태. 우측에 파랑 <b>水(물)</b> 마커, 중앙에 보라·주황 이중 원(엑스데스/회전 표식) 안에 그룹 정렬, 우상단에 디버프 아이콘 1 그룹. 바깥 <b>A·B·C·1~4</b>=방위, 디버프 아이콘 안 숫자=순번. <span class="note">(혼돈의 물 처리 — 앞서와 동일하게 처리)</span></div>
-
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997463518-2d9c9cb9.webp" alt="바울 TLB3 4 — 진공파 7할 탱크 LB / D3 유도">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 보라 원 안 <b>詠唱7割くらいでタンクLB</b> = "시전 7할 정도에서 탱크 LB". 오른쪽 초록 마름모 <b>風(바람 크리스탈)</b>. 왼쪽 아래 주황 원 안 <b>D3 誘導</b> = "D3 유도"(엄브럴 스매시). 필드 상반=파랑(얼음), 하반=노랑. 직업 아이콘=담당자, 디버프 아이콘 안 숫자=순번. 보라 화살표=넉백 방향.
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780922830328-687b477b.webp" alt="바울 TLB3 2 — 혼돈의 물 처리">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 <b>エクスデスを誘導</b> = "엑스데스를 유도", 가운데 주황 화살표 <b>ノックバック</b> = 넉백. <b>水(물 크리스탈)</b>=오른쪽 위, <b>風(바람, 초록 마름모)</b>=왼쪽 위, <b>火(불, 빨강 삼각)</b>=왼쪽 아래. 초록·빨강·파랑 큰 원=각 원소 장판 범위, 디버프 아이콘 안의 <b>α·β</b>·숫자=유도 그룹/순번.
     <ul>
-      <li>진공파 시전 <b>7할 정도</b>에서 탱크 LB3를 발동. 넉백 방향에 주의하고, 근접 딜러는 엑스데스에 블링크, 탱커는 카오스에 블링크해 바람 크리스탈을 처리한다.</li>
+      <li><b>혼돈의 물</b>을 처리한다. 이쪽도 앞서와 마찬가지로 처리.</li>
     </ul>
   </div>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997477603-0e4f7f37.webp" alt="바울 TLB3 5 — 풍 크리스탈 쉐어 처리(초록 원)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>필드에 초록(바람) 큰 원 4개가 1·B·4·3 방향으로 배치되고, 우상단에 초록 마름모 <b>風(바람 크리스탈)</b>이 보라 원(엑스데스 범위) 안에 겹쳐 있음. 좌하단에 주황 원(D3 유도 표식). 각 초록 원 안에 직업 아이콘이 1·2·3·4 순번으로 정렬돼 바람 크리스탈 쉐어를 받음. 바깥 <b>A·B·C·1~4</b>=방위, 디버프 아이콘 안 숫자=순번.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780927003777-6e809d68.webp" alt="바울 TLB3 3 — D3 카오스 유도 / 엑스데스 풍 유도">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 <b>エクスデスの強攻撃後 真ん中へ誘導</b> = "엑스데스의 강공격(탱버) 후 중앙으로 유도", 아래쪽 <b>カオスを残っているクリスタルの方に向ける</b> = "카오스를 남아 있는 크리스탈 쪽으로 향하게". <b>風(바람, 초록 마름모)</b>=왼쪽 위, <b>水(물)</b>=오른쪽 위, 주황 십자선=호리즌탈/버티컬 임플로전 분할선, 보라 화살표=넉백 방향. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번.
+    <ul>
+      <li>D3는 <b>카오스의 엄브럴 스매시</b>를 유도하고, ST는 <b>엑스데스를 바람 크리스탈로</b> 유도한다.</li>
+    </ul>
+  </div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780922851691-d3f110df.webp" alt="바울 TLB3 4 — 풍 크리스탈 쉐어 처리">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span>왼쪽 위·아래 초록 큰 원=바람 크리스탈 쉐어 범위, 오른쪽 위 하늘색 큰 원=물 범위. <b>風(바람, 초록 마름모)</b>=왼쪽 위, <b>水(물)</b>=오른쪽 위, 노랑/보라 화살표 <b>ノックバック</b> = 넉백. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번. 마지막 정렬로, 각자 정해진 원 안에서 쉐어를 받는다(넉백 방향 주의).</div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780922859520-341d32ac.webp" alt="바울 TLB3 5 — 진공파 7할에서 탱크 LB3">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>왼쪽 위 초록 마름모 <b>真空波</b> = 진공파. 오른쪽 아래 노랑 부채꼴 안: <b>D3はカオスのアンブラスマッシュを風エフェクトの反対に誘導</b> = "D3는 카오스의 엄브럴 스매시를 바람 크리스탈 반대쪽으로 유도". 왼쪽 위 초록 4겹 원=진공파(넉백) 범위, 파랑 화살표=넉백 방향. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번.
+    <ul>
+      <li>진공파 시전 <b>7할 정도</b>에서 <b>탱크 LB3</b>를 발동한다. <b>넉백 방향에 주의</b>하고, 근접 딜러는 엑스데스에 블링크, 탱커는 카오스에 블링크해 바람 크리스탈을 처리한다.</li>
+    </ul>
+  </div>
 
   <h2 class="mech" id="p3-baul">바울 오브 아고니 (정공법) <span class="jp">バウル・オブ・アゴニー 正攻法</span></h2>
   <p>전체 공격 후 <strong>혼돈의 불 · 혼돈의 물 · 혼돈의 바람</strong> 디버프가 부여되고, 필드에 <strong>불 · 물 · 바람 크리스탈</strong>이 출현한다.<br>
@@ -524,17 +492,17 @@
     </ul>
   </div>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997497377-2ed752f0.webp" alt="바울 오브 아고니 1 — 디버프/크리스탈 설명도">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780980900266-38090a98.webp" alt="바울 오브 아고니 1">
   <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>
-    가운데: <b>カオス(카오스)</b> = 파랑(탱)·초록(힐)·빨강(딜)·딜 α 그룹 / <b>エクスデス(엑스데스)</b> = β 그룹(각 원 안 아이콘 순번 1·1·1·2 / 2·2·3·4 참고).
+    가운데: <b>カオス(카오스)</b> = MT·H1·D1·D2 / <b>エクスデス(엑스데스)</b> = ST·H2·D3·D4 (각 원 안 아이콘 순번 참고).
     <ul>
-      <li><b>背後からノクバを受ける</b>(배면 넉백 디버프): 배후에서 넉백을 받음. 아래 빨강/파랑(불·물) 보유자는 후술 넉백으로 해제, 그 외는 <b>진공파</b>로 해제.</li>
-      <li><b>正面からノクバを受ける</b>(정면 넉백 디버프): 정면에서 넉백을 받음. (해제 방식은 위와 동일)</li>
-      <li><b>デバフが切れたらAoE範囲</b>(빨강 불 디버프): 디버프 끝나면 자기 중심 AoE 범위. 느린/빠른 두 종류. 안쪽=탱힐 / 바깥=딜러.</li>
-      <li><b>デバフが切れたらドーナツ範囲</b>(파랑 물 디버프): 디버프 끝나면 도넛 범위. 느린/빠른. 안쪽=탱힐 / 바깥=딜러.</li>
-      <li><b>火(불 크리스탈)</b>: 빨강 디버프가 끝나면 가까운 사람에게 <b>도넛 범위 공격(넉백 판정 있음)</b>.</li>
-      <li><b>水(물 크리스탈)</b>: 물색 디버프가 끝나면 가까운 사람에게 <b>AoE 범위 공격(넉백 판정 있음)</b>.</li>
-      <li><b>風(바람 크리스탈)</b>: 넉백 디버프가 끝나면 가까운 사람에게 AoE 범위 공격. 안쪽부터 <code>MT&lt;ST&lt;H1&lt;H2</code>(메인 유도), 딜러 안쪽부터 <code>D1&lt;D2&lt;D3&lt;D4</code>.</li>
+      <li><b>배면 넉백 디버프</b>: 배후에서 넉백을 받음. 아래 빨강/파랑(불·물) 보유자는 후술 넉백으로 해제, 그 외는 <b>진공파</b>로 해제.</li>
+      <li><b>정면 넉백 디버프</b>: 정면에서 넉백을 받음. (해제 방식은 위와 동일)</li>
+      <li><b>빨강(불) 디버프</b>: 디버프 끝나면 자기 중심 <b>원형(AoE)</b> 범위. 느린/빠른 두 종류 존재. 안쪽=탱힐 / 바깥=딜러.</li>
+      <li><b>파랑(물) 디버프</b>: 디버프 끝나면 <b>도넛</b> 범위. 느린/빠른 존재. 안쪽=탱힐 / 바깥=딜러.</li>
+      <li><b>火(불 크리스탈)</b>: 빨강 디버프가 끝나면 가까운 사람에게 도넛 범위 공격(넉백 판정 있음).</li>
+      <li><b>水(물 크리스탈)</b>: 물색 디버프가 끝나면 가까운 사람에게 원형(AoE) 범위 공격(넉백 판정 있음).</li>
+      <li><b>風(바람 크리스탈)</b>: 넉백 디버프가 끝나면 가까운 사람에게 원형(AoE) 범위 공격. 메인 유도 안쪽부터 <code>MT&lt;ST&lt;H1&lt;H2</code>, 딜러 안쪽부터 <code>D1&lt;D2&lt;D3&lt;D4</code>.</li>
     </ul>
   </div>
   <p>불·물 디버프가 붙은 페어(혼돈조)와 <strong>남은 시간(초)</strong>을 확인한다.<br>
@@ -551,46 +519,43 @@
   이때의 우선순위는 안쪽부터 <code>D1 &gt; D2 &gt; D3 &gt; D4</code>.</p>
   <p>기믹 종료 후 엑스데스가 <strong>탱버스터</strong>를 시전하므로 주의 (여기서 무적이 많음).</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997514902-e36012eb.webp" alt="바울 오브 아고니 2 — 카오스 임플로전 방향">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 <b>エクスデスの強攻撃後 真ん中へ誘導</b> = "엑스데스의 강공격(탱버) 후 중앙으로 유도", 그 아래 파랑 <b>水(물)</b> 마커. 왼쪽 위 초록 마름모 <b>風(바람)</b> + 그 옆 디버프 그룹. 가운데 아래쪽 <b>カオスを残っているクリスタルの方に向ける</b> = "카오스를 남아 있는 크리스탈 쪽으로 향하게". 필드 전체가 주황 십자선으로 4분할, 보라/주황 화살표=넉백 방향. 직업 아이콘=담당자, 디버프 아이콘 안 숫자=순번.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780980912028-342e23e4.webp" alt="바울 오브 아고니 2">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 <b>エクスデスを誘導</b> = "엑스데스를 (물 크리스탈 쪽으로) 유도", 가운데 주황 화살표 <b>ノックバック</b> = 넉백. <b>水(물)</b>=오른쪽 위, <b>風(바람)</b>=왼쪽 위, <b>火(불)</b>=왼쪽 아래. 초록·빨강·파랑 큰 원=각 원소 장판 범위, <b>α·β</b>·숫자=유도 그룹/순번.</div>
   <p>카오스가 <strong>호리즌탈(세로 안치)／버티컬(가로 안치) 임플로전</strong>을 시전하므로, MT는 카오스를 <strong>남아 있는 2개 크리스탈이 있는 쪽</strong>으로 향하게 한다.<br>
   ST는 엑스데스를 중앙으로 유도해 둔다.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997530152-a10b6d93.webp" alt="바울 오브 아고니 3 — 풍/물 크리스탈 + 넉백">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 보라 영역 안 <b>エクスデスを誘導</b> = "엑스데스를 유도", 그 아래 파랑 <b>水(물)</b> 마커. 가운데 노랑 화살표 + 빨강 글씨 <b>ノックバック</b> = 넉백. 왼쪽 위 초록 마름모 <b>風(바람)</b>. 초록(바람)·빨강(불) 큰 원이 좌측·하단에 깔려 있고, 노랑 점선(// 표시)=디버프 맞혀 해제하는 페어 연결선. 직업 아이콘=담당자, 디버프 아이콘 안 숫자=순번.
-    <ul>
-      <li>혼돈의 물 보유자는 물 크리스탈을 양쪽에서 1명씩 끼우듯 위치를 잡는다(안쪽부터 탱커&gt;힐러&gt;D1&gt;D2&gt;D3&gt;D4). 물 디버프 해제를 트리거로 물 크리스탈에서 가까운 2명에게 AoE 범위가 발생하므로, 불 디버프 보유자가 받아 혼돈의 바람을 해제(방향 주의).</li>
-    </ul>
-  </div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780983453503-98f636d2.webp" alt="바울 오브 아고니 3">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>오른쪽 위 <b>エクスデスの強攻撃後 真ん中へ誘導</b> = "엑스데스 강공격(탱버) 후 중앙으로 유도", 아래쪽 <b>カオスを残っているクリスタルの方に向ける</b> = "카오스를 남아 있는 크리스탈 쪽으로 향하게". <b>風(바람, 초록 마름모)</b>=왼쪽 위, <b>水(물)</b>=오른쪽 위, 주황 십자선=호리즌탈/버티컬 분할선, 보라 화살표=넉백 방향. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 직업 아이콘=담당자, <b>α·β</b>·숫자=순번.</div>
   <p>혼돈의 물 보유자는 물 크리스탈을 <strong>양쪽에서 1명씩 끼우듯</strong> 위치를 잡는다.<br>
   우선순위는 <strong>안쪽부터</strong> <code>탱커 &gt; 힐러 &gt; D1 &gt; D2 &gt; D3 &gt; D4</code>.<br>
   혼돈의 물 디버프는 효과시간이 끝나면 본인에게서 도넛 범위가 나와 해제된다.<br>
   그 해제를 트리거로 물 크리스탈에서 가까운 2명에게 AoE 범위가 발생하므로, 불 디버프 보유자는 이를 받아 <strong>혼돈의 바람</strong>을 해제한다(방향 주의).</p>
   <p>바람 크리스탈은 앞서와 동일하게 처리한다.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997545862-b287c69a.webp" alt="바울 오브 아고니 4 — 풍/물 크리스탈 처리 (초록·하늘색 원)">
-  <div class="cap"><span class="h">🖼 이미지 안 표기</span>왼쪽 위 초록 마름모 <b>風(바람)</b>, 오른쪽 위 파랑 <b>水(물)</b> 마커. 초록(바람) 큰 원이 좌상단에, 하늘색(물) 큰 원이 중앙·우측에 다수 겹쳐 깔림. 노랑 점선(// 표시)=디버프 맞혀 해제하는 페어 연결선, 가운데 노랑 화살표 + 빨강 글씨 <b>ノックバック</b> = 넉백. 직업 아이콘=담당자, 디버프 아이콘 안 숫자=순번. <span class="note">(ST는 바람 크리스탈에 겹치도록 엑스데스를 유도)</span></div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780980937288-b7579935.webp" alt="바울 오브 아고니 4">
+  <div class="cap"><span class="h">🖼 이미지 안 표기</span>왼쪽 초록 큰 원 2개=바람 크리스탈 쉐어 범위, 오른쪽 하늘색 큰 원=물 범위. <b>風(바람)</b>=왼쪽 위, <b>水(물)</b>=오른쪽 위, 노랑 화살표 <b>ノックバック</b> = 넉백. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번. 각자 정해진 원 안에서 정렬해 쉐어를 받는다.</div>
   <p>ST는 <strong>바람 크리스탈에 겹치도록</strong> 엑스데스를 유도하고, MT는 카오스를 유도해 둔다.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997585394-a6bc0b18.webp" alt="바울 오브 아고니 5 — 엑스데스 바람 위 유도">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>위쪽 <b>風エフェクトの真上にエクスデスを誘導</b> = "바람 크리스탈 바로 위에 엑스데스를 유도", 왼쪽 <b>カオスも一応誘導</b> = "카오스도 일단 (그쪽으로) 유도". 좌상단 초록 마름모 <b>風(바람 크리스탈)</b>과 그 옆 보라·주황 이중 원(엑스데스/회전 표식) 안에 그룹 1·2 정렬, 중앙에 디버프 아이콘 1·2·4 그룹, 중앙 아래 D3(빨강 3). 바깥 <b>A·B·C·1~4</b>=방위, 직업 아이콘=담당자, 디버프 아이콘 안 숫자=순번.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780980950327-c3ec1f75.webp" alt="바울 오브 아고니 5">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>위쪽 <b>風エフェクトの真上にエクスデスを誘導</b> = "바람 크리스탈 바로 위에 엑스데스를 유도", 왼쪽 <b>カオスも一応誘導</b> = "카오스도 일단 (그쪽으로) 유도". <b>風(바람, 초록 마름모)</b>=왼쪽 위, 바깥 <b>A·B·C·1~4</b>=방위. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번.</div>
   <p>D3는 카오스의 <strong>엄브럴 스매시</strong>를 바람 크리스탈의 반대쪽으로 유도.<br>
   <strong>진공파</strong>가 오므로 디버프 보유자는 날아가는 방향에 주의해 넉백을 받는다.<br>
   디버프가 없는 사람은 <strong>넉백 방지 스킬(암즈렝스 / 확정 시전)</strong>을 쓰고 엑스데스의 타깃 서클 밖에서 대기.<br>
   우선순위는 <strong>탱힐이 왼쪽 안쪽(奥)</strong>부터 <code>MT &lt; ST &lt; H1 &lt; H2</code>, <strong>딜러는 오른쪽 안쪽</strong>부터 <code>D1 &lt; D2 &lt; D3 &lt; D4</code>.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997606058-4012afa9.webp" alt="바울 오브 아고니 6 — 진공파 / D3 엄브럴 스매시 유도">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>좌상단 초록 마름모 안 <b>真空波</b> = 진공파(초록 4겹 꽃잎 모양 넉백 범위). 우하단 노랑 부채꼴 안 <b>D3はカオスのアンブラスマッシュを風エフェクトの反対に誘導</b> = "D3는 카오스의 엄브럴 스매시를 바람 크리스탈 반대쪽으로 유도". 파랑 화살표=넉백 방향, 좌측 탱힐 그룹(보라·하늘색 디버프, 1·2 순번)·우측 딜러 그룹(빨강, 3·4 순번). 바깥 <b>A·B·C·1~4</b>=방위, 직업 아이콘=담당자.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780980961985-ec2a8397.webp" alt="바울 오브 아고니 6">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>왼쪽 위 초록 마름모 <b>真空波</b> = 진공파. 오른쪽 아래 노랑 부채꼴 안: <b>D3はカオスのアンブラスマッシュを風エフェクトの反対に誘導</b> = "D3는 카오스의 엄브럴 스매시를 바람 크리스탈 반대쪽으로 유도". 왼쪽 위 초록 4겹 원=진공파(넉백) 범위, 파랑 화살표=넉백 방향. 직업 아이콘=담당자, <b>α·β</b>·숫자=순번.</div>
   <a class="ext" href="https://x.com/mitsurugi137/status/2062857003723276776" target="_blank" rel="noopener">🎬 참고 영상: 3P 물·불 DN식 — @mitsurugi137</a>
 
   <p><strong>알테마 블래스터</strong>는 <strong>진공파가 진행되는 도중</strong>에 확인하는 기믹.<br>
   케프카가 <strong>가장 처음 돌진해 온 도착 지점</strong>을 기준(북쪽)으로 삼아, <strong>2번째 돌진</strong>이 시계 방향·반시계 방향 중 어느 쪽에서 오는지를 본다.<br>
   주사위(サイコロ)는 그 돌진과 <strong>반대 방향으로</strong> 늘어서듯 배치한다.</p>
 
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780997678041-6116c31a.webp" alt="알테마 블래스터 주사위 배치">
-  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span>하단 텍스트 <b>アルテマブラスター</b>(알테마 블래스터) — "가장 먼저 출현해 돌진한 최종 지점을 북쪽으로 삼고, 케프카가 반시계 방향인 경우 시계 방향부터 늘어서 간다."
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780761307093-39d4b7cd.webp" alt="알테마 블래스터 주사위 배치">
+  <div class="cap"><span class="h">🖼 이미지 안 설명 번역</span><b>アルテマブラスター(알테마 블래스터)</b> — "가장 먼저 출현해 돌진한 최종 지점을 북쪽으로 삼고, 케프카가 반시계 방향인 경우 시계 방향부터 늘어서 간다."
     <ul>
-      <li>필드 중앙에 보라색 화살표/별 모양(알테마 블래스터 돌진 궤적). 필드 전체에 <b>빨강/파랑 주사위 눈(점 1~6개)</b>이 다수 배치돼 주사위 숫자(순번)를 나타냄. 케프카 돌진 방향과 반대 회전으로 배치.</li>
+      <li>필드 중앙에 보라색 별 모양(알테마 블래스터 장판), 바깥 <b>A·B·C·1~4</b>=필드 마커 방위.</li>
+      <li>각 방위 주변의 <b>빨강/파랑 주사위 눈(점 1~6개)</b>=주사위 숫자(순번). 케프카 돌진 방향과 반대 회전으로 배치.</li>
     </ul>
   </div>
   <p>수동으로 마커를 찍고<br>
@@ -600,11 +565,11 @@
   <p>그 후 엑스데스가 <strong>탱버스터 선더가(엑스데스에 가까운 사람)</strong>를 시전하므로 <strong>스위치</strong>.</p>
 </section>
 
-<!-- ===================== PHASE 3-2 ===================== -->
+<!-- ===================== PHASE 3-2 (작성 중) ===================== -->
 <section class="phase" id="phase-3-2">
-  <h2 class="phase-title">PHASE 3-2</h2>
+  <h2 class="phase-title">PHASE 3-2 (작성 중)</h2>
 
-  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目</span></h2>
+  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目 ※작성 중</span></h2>
   <p>1회차와 마찬가지로 라이트 파티(4인 2조)로 나눈다.<br>
   그 후 엑스데스로부터 <strong>선더가(엑스데스에 가까운 사람)</strong>가 오므로, 탱커는 <strong>무적을 쓴다(또는 스위치)</strong>.</p>
   <p>다음으로 카오스가 <strong>지진(じしん)</strong>을 시전해 <strong>전체 공격 + 디버프</strong>를 부여한다.<br>
@@ -688,16 +653,16 @@
     <li>블랙홀 3회차의 <strong>3번째</strong>에서, 속박2와 정지2가 선을 교환한다.</li>
   </ul>
 
-  <p>선이 나오는 블랙홀은 반드시 <strong>동서남북</strong>에 출현하므로, <strong>북쪽부터 시계 방향 우선순</strong>으로 받고, 빔의 방향은 반드시 <strong>시계 방향</strong>이 되도록 향한다.<br>
+  <p>선이 나오는 블랙홀은 반드시 <strong>동서남북</strong>에 출현하므로, <strong>북쪽부터 시계 방향 우선도</strong>로 받고, 빔의 방향은 반드시 <strong>시계 방향</strong>이 되도록 향한다.<br>
   아래는 블랙홀의 출현 위치다.</p>
   <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780997709588-3f9376bb.webp" alt="블랙홀 출현 위치 1">
-    <img src="https://yan-flash.com/api/uploads/1780997724441-c6fe7ced.webp" alt="블랙홀 출현 위치 2">
+    <img src="https://yan-flash.com/api/uploads/1780987545784-e9b0ec05.webp" alt="블랙홀 출현 위치 1">
+    <img src="https://yan-flash.com/api/uploads/1780987581137-a938f729.webp" alt="블랙홀 출현 위치 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀(검은 구멍)이 필드 전체에 배치된 모습. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위(A=북, B=동, C=남, D=서). 선이 나오는 블랙홀은 반드시 <b>동서남북(A·B·C·D 방향)</b>에 출현하므로, 북(A)부터 시계 방향 우선순으로 선을 받아 빔을 시계 방향으로 향하게 한다.
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀(검은 구멍)이 필드 전체에 동심원 형태로 다수 배치된 모습. 바깥 <b>A·B·C·1~4</b>=필드 마커 방위(A=북, B=동, C=남, D=서). 선이 나오는 블랙홀은 반드시 <b>동서남북(A·B·C·D 방향)</b>에 출현하므로, 북(A)부터 시계 방향 우선도로 선을 받아 빔을 시계 방향으로 향하게 한다.
     <ul>
-      <li><b>1번째 이미지</b>: 필드 전체에 블랙홀이 격자/방사형으로 빽빽이 깔린 모습(위치 파악용 전체도).</li>
-      <li><b>2번째 이미지</b>: 같은 배치를 동심원 3겹 링이 강조된 형태로 표시. 각 링 위에 블랙홀이 정렬돼 있어 거리감/위치 파악에 쓰인다.</li>
+      <li><b>1번째 이미지</b>: 동심원 배치 전체에 블랙홀이 빽빽이 깔린 모습(가장자리에 가시 모양).</li>
+      <li><b>2번째 이미지</b>: 같은 배치를 동심원 3겹 링이 강조된 형태로 표시. 각 링 위에 블랙홀이 정렬돼 있어 거리감/위치 파악용.</li>
     </ul>
   </div>
 
@@ -723,39 +688,39 @@
       </tr>
       <tr>
         <td>블랙홀 1회차</td>
-        <td>위 표 또는 아래 기믹 처리 이미지를 참고해 처리</td>
+        <td>위 표를 참고해 처리</td>
       </tr>
       <tr>
         <td>선더가(강공격)</td>
-        <td>탱버스터를 (엑스데스에 가까운 사람으로) 처리</td>
+        <td></td>
       </tr>
       <tr>
-        <td>더빙 이딕트 +<br>빈빈빈타 <span class="jp">ダビングイーディクト+ビンビンビンタ</span></td>
+        <td>더빙 이딕트 + 빈빈빈타 <span class="jp">ダビングイーディクト+ビンビンビンタ</span></td>
         <td>카오스가 반갈 장판을 내므로 안전지대 쪽으로 가서 케프카의 공격을 회피<br>케프카를 봤을 때 왼손을 들면 오른쪽 안전지대 + 중앙에서 부채꼴 쉐어, 오른손을 들면 왼쪽 안전지대 + 중앙에서 부채꼴 롤 쉐어</td>
       </tr>
       <tr>
         <td>블랙홀 2회차</td>
-        <td>위 표 또는 아래 기믹 처리 이미지를 참고해 처리</td>
+        <td>위 표를 참고해 처리</td>
       </tr>
       <tr>
-        <td>있는 그대로의 보쿠친 +<br>더빙 이딕트 <span class="jp">ありのままのボクチン</span></td>
-        <td>케프카가 중앙을 가르는 장판을 발생시키고, 거기에 카오스가 반갈 공격을 해 온다.<br>MT는 카오스를 케프카가 출현한 순간에 향하게 하면 안전지대를 확보하기 쉽다.</td>
+        <td>있는 그대로의 보쿠친 + 더빙 이딕트 <span class="jp">ありのままのボクチン</span></td>
+        <td>케프카가 중앙을 가르는 장판을 발생시키고, 거기에 카오스가 반갈 공격을 해 온다.<br>케프카가 출현한 순간에 (시야를) 향한다.</td>
       </tr>
       <tr>
         <td>선더가(강공격)</td>
-        <td>탱버스터를 (엑스데스에 가까운 사람으로) 처리</td>
+        <td></td>
       </tr>
       <tr>
         <td>블랙홀 3회차</td>
-        <td>위 표 또는 아래 기믹 처리 이미지를 참고해 처리</td>
+        <td>위 표를 참고해 처리</td>
       </tr>
       <tr>
-        <td>빈빈빈타 +<br>화이트홀 +<br>호리즌탈 or<br>버티컬 임플로전</td>
-        <td>카오스를 45도 기울여 호리즌탈／버티컬 도중에 안전지대로 이동하기 쉽게 한다<br>빈빈빈타를 해 오므로 손을 확인한다</td>
+        <td>빈빈빈타 + 화이트홀 + 호리즌탈 or 버티컬 임플로전</td>
+        <td>카오스를 45도 기울여 호리즌탈·버티컬 도중에 안전지대로 이동하기 쉽게 한다<br>거기서 빈빈빈타를 해 오므로 손을 확인</td>
       </tr>
       <tr>
         <td>블랙홀 4회차</td>
-        <td>위 표 또는 아래 기믹 처리 이미지를 참고해 처리</td>
+        <td></td>
       </tr>
       <tr>
         <td>있는 그대로의 보쿠친</td>
@@ -789,44 +754,93 @@
 /p 《stop１》《stop２》선 받기&lt;se.1&gt;&lt;wait.5&gt;
 /p 《stop２》선 받기&lt;se.1&gt;</code></pre>
   <a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고: 로드스톤 블로그</a>
+</section>
 
-  <h2 class="mech" id="p3-binbin">빈빈빈타 <span class="jp">びんびんビンタ</span></h2>
-  <p>빈빈빈타는 케프카를 보고, <strong>향해서 왼쪽 손(케프카의 오른손)</strong>을 드는지 <strong>향해서 오른쪽 손(케프카의 왼손)</strong>을 드는지에 따라 <strong>롤 산개</strong>인지 <strong>쉐어</strong>인지가 결정되는 기믹이다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781027712406-786a3570.webp" alt="빈빈빈타 왼손">
-    <img src="https://yan-flash.com/api/uploads/1781027720140-e98f7cf7.webp" alt="빈빈빈타 오른손">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>왼쪽 컷=케프카가 <b>왼손(향해서 왼쪽)</b>을 드는 경우, 오른쪽 컷=케프카가 <b>오른손(향해서 오른쪽)</b>을 드는 경우. 각 컷의 색칠된 반쪽이 안전지대(초록)·위험지대(빨강)를 나타냄. 중앙 화살표·아이콘=쉐어 또는 롤 산개 방향. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+<footer>
+  원문(일본어) 출처: <a href="https://yan-flash.com/ultimate/yosei-ranbu" style="color:var(--accent)">yan-flash.com/ultimate/yosei-ranbu</a><br>
+  Phase 1 · 2 · 3 한글 번역 — 이미지는 원본 서버에서 직접 로드됩니다. (삭제 예정 처리법은 제외)
+</footer>
 
-  <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
-  <p>빈빈빈타 후에 엑스데스가 블랙홀을 발생시킨다.<br>
-  블랙홀 1회차의 1번째 선은 <strong>공격1</strong>이 선을 받는다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989562748-ab723416.webp" alt="블랙홀 1회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선. 공격1(①마커) 담당자가 블랙홀에서 뻗어나오는 선을 받아 시계 방향으로 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <p>2번째 선은 <strong>공격1</strong>과 <strong>공격2</strong>가 받는다.<br>
-  1번째 때 이미 어느 구슬에서 선이 나올지 결정돼 있으므로, 공격2는 미리 준비해 두자.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989896543-9d3aed60.webp" alt="블랙홀 1회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선. 공격1·공격2(①마커) 담당자가 각각 선을 받아 시계 방향으로 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <p>2번째 선을 처리한 뒤 바로 <strong>선더가</strong>가 오므로 주의.<br>
-  탱커 이외의 멤버는 엑스데스에서 멀어지도록 한다.</p>
-  <p>선더가 장판이 터짐과 동시에 케프카가 이동하므로, MT는 더빙(ダビング)을 유도하기 위해 케프카의 반대 방향으로 카오스를 향하게 한다.<br>
-  케프카가 든 손을 확인해 안전지대로 이동하고, 쉐어 또는 롤 산개를 처리한다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781028085574-1d1255ff.webp" alt="블랙홀 1회차 후 더빙 안전지대">
-    <img src="https://yan-flash.com/api/uploads/1780990332952-97553e42.webp" alt="블랙홀 1회차 후 빈빈빈타">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>선더가 이후 케프카 이동·더빙 유도 시의 안전지대(초록)·위험지대(빨강) 배치. 케프카가 든 손에 따라 쉐어/롤 산개 위치가 결정된다. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+</div>
+</main>
 
-  <h2 class="mech" id="p3-blackhole2">블랙홀 2회차 <span class="jp">ブラックホール2回目</span></h2>
-  <p>공격1·공격2·공격3이 시계 방향 우선순으로 선을 받는다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780990594556-834921ff.webp" alt="블랙홀 2회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 1번째 선. 공격1·2·3(①마커) 담당자가 시계 방향 순으로 선을 받음. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <p>공격1이 <strong>속박1</strong>에게 선을 넘긴다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019036241-a1946d39.webp" alt="블랙홀 2회차 2번째 선 — 공격1→속박1 교환">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 2번째 선. 공격1(①)→속박1(②) 선 교환. 속박1 담당자가 새로 선을 받아 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <p>공격2가 <strong>속박2</strong>에게 선을 넘긴다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019146677-e66ded57.webp" alt="블랙홀 2회차 3번째 선 — 공격2→속박2 교환">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 3번째 선. 공격2(①)→속박2(②) 선 교환. 속박2 담당자가 새로 선을 받아 유도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <p>케프카가 이동하므로, 카오스를 케프카 쪽으로 향하거나 등을 돌리도록 유도한다.<br>
-  필드를 가르는 장판이 나오므로, 카오스와 케프카를 보고 안전지대를 판단한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019443203-71952f21.webp" alt="블랙홀 2회차 후 필드 분단
+<script>
+  // 스크롤 위치 기반 목차 활성 표시 (클릭 점프 시에도 정확히 하이라이트)
+  const links = [...document.querySelectorAll('nav.toc a')];
+  const targets = links
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
+  // 제목은 클릭 점프 시 scroll-margin-top(=20px 부근)에 안착한다.
+  // ANCHOR 를 그보다 살짝 위로만 둔다(작게!). 130px 처럼 크게 두면, 내용이 짧은
+  // 섹션은 다음 제목까지 그 선 위로 들어와 엉뚱한 섹션이 잡힌다(종말의 두 팔 버그).
+  // 32px: 클릭한 제목(top≈20)은 잡히고, 다음 제목(짧아도 제목 높이+여백으로 최소 ~50px+ 아래)은 안 잡힌다.
+  const ANCHOR = 32;
+  let lockUntil = 0; // 스무스 스크롤 동안 스파이 잠금(깜빡임 방지)
+
+  function setActive(id) {
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  }
+
+  function syncActive() {
+    if (performance.now() < lockUntil) return;
+    let currentId = targets.length ? targets[0].id : null;
+    for (const el of targets) {
+      if (el.getBoundingClientRect().top - ANCHOR <= 0) currentId = el.id;
+      else break;
+    }
+    // 페이지 맨 아래 도달 시 마지막 섹션 강제 활성
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      currentId = targets[targets.length - 1]?.id;
+    }
+    if (currentId) setActive(currentId);
+  }
+
+  document.addEventListener('scroll', syncActive, { passive: true });
+  window.addEventListener('resize', syncActive, { passive: true });
+  // 클릭: 즉시 하이라이트 + 스크롤 안착 동안 스파이 잠갔다가 안착 후 1회 재동기화
+  links.forEach(a => a.addEventListener('click', () => {
+    setActive(a.getAttribute('href').slice(1));
+    lockUntil = performance.now() + 700;
+    setTimeout(syncActive, 720);
+  }));
+  syncActive();
+
+  // 모바일 목차 토글(햄버거 드롭다운): 평소 닫힘 → 본문 100%, 링크 선택 시 닫힘
+  const navToc = document.querySelector('nav.toc');
+  const tocToggle = document.getElementById('tocToggle');
+  const tocBackdrop = document.getElementById('tocBackdrop');
+  const closeToc = () => { navToc.classList.remove('open'); tocBackdrop.classList.remove('show'); };
+  tocToggle.addEventListener('click', () => {
+    const open = navToc.classList.toggle('open');
+    tocBackdrop.classList.toggle('show', open);
+  });
+  tocBackdrop.addEventListener('click', closeToc);
+  links.forEach(a => a.addEventListener('click', closeToc));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
+
+  // 이미지 클릭 → 전체화면 라이트박스
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML = '<span class="hint">닫기: 클릭 / Esc</span><img alt="">';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img');
+  document.querySelectorAll('img.shot, .imgrow img, table.tl img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  // 원문 마지막 업데이트(更新履歴 최신) 표시
+  fetch('update-info.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      if (!d) return;
+      const el = document.getElementById('lastup');
+      const txt = d.ko || d.ja || '';
+      el.innerHTML = `🕒 원문 마지막 업데이트 · <span class="t">${d.date}</span>` + (txt ? `<span class="body">${txt}</span>` : '');
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
