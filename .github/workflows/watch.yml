@@ -53,7 +53,14 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add state/latest.json docs/update-info.json
             git commit -m "auto(notify): 更新履歴 스냅샷 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            pushed=0
+            for n in 1 2 3; do
+              if git push 2>/dev/null; then pushed=1; break; fi
+              echo "push 경합 — pull --rebase 후 재시도 ($n)"
+              git pull --rebase --autostash 2>/dev/null || git rebase --abort 2>/dev/null || true
+              sleep $((n * 2))
+            done
+            [ "$pushed" = 1 ] || echo "::warning::push 경합 실패 — 다음 실행에서 재시도(잡은 성공 처리)."
           else
             echo "更新履歴に変化なし。"
           fi
@@ -98,7 +105,14 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add state/guide docs/index.html
             git commit -m "auto(translate): 攻略 본문 동기화 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            pushed=0
+            for n in 1 2 3; do
+              if git push 2>/dev/null; then pushed=1; break; fi
+              echo "push 경합 — pull --rebase 후 재시도 ($n)"
+              git pull --rebase --autostash 2>/dev/null || git rebase --abort 2>/dev/null || true
+              sleep $((n * 2))
+            done
+            [ "$pushed" = 1 ] || echo "::warning::push 경합 실패 — 다음 실행에서 재시도(잡은 성공 처리)."
           else
             echo "本文の翻訳変更なし。"
           fi
