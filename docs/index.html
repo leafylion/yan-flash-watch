@@ -152,6 +152,14 @@
   table.tl{border-collapse:collapse; width:100%; margin:12px 0; font-size:.9rem}
   table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
   table.tl th{background:var(--card2); color:var(--accent2)}
+  table.tl td img{display:block; width:auto; height:auto; max-width:42px; max-height:42px; cursor:zoom-in}
+  /* 컬럼 많은 표는 가로 스크롤 래퍼로 감싸 모바일 가로 오버플로 방지 */
+  .tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px 0}
+  .tablewrap > table.tl{margin:0}
+  @media (max-width:860px){
+    table.tl th,table.tl td{padding:5px 6px; font-size:.8rem}
+    table.tl td img{max-width:34px; max-height:34px}
+  }
   footer{color:var(--muted); font-size:.82rem; text-align:center; margin-top:40px}
 </style>
 </head>
@@ -737,6 +745,7 @@
   <p>이 마커에 따라, 블랙홀에서 뻗어나오는 선을 <strong>우선순위가 높은 사람부터 시계 방향으로</strong> 받아간다.<br>
   블랙홀은 한 묶음으로 총 4회 출현하며, 각 묶음 안에서 선이 <strong>2개 → 3개 → 3개 → 2개</strong> 발생한다(합계 10개).<br>
   아래 표는 각 선을 어느 마커가·어느 순서로 받아 혼돈의 흙을 해제해 가는지를 나타낸 것이다.</p>
+  <div class="tablewrap">
   <table class="tl">
     <colgroup><col><col><col><col><col><col><col><col><col><col></colgroup>
     <thead>
@@ -792,6 +801,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
   <div class="cap"><span class="h">🖼 이미지 안 표기</span>각 칸은 블랙홀 회차(가로)·선 발생 순서(세로 1~3번째)별 배치도. 둥근 아이콘 안의 숫자=타깃 마커 종류: <b>①(공격 마커)</b>=마커 1, <b>②(속박 마커)</b>=마커 2, <b>③(정지 마커)</b>=마커 3. 화살표=선을 받아 유도하는 사람의 이동 방향(블랙홀→바깥으로 유도 경로).</div>
 
   <p>주의점으로, <strong>선 교환이 총 4회</strong> 발생한다.</p>
