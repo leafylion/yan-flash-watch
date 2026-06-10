@@ -196,7 +196,16 @@ def main() -> None:
 
     out = call_api(content)
     out = re.sub(r'^\s*```(?:html)?\s*', '', out)
-    out = re.sub(r'\s*```\s*$', '', out).strip()
+    out = re.sub(r'\s*```\s*$', '', out)
+    # 모델이 HTML 앞에 설명/분석을 붙이거나 뒤에 군더더기를 다는 경우가 있어,
+    # <!DOCTYPE html> 부터 </html> 까지만 잘라낸다(잘림이면 </html>가 없어 검증에서 걸림).
+    i = out.lower().find("<!doctype html")
+    if i > 0:
+        out = out[i:]
+    j = out.lower().rfind("</html>")
+    if j != -1:
+        out = out[:j + len("</html>")]
+    out = out.strip()
 
     # 잘림(max_tokens 초과 등) 방지: doctype 로 시작하고 </html> 로 끝나야 정상.
     # 끝이 잘렸으면 절대 커밋하지 않는다(다음 실행에서 재시도).
