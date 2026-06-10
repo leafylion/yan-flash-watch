@@ -27,7 +27,7 @@ GLOSSARY = ROOT / "TRANSLATION.md"
 GUIDE_DIR = ROOT / "state" / "guide"
 
 API_URL = "https://api.anthropic.com/v1/messages"
-MODEL = os.environ.get("MODEL", "claude-opus-4-8")
+MODEL = os.environ.get("MODEL", "claude-sonnet-4-6")
 
 SYSTEM = """\
 너는 FFXIV 절 「妖精乱舞(요성난무)」 공략의 한국어 번역본 docs/index.html을 유지보수한다.

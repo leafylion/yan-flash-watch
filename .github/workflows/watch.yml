@@ -68,7 +68,7 @@ jobs:
         if: steps.guard.outputs.expired != 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          MODEL: claude-opus-4-8
+          MODEL: claude-sonnet-4-6   # JP→KO 번역엔 Sonnet 충분(Opus 대비 ~5배 저렴·더 빠름)
         run: |
           git diff -- state/guide/ > /tmp/guide.diff || true
           if [[ -s /tmp/guide.diff ]]; then
