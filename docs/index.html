@@ -192,6 +192,16 @@
   <a href="#p3-baul-tlb3">바울 오브 아고니 (TLB3)</a>
   <a href="#p3-baul">바울 오브 아고니 (정공법)</a>
 
+  <div class="grp">PHASE 4</div>
+  <a href="#p4-debuffs">디버프 일람</a>
+  <a href="#p4-ochokuri">요코도리 소울</a>
+  <a href="#p4-gc1">그랜드 크로스 1회차</a>
+  <a href="#p4-tsunami1">쓰나미 or 불꽃 1회차</a>
+  <a href="#p4-gc2">그랜드 크로스 2회차</a>
+  <a href="#p4-tsunami2">쓰나미 or 불꽃 2회차</a>
+  <a href="#p4-gc3">그랜드 크로스 3회차</a>
+  <a href="#p4-magic">매직 차지</a>
+
   <div class="grp">PHASE 3-2</div>
   <a href="#p3-kessen2">결전 2회차</a>
   <a href="#p3-binbinta">빈빈빈타</a>
@@ -571,63 +581,107 @@
 <!-- ===================== PHASE 4 ===================== -->
 <section class="phase" id="phase-4">
   <h2 class="phase-title">PHASE 4</h2>
-  <p>페이즈 4는 완전 개인 기믹이다.<br>
+  <p>페이즈 4는 거의 개인 기믹이다.<br>
   에코 매크로를 활용해서 외운다… 최근 예로는 아르카디아 드림에 가까운 기믹일 수도 있다.<br>
+  네오 엑스데스가 그랜드 크로스를 시전하여 디버프를 여러 개 부여한다.<br>
+  카오스가 불꽃 또는 쓰나미를 시전하여 혼돈의 불꽃·혼돈의 물을 부여한다.<br>
+  그것을 케프카가 진짜 또는 가짜 이펙트로 부여하므로, 그것을 보고 꺾어서 기믹을 순서대로 처리해 나가는 페이즈이다.<br>
+  몇 가지 법칙이나 디버프를 처리하는 타임라인은 고정되어 있으므로, 자신에게 무엇이 붙어 있는지 파악하고 그에 맞는 위치에 서 있으면 된다.<br>
   우선 디버프 종류를 설명한다.</p>
 
-  <div class="tablewrap">
+  <div class="tablewrap" id="p4-debuffs">
     <table class="tl">
       <thead>
         <tr><th></th><th>진짜(本当)</th><th>가짜(嘘)</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173577888-f3f065c8.webp" alt="呪詛の叫声"><br>저주의 포효</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173577888-f3f065c8.webp" alt="呪詛の叫声"><br>
+            저주의 포효<br>
+            <span class="note">반드시 그랜드 크로스 1회차·2회차에 부여된다.<br>디버프 시간은 고정되어 있으므로 1회차가 가짜인지 진짜인지, 2회차가 가짜인지 진짜인지를 파티 레벨에서 숙지해야 한다.</span>
+          </td>
           <td>보지 않는다</td>
           <td>본다</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173604458-cd2d39e5.webp" alt="フォークライトニング"><br>포크 라이트닝</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173604458-cd2d39e5.webp" alt="フォークライトニング"><br>
+            포크 라이트닝<br>
+            <span class="note">반드시 그랜드 크로스 1회차·2회차에 부여되며, 물 속성 압축과 동시에 부여되지 않는 디버프</span>
+          </td>
           <td>범위 AoE (1인)</td>
           <td>쉐어</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173625101-e820e8d8.webp" alt="水属性圧縮"><br>물 속성 압축</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173625101-e820e8d8.webp" alt="水属性圧縮"><br>
+            물 속성 압축<br>
+            <span class="note">반드시 그랜드 크로스 1회차·2회차에 부여되며, 포크 라이트닝과 동시에 부여되지 않는 디버프</span>
+          </td>
           <td>쉐어</td>
           <td>범위 AoE (1인)</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173663455-ff498ccf.webp" alt="加速度爆弾"><br>가속도 폭탄</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173663455-ff498ccf.webp" alt="加速度爆弾"><br>
+            가속도 폭탄<br>
+            <span class="note">반드시 전원에게 부여된다.<br>그랜드 크로스 1회차 또는 2회차 중 하나에 부여된다.</span>
+          </td>
           <td>움직이지 않는다</td>
           <td>움직인다</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173691316-247cfd5e.webp" alt="混沌の水"><br>혼돈의 물</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173691316-247cfd5e.webp" alt="混沌の水"><br>
+            혼돈의 물<br>
+            <span class="note">반드시 전원에게 부여된다.<br>진짜라면 중앙에 집합해서 움직이지 않는다(도넛 범위).<br>가짜라면 중앙에 집합해서 죽창을 피한다.</span>
+          </td>
           <td>도넛 AoE</td>
           <td>죽창(타케노코)</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781173720029-86a7ea3d.webp" alt="混沌の炎"><br>혼돈의 불꽃</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781173720029-86a7ea3d.webp" alt="混沌の炎"><br>
+            혼돈의 불꽃<br>
+            <span class="note">반드시 전원에게 부여된다.<br>진짜라면 중앙에 집합해서 죽창을 피한다.<br>가짜라면 중앙에 집합해서 움직이지 않는다(도넛 범위).</span>
+          </td>
           <td>죽창(타케노코)</td>
           <td>도넛 AoE</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781174061170-0e08166f.webp" alt="生者の傷 (青)"><br>살아있는 자의 상처</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781174061170-0e08166f.webp" alt="生者の傷 (青)"><br>
+            살아있는 자의 상처<br>
+            <span class="note">같은 색에 맞으면 빈사.<br>반대 색에 맞으면 거의 데미지 없음.</span>
+          </td>
           <td>파랑</td>
           <td>보라</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781174088379-3ebc5312.webp" alt="生者の傷 (紫)"><br>살아있는 자의 상처</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781174088379-3ebc5312.webp" alt="生者の傷 (紫)"><br>
+            살아있는 자의 상처<br>
+            <span class="note">같은 색에 맞으면 빈사.<br>반대 색에 맞으면 거의 데미지 없음.</span>
+          </td>
           <td>보라</td>
           <td>파랑</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781174118522-6b0c92f4.webp" alt="アラガンフィールド"><br>알라간 필드</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781174118522-6b0c92f4.webp" alt="アラガンフィールド"><br>
+            알라간 필드<br>
+            <span class="note">받은 데미지만큼 전체 공격이 되므로<br>데미지를 받지 않을 것.</span>
+          </td>
           <td>살아남는다</td>
           <td>죽는다</td>
         </tr>
         <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1781174163488-b85ab16f.webp" alt="死の超越"><br>죽음의 초월</td>
+          <td>
+            <img src="https://yan-flash.com/api/uploads/1781174163488-b85ab16f.webp" alt="死の超越"><br>
+            죽음의 초월<br>
+            <span class="note">빈사가 되지 않으면 자신이 죽으므로<br>데미지를 받을 것.</span>
+          </td>
           <td>죽는다</td>
           <td>살아남는다</td>
         </tr>
@@ -635,39 +689,41 @@
     </table>
   </div>
   <div class="cap"><span class="h">🖼 이미지 (표 내 아이콘)</span>각 디버프 아이콘과 진짜/가짜일 때의 행동.<ul>
-    <li>저주의 포효 — 진짜: 시선을 보지 않음 / 가짜: 본다</li>
-    <li>포크 라이트닝 — 진짜: 범위(1인) / 가짜: 쉐어</li>
-    <li>물 속성 압축 — 진짜: 쉐어 / 가짜: 범위(1인)</li>
-    <li>가속도 폭탄 — 진짜: 정지 / 가짜: 이동</li>
-    <li>혼돈의 물 — 진짜: 도넛 / 가짜: 죽창</li>
-    <li>혼돈의 불꽃 — 진짜: 죽창 / 가짜: 도넛</li>
-    <li>살아있는 자의 상처(파랑형) — 진짜: 파랑 / 가짜: 보라</li>
-    <li>살아있는 자의 상처(보라형) — 진짜: 보라 / 가짜: 파랑</li>
-    <li>알라간 필드 — 진짜: 생존 / 가짜: 사망</li>
-    <li>죽음의 초월 — 진짜: 사망 / 가짜: 생존</li>
+    <li>저주의 포효 — 진짜: 시선을 보지 않음 / 가짜: 본다 (반드시 1·2회차 그랜드 크로스에 부여, 타이밍은 파티 전체가 파악 필요)</li>
+    <li>포크 라이트닝 — 진짜: 범위(1인) / 가짜: 쉐어 (물 속성 압축과 동시 부여 없음)</li>
+    <li>물 속성 압축 — 진짜: 쉐어 / 가짜: 범위(1인) (포크 라이트닝과 동시 부여 없음)</li>
+    <li>가속도 폭탄 — 진짜: 정지 / 가짜: 이동 (전원 부여, 1·2회차 중 하나)</li>
+    <li>혼돈의 물 — 진짜: 중앙 집합 후 정지(도넛) / 가짜: 중앙 집합 후 죽창 회피</li>
+    <li>혼돈의 불꽃 — 진짜: 중앙 집합 후 죽창 회피 / 가짜: 중앙 집합 후 정지(도넛)</li>
+    <li>살아있는 자의 상처(파랑형) — 같은 색=빈사, 반대 색=거의 무데미지. 진짜: 파랑 / 가짜: 보라</li>
+    <li>살아있는 자의 상처(보라형) — 같은 색=빈사, 반대 색=거의 무데미지. 진짜: 보라 / 가짜: 파랑</li>
+    <li>알라간 필드 — 데미지 받으면 전체 공격. 진짜: 생존 / 가짜: 사망</li>
+    <li>죽음의 초월 — 빈사 상태가 되어야 해제. 진짜: 사망 / 가짜: 생존</li>
   </ul></div>
 
-  <p>요코도리 소울 <span class="jp">おちょくりソウル</span></p>
-  <p>수수께끼 매직 <span class="jp">なぞなぞマジック</span></p>
+  <h2 class="mech" id="p4-ochokuri">요코도리 소울 <span class="jp">おちょくりソウル</span></h2>
+  <p>외주에 케프카와 네오 엑스데스가 출현한다.</p>
 
-  <h2 class="mech">그랜드 크로스 1회차 <span class="jp">グランドクロス 1回目</span></h2>
+  <h3 class="sub">수수께끼 매직 <span class="jp">なぞなぞマジック</span></h3>
+
+  <h2 class="mech" id="p4-gc1">그랜드 크로스 1회차 <span class="jp">グランドクロス 1回目</span></h2>
   <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효(선)</p>
 
-  <h2 class="mech">쓰나미 or 불꽃 1회차 <span class="jp">つなみ or ほのお 1回目</span></h2>
+  <h2 class="mech" id="p4-tsunami1">쓰나미 or 불꽃 1회차 <span class="jp">つなみ or ほのお 1回目</span></h2>
   <p>혼돈의 물 or 혼돈의 불꽃</p>
 
-  <h2 class="mech">그랜드 크로스 2회차 <span class="jp">グランドクロス 2回目</span></h2>
+  <h2 class="mech" id="p4-gc2">그랜드 크로스 2회차 <span class="jp">グランドクロス 2回目</span></h2>
   <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효(후)</p>
 
-  <h2 class="mech">쓰나미 or 불꽃 2회차 <span class="jp">つなみ or ほのお 2回目</span></h2>
+  <h2 class="mech" id="p4-tsunami2">쓰나미 or 불꽃 2회차 <span class="jp">つなみ or ほのお 2回目</span></h2>
   <p>혼돈의 물 or 혼돈의 불꽃</p>
   <p>수수께끼 매직 <span class="jp">なぞなぞマジック</span></p>
 
-  <h2 class="mech">그랜드 크로스 3회차 <span class="jp">グランドクロス 3回目</span></h2>
+  <h2 class="mech" id="p4-gc3">그랜드 크로스 3회차 <span class="jp">グランドクロス 3回目</span></h2>
   <p>살아있는 자의 상처(파랑 or 보라) + 알라간 필드 or 죽음의 초월</p>
   <p>알라간 필드 or 죽음의 초월 해제</p>
 
-  <h2 class="mech">매직 차지 <span class="jp">マジックチャージ</span></h2>
+  <h2 class="mech" id="p4-magic">매직 차지 <span class="jp">マジックチャージ</span></h2>
   <p>물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리</p>
   <p>모리모리 선더가 + 저주의 포효 처리</p>
   <p>두근두근 알테마 <span class="jp">どきどきアルテマ</span></p>
