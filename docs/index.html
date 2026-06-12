@@ -175,8 +175,7 @@
   <a href="#p1-barira">바리바리 루인가</a>
   <a href="#p1-statue1">신들의 상 (1회차)</a>
   <a href="#p1-statue2">신들의 상 (2회차) + 중력탄</a>
-  <a href="#p1-zubi-anyone">즈비즈바 텔레포 (누구나 공격)</a>
-  <a href="#p1-zubi-stable">즈비즈바 텔레포 (안정형)</a>
+  <a href="#p1-zubi-sleep">즈비즈바 텔레포 (혼란·수면 고정)</a>
   <a href="#p1-sankai">산개 최신</a>
   <a href="#p1-enrage">시간 초과</a>
   <a href="#p1-practice">P2 미싱 연습용</a>
@@ -246,58 +245,114 @@
   <p>탱버스터 (90도 부채꼴 범위)</p>
   <p>1회차는 <strong>어그로 1위</strong>, 2회차는 <strong>어그로 2위</strong>에게 온다.</p>
 
-  <h2 class="mech" id="p1-statue1">신들의 상 (1회차) <span class="jp">神々の像（1回目）— 디버프 전달 수정판</span></h2>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780664219421-81c080f8.webp" alt="신들의 상 1회차 1">
-    <img src="https://yan-flash.com/api/uploads/1780415140519-079669c2.webp" alt="신들의 상 1회차 2">
-    <img src="https://yan-flash.com/api/uploads/1780415150106-17646635.webp" alt="신들의 상 1회차 3">
-    <img src="https://yan-flash.com/api/uploads/1780415157693-a7688115.webp" alt="신들의 상 1회차 4">
-    <img src="https://yan-flash.com/api/uploads/1780477037893-6dd133d7.webp" alt="신들의 상 1회차 5">
+  <h2 class="mech" id="p1-statue1">신들의 상 (1회차) <span class="jp">神々の像（1回目）</span></h2>
+  <p>탱힐 또는 딜러에게 <strong>선</strong>이 붙고, 그 뒤 상(像)으로부터 <strong>넉백</strong>이 발생한다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780664219421-81c080f8.webp" alt="신들의 상 1회차 - 진짜/가짜 판단">
+  <div class="cap"><span class="h">🖼 이미지</span>블리자가·파이가 진짜/가짜 판단 배치도. ※ 산개는 상하 반전.
+    <ul>
+      <li>개별 마커가 붙어 있으면 → 산개, 쉐어 마커가 붙어 있으면 → 쉐어로 처리</li>
+      <li>가짜인 경우는 그 반대로 처리. 블리자가도 동일하게, 보이는 범위가 진짜이며 가짜이면 AoE를 밟으러 간다</li>
+      <li>직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=필드 마커 방위</li>
+    </ul>
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>각 컷이 처리 흐름(빔→타워→디버프 전달). 직업 아이콘=담당자, 숫자=순번, 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 화살표=이동/넉백 방향.</div>
-  <ol>
-    <li>탱힐 또는 딜러에게 <strong>선</strong>이 붙고, 그 뒤 상(像)으로부터 <strong>넉백</strong>이 발생한다.</li>
-    <li>블리자가 + 파이가의 <strong>진짜/가짜 장판</strong> (산개인지 쉐어인지 주의) <span class="note">※ 산개는 상하 반전</span></li>
-    <li>상으로부터 탱힐 2명 + 딜러 2명, 총 4명에게 <strong>빔</strong>이 오므로 가로 일렬로 선다. <span class="note">(빔을 받은 위치가 타워 출현 위치가 됨)</span></li>
-    <li>빔을 받지 <strong>않은</strong> 사람이 타워에 들어간다.</li>
-    <li>「츠기츠기 트랩(차례차례 트랩)」 시전이 끝나면 랜덤으로 2명(탱힐 1명·딜러 1명)에게 디버프가 붙는다.<br>
-      0초에 자기 중심으로 폭발하므로, 디버프 전달을 위해 <strong>동·서로 나눠 쉐어로 처리</strong>한다.<br>
-      디버프 보유자는 <strong>바깥에서 안쪽으로</strong> 날아가도록 한다.</li>
-    <li>그 후 「수수께끼 매직(なぞなぞマジック)」이 오므로 <strong>케프카의 진짜/가짜</strong>를 확인하고 기믹 처리.</li>
-  </ol>
+
+  <p>블리자가·파이가의 진짜/가짜를 판단한다. <span class="note">※ 산개는 상하 반전</span><br>
+  개별 마커가 붙어 있으면 산개, 쉐어 마커가 붙어 있으면 쉐어로 처리한다.<br>
+  가짜인 경우는 그 반대로 처리한다.<br>
+  블리자가도 동일하게, 보이는 범위가 진짜이며 가짜이면 AoE를 밟으러 간다.</p>
+
+  <div class="tablewrap">
+    <table class="tl">
+      <thead>
+        <tr><th>메라메라 파이가 <span class="jp">めらめらファイガ</span></th><th>진짜(本当)</th><th>가짜(嘘)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>개별 마커</td><td>산개</td><td>쉐어</td></tr>
+        <tr><td>쉐어 마커</td><td>쉐어</td><td>산개</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780415140519-079669c2.webp" alt="신들의 상 1회차 - 빔 일렬 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>상(像)에서 탱힐 2명·딜러 2명 총 4명에게 빔이 오므로 가로 일렬로 선다. 빔을 받은 위치가 타워 출현 위치가 된다.
+    <ul>
+      <li>직업 아이콘=담당자, 원(○)=빔 착탄 위치(=타워 출현 위치), 바깥 <b>A·B·C·1~4</b>=방위</li>
+    </ul>
+  </div>
+
+  <p>상으로부터 탱힐 2명, 딜러 2명, 총 4명에게 빔이 오므로 <strong>가로 일렬로 선다</strong>. <span class="note">(빔을 받은 위치가 타워 출현 위치가 됨)</span></p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780415150106-17646635.webp" alt="신들의 상 1회차 - 타워 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>빔을 받지 않은 사람이 타워에 들어가는 배치도. 타워(塔) 4개가 가로 일렬로 출현. 직업 아이콘=담당자, 숫자=순번, 바깥 <b>A·C·D</b>=방위.</div>
+
+  <p>빔을 받지 <strong>않은</strong> 사람이 타워에 들어간다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780415157693-a7688115.webp" alt="신들의 상 1회차 - 디버프 전달">
+  <div class="cap"><span class="h">🖼 이미지</span>츠기츠기 트랩 디버프 전달 처리 배치도. 서쪽(탱힐)·동쪽(딜러)으로 나눠 쉐어로 처리. 디버프 보유자는 바깥→안쪽 방향으로 날아간다.
+    <ul>
+      <li>직업 아이콘=담당자, <b>デ</b>=디버프 보유자, 파란 원=쉐어 범위, 화살표=넉백/이동 방향</li>
+      <li>바깥 <b>A·B·C·1~4</b>=방위</li>
+    </ul>
+  </div>
+
+  <p>「츠기츠기 트랩(차례차례 트랩)」 시전이 끝나면 랜덤으로 2명(탱힐 1명·딜러 1명)에게 디버프가 붙으며, 이것을 페이즈 1에서 전달해 나간다.<br>
+  0초에 자기 중심으로 폭발하므로, 디버프 전달을 위해 <strong>동·서로 나눠 쉐어로 처리</strong>한다.<br>
+  디버프 보유자는 <strong>바깥에서 안쪽으로</strong> 날아가도록 한다.</p>
+
+  <p>그 후 「수수께끼 매직(なぞなぞマジック, 블리자가 + 선더가)」이 오므로 <strong>케프카의 진짜/가짜</strong>를 확인하고 기믹 처리.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780477037893-6dd133d7.webp" alt="신들의 상 1회차 - 수수께끼 매직">
+  <div class="cap"><span class="h">🖼 이미지</span>수수께끼 매직 처리 배치도. 케프카의 진짜/가짜 이펙트를 확인하여 기믹 처리. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
 
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
   <p>전체 공격.</p>
 
-  <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ（무영창）</span></h2>
-  <p>심판의 빛 이후 자동공격(AA) 1회를 끼고 <strong>탱버스터 3회</strong>.</p>
-  <p class="note">탱커 무적 버프 권장(?)</p>
+  <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ</span></h2>
+  <p>심판의 빛 이후 <strong>탱버스터 3회</strong>.</p>
 
-  <h2 class="mech" id="p1-statue2">신들의 상 (2회차) <span class="jp">神々の像（2回目）— 디버프 전달 수정판 + 중력탄</span></h2>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780472046333-1f5d6c9a.webp" alt="신들의 상 2회차 1">
-    <img src="https://yan-flash.com/api/uploads/1780472058998-ff131a24.webp" alt="신들의 상 2회차 2">
-    <img src="https://yan-flash.com/api/uploads/1780472076721-5727ee1c.webp" alt="신들의 상 2회차 3">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>상(像) 색 구분에 따른 쉐어/유도 위치 다이어그램. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
-  <p>전원에게 <strong>선</strong>이 붙는다.</p>
+  <h2 class="mech" id="p1-statue2">신들의 상 (2회차) <span class="jp">神々の像（2回目）</span></h2>
+  <p>전원에게 선이 붙으므로, 자신이 어느 선을 갖고 있는지 확인한다.<br>
+  이 선은 탱힐·딜러로 나뉘어 붙는다.<br>
+  선을 확인하고 <strong>남쪽에서 중력탄을 쉐어로 처리</strong>한다.</p>
   <ul>
     <li>상을 봤을 때 <strong>오른쪽 아래(노랑)</strong> → 남쪽에서 쉐어 처리 후 각자 산개</li>
-    <li>상을 봤을 때 <strong>왼쪽 위(보라)</strong> → 남쪽에서 쉐어 처리 후 중앙으로</li>
+    <li>상을 봤을 때 <strong>왼쪽 위(보라)</strong> → 중력탄이 오므로 남쪽에서 쉐어 처리 후 중앙으로 이동</li>
   </ul>
-  <p>바리바리 루인가(탱 스위치? 무적이면 사고가 적을 듯)와 함께 <strong>반갈 장판</strong>이 오므로 상의 이펙트를 확인.</p>
-  <p>다시 전원에게 선이 붙는다. <strong>산개는 상하 반전</strong> → 반갈 장판.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780472046333-1f5d6c9a.webp" alt="신들의 상 2회차 - 선 확인 및 쉐어">
+  <div class="cap"><span class="h">🖼 이미지</span>전원 선 부여 후 남쪽 쉐어 처리 배치도. 직업 아이콘=담당자, 선 색(노랑/보라)=분기 기준, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780472058998-ff131a24.webp" alt="신들의 상 2회차 - 쉐어 후 산개/중앙 이동">
+  <div class="cap"><span class="h">🖼 이미지</span>쉐어 처리 후 분기 배치도. 노랑 선→각자 산개 / 보라 선→중앙으로 이동. 반갈 장판(대각 빨간 줄)이 활성화된 상태. 직업 아이콘=담당자, <b>デ</b>=디버프 보유자, 파란 원=쉐어 범위, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <p>바리바리 루인가(탱버스터) 중에 <strong>반갈 장판</strong>이 오므로 상의 이펙트를 확인한다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780472076721-5727ee1c.webp" alt="신들의 상 2회차 - 반갈 + 중력탄 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>반갈 장판(V자 빨간) 활성화 + 중력탄(파란 큰 원) 배치도. 탱버스터 처리 후 반갈 안지 확인 및 중력탄 위치 파악. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <p>다시 전원에게 선이 붙으므로 앞서와 동일하게 처리한다.<br><strong>산개는 상하 반전</strong> → 반갈 장판.</p>
+
   <div class="imgrow">
     <img src="https://yan-flash.com/api/uploads/1780472098266-ae0efe0f.webp" alt="중력탄 처리 1">
     <img src="https://yan-flash.com/api/uploads/1780472107145-42a25bda.webp" alt="중력탄 처리 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>위·아래 파란 큰 원=그라비가(중력탄) 위치, 가운데 묶인 아이콘=디버프 받기/넉백 대상. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
-  <p>디버프를 전달하기 위해 <strong>서쪽에 탱힐 / 동쪽에 딜러</strong>가 대기하고, 넉백으로 <strong>그라비가(중력탄)</strong>에 맞는다.<br>
-  디버프 보유자는 뒤따라 늪(沼)에 들어간다.</p>
+  <div class="cap"><span class="h">🖼 이미지</span>츠기츠기 트랩 디버프 전달을 위한 넉백+쉐어 처리 배치도.
+    <ul>
+      <li>서쪽 탱힐 / 동쪽 딜러로 나뉘어 쉐어 + 넉백을 받는다</li>
+      <li>넉백으로 그라비가(중력탄) 늪을 밟으러 가고, 디버프 보유자는 뒤따라 늪에 들어간다</li>
+      <li>직업 아이콘=담당자, <b>デ</b>=디버프 보유자, 파란 원=쉐어 범위, 화살표=넉백 방향, 바깥 <b>A·B·C·1~4</b>=방위</li>
+    </ul>
+  </div>
+
+  <p>츠기츠기 트랩 디버프를 전달하기 위해 <strong>서쪽 탱힐 / 동쪽 딜러</strong>로 나눠 쉐어 + 넉백을 받는다.<br>
+  넉백으로 <strong>그라비가(중력탄)</strong>를 밟으러 가고, 디버프 보유자는 뒤따라 늪(沼)에 들어간다.</p>
+
   <div class="imgrow">
     <img src="https://yan-flash.com/api/uploads/1780472122484-d41a66e5.webp" alt="중력탄 처리 3">
     <img src="https://yan-flash.com/api/uploads/1780472131201-ad55b0b3.webp" alt="중력탄 처리 4">
   </div>
+  <div class="cap"><span class="h">🖼 이미지</span>그라비가 늪 처리 후 이동 배치도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
 
   <h2 class="mech">심판의 빛 <span class="jp">裁きの光</span></h2>
   <p>전체 공격.</p>
@@ -305,58 +360,69 @@
   <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ（무영창）</span></h2>
   <p>탱버스터 3회.</p>
 
-  <h2 class="mech" id="p1-zubi-anyone">즈비즈바 텔레포 — 누구나 공격 타입 <span class="jp">ずびずばテレポ だれでも殴れるやつ</span></h2>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780493537210-5286b4f9.webp" alt="즈비즈바 텔레포 기준 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>화살표 디버프 아이콘 모음(기준표). 각 칸이 화살표 방향별 디버프를 나타냄.</div>
+  <h2 class="mech" id="p1-zubi-sleep">즈비즈바 텔레포 — 혼란·수면 고정 <span class="jp">ずびずばテレポ 混乱睡眠固定</span><span class="pill">권장</span></h2>
+  <p>자신에게 붙은 디버프를 확인한다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780493537210-5286b4f9.webp" alt="즈비즈바 텔레포 디버프 기준표">
+  <div class="cap"><span class="h">🖼 이미지</span>즈비즈바 텔레포 화살표 디버프 포지션 기준표.
+    <ul>
+      <li><b>빨간 테두리 포지션</b>: 같은 화살표 디버프인 경우</li>
+      <li><b>파란 테두리 포지션</b>: 다른 화살표 디버프인 경우 (자기에게 붙은 화살표를 따라가면 포지션 파악 용이)</li>
+      <li>각 칸=화살표 방향별 디버프 아이콘 배치표</li>
+    </ul>
+  </div>
+
   <ul>
     <li><strong>같은</strong> 화살표 디버프인 경우 → <span style="color:var(--warn)">빨간 테두리</span> 포지션으로</li>
-    <li><strong>다른</strong> 화살표 디버프인 경우 → <span style="color:var(--accent)">파란 테두리</span> 포지션으로</li>
+    <li><strong>다른</strong> 화살표 디버프인 경우 → <span style="color:var(--accent)">파란 테두리</span> 포지션으로 <span class="note">(자기에게 붙은 화살표를 따라가면 포지션을 찾기 쉬울 수 있음)</span></li>
   </ul>
-  <p class="note">자기에게 붙은 화살표를 따라가면 포지션을 찾기 쉬울 수 있음.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780476493649-398c3c2d.webp" alt="즈비즈바 산개 1">
-    <img src="https://yan-flash.com/api/uploads/1780476939044-17801152.webp" alt="즈비즈바 산개 2">
-    <img src="https://yan-flash.com/api/uploads/1780479425670-abfcee5c.webp" alt="즈비즈바 산개 3">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>같은/다른 화살표 경우별 산개 위치 다이어그램. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위, 빨강/파랑 테두리=위 본문 기준.</div>
-  <p>선과 관계없이 <strong>이미지대로 산개</strong>.</p>
-  <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
 
-  <h2 class="mech" id="p1-zubi-stable">즈비즈바 텔레포 — 안정형 <span class="jp">ずびずばテレポ 安定型</span><span class="pill">권장</span></h2>
-  <div class="callout">
-    <span class="tag">수정 안내</span><br>
-    수면(睡眠)·혼란(混乱)을 판단하고 텔레포하면 성공률이 크게 올랐다.<br>
-    누구나 공격 타입은 6/12(금) HotFix에 적용되지 않으면 삭제 예정이다.
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780476493649-398c3c2d.webp" alt="즈비즈바 텔레포 넉백+쉐어 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>츠기츠기 트랩 디버프 전달을 위한 서쪽 탱힐 / 동쪽 딜러 쉐어 + 넉백 처리 배치도. 반갈 대각 장판 활성화 상태.
+    <ul>
+      <li>직업 아이콘=담당자, <b>デ</b>=디버프 보유자, 파란 원=쉐어 범위, 바깥 <b>A·B·C·1~4</b>=방위</li>
+    </ul>
   </div>
-  <ul>
-    <li>상을 봤을 때 <strong>오른쪽 아래</strong> → <strong>내측 대기 (수면)</strong></li>
-    <li>상을 봤을 때 <strong>왼쪽 위</strong> → <strong>외측 대기 (혼란)</strong></li>
-  </ul>
+
+  <p>츠기츠기 트랩 디버프를 전달하기 위해 <strong>서쪽 탱힐 / 동쪽 딜러</strong>로 나눠 쉐어 + 넉백을 받는다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780476939044-17801152.webp" alt="즈비즈바 텔레포 수면/혼란 대기">
+  <div class="cap"><span class="h">🖼 이미지</span>즈비즈바 텔레포 수면·혼란 판별에 따른 내측/외측 대기 배치도.
+    <ul>
+      <li>상을 봤을 때 오른쪽 아래 선 → <b>내측 대기 (수면)</b></li>
+      <li>상을 봤을 때 왼쪽 위 선 → <b>외측 대기 (혼란)</b></li>
+      <li>혼란 보유자는 조금 더 멀리 떨어져 있으면 텔레포가 더 안정됨</li>
+      <li>직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위</li>
+    </ul>
+  </div>
+
+  <p>상을 봤을 때 <strong>오른쪽 아래 선</strong> → <strong>내측 대기 (수면)</strong><br>
+  상을 봤을 때 <strong>왼쪽 위 선</strong> → <strong>외측 대기 (혼란)</strong><br>
+  혼란 보유자는 조금 더 멀리 떨어져 있으면 텔레포가 더 안정된다.</p>
+
   <div class="imgrow">
     <img src="https://yan-flash.com/api/uploads/1781192772023-ce17de3f.webp" alt="즈비즈바 텔레포 안정형 1">
     <img src="https://yan-flash.com/api/uploads/1781192713887-ec2645d9.webp" alt="즈비즈바 텔레포 안정형 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>즈비즈바 텔레포 안정형 배치도.
+  <div class="cap"><span class="h">🖼 이미지</span>즈비즈바 텔레포 혼란·수면 고정 배치도.
     <ul>
-      <li>왼쪽 이미지: 상(像)이 오른쪽 아래 방향일 때 → 탱커(방패 아이콘)·힐러(십자 아이콘)·딜러 모두 내측(중앙 근처) 대기. 수면 판정.</li>
-      <li>오른쪽 이미지: 상(像)이 왼쪽 위 방향일 때 → 전원 외측(바깥쪽) 대기. 혼란 판정.</li>
-      <li>빨간 테두리=빨간 포지션(같은 화살표), 파란 테두리=파란 포지션(다른 화살표). 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위.</li>
+      <li>왼쪽: 수면(오른쪽 아래 선) 패턴 → 전원 내측(중앙 근처) 대기 배치</li>
+      <li>오른쪽: 혼란(왼쪽 위 선) 패턴 → 전원 외측(바깥쪽) 대기 배치</li>
+      <li>빨간 테두리=같은 화살표 포지션, 파란 테두리=다른 화살표 포지션. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위</li>
     </ul>
   </div>
-  <p><a class="ext" href="https://forum.square-enix.com/ffxiv/threads/529064" target="_blank" rel="noopener noreferrer nofollow">🔗 https://forum.square-enix.com/ffxiv/threads/529064</a></p>
 
-  <h2 class="mech" id="p1-sankai">산개 최신 <span class="jp">散開最新 ※ 즈비즈바 텔레포 기준</span><span class="pill">권장</span></h2>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780749124108-28902b5d.webp" alt="산개 최신 1">
-    <img src="https://yan-flash.com/api/uploads/1780665664588-ff33c45f.webp" alt="산개 최신 2">
-    <img src="https://yan-flash.com/api/uploads/1780665674029-847173d5.webp" alt="산개 최신 3">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>최신 산개·쉐어 위치(권장). 필드는 빨간 반갈 장판 2줄이 대각으로 걸린 상태. 직업 아이콘=담당자, 숫자=순번, 바깥 <b>A·B·C·1~4</b>=방위.</div>
-  <div class="callout">
-    <span class="tag">수정 안내</span><br>
-    이전까지는 즈비즈바 텔레포에서 캐스터·힐러 등을 크게 움직이게 해서 이동이 매우 빡빡했습니다. 액티브(딜 유지)도 고려해 산개·쉐어를 개선했고,<br>
-    이후 "딜량을 고려하면 AC 산개가 안정적"이라 판단했다가 지적을 받아 <strong>최신 산개</strong>로 다시 수정했습니다.<br>
-    앞으로 이 산개를 쓸 때는 최신본을 확인하도록 주변에 알려 주시면 감사하겠습니다. 불편을 끼쳐 죄송합니다.
+  <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1780749124108-28902b5d.webp" alt="시선 기믹 후 산개">
+  <div class="cap"><span class="h">🖼 이미지</span>시선 기믹 + 진짜/가짜 선더가·파이가 처리 배치도. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위.</div>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781262645168-e964e7e9.webp" alt="산개 최신 (즈비즈바 텔레포 기준)" id="p1-sankai">
+  <div class="cap"><span class="h">🖼 이미지</span>산개 최신 배치도 (즈비즈바 텔레포 기준). 혼란·수면 고정 처리 후 산개 위치.
+    <ul>
+      <li>직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위</li>
+      <li>빨간/파란 테두리=같은/다른 화살표 포지션 구분</li>
+    </ul>
   </div>
 
   <h2 class="mech" id="p1-enrage">시간 초과 <span class="jp">時間切れ</span></h2>
@@ -420,7 +486,7 @@
   <div class="cap"><span class="h">🖼 이미지</span>① 미싱 상세 위치도 (8회차 전체 흐름 이미지).
     <ul>
       <li>각 컷 제목(1~8回目)이 해당 타워 회차를 나타냄</li>
-      <li>각 컷 내 라벨: <b>頭→扇</b>(쉐어→부채꼴), <b>頭→円</b>(쉐어→원형), <b>扇→頭</b>(부채꼴→쉐어), <b>円→頭</b>(원형→쉐어), <b>扇→円</b>(부채꼴→원형), <b>円→扇</b>(원형→부채꼴), <b>扇→扇</b>(부채꼴→부채꼴), <b>円→円</b>(원형→원형) = 해당 위치의 처리 흐름</li>
+      <li>각 컷 내 라벨: <b>頭→扇</b>(쉐어→부채꼴), <b>頭→円</b>(쉐어→원형) 등 = 해당 위치의 처리 흐름</li>
       <li>오른쪽 세로 띠 라벨: <b>未来過去誘導</b>=미래·과거 분신 유도, <b>消滅の脚誘導</b>=소멸의 다리 유도</li>
       <li>직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위, 노란/파란/빨간 원=AoE 범위</li>
     </ul>
@@ -794,13 +860,13 @@
 
   <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目</span></h2>
   <p>1회차와 같은 라이트 파티로 나눈다.<br>
-  그 후 엑스데스로부터 선더가(엑스데스에서 가까운 사람)가 오므로, 탱커는 무적을 사용한다(또는 스위치).</p>
-  <p>다음에 카오스가 지진을 시전하며 전체 공격 + 디버프를 부여한다.<br>
-  탱힐과 DPS에서 각각 1명씩 「혼돈의 오니」가 부여된다.<br>
+  그 후 엑스데스로부터 선더가(엑스데스에서 가까운 사람)가 오므로 주의한다 (탱커는 거리 스위치).</p>
+  <p>다음에 카오스가 지진을 시전하며 전체 공격 + 디버프 2종을 부여하고, 탱힐과 DPS에서 각각 1명씩 「혼돈의 오니」가 부여된다.<br>
   이것은 체력을 전부 회복하지 않으면 즉사하는 특수 디버프로, 순서대로 전부 회복시켜 해제해 나간다.<br>
-  디버프 해제 타이밍에 중앙의 땅 크리스탈로부터 전체 공격 + 땅 피해 증가가 오므로, 회복 타이밍을 관리해야 한다.</p>
+  디버프 해제 타이밍에 중앙의 땅 크리스탈로부터 전체 공격 + 땅 피해 증가(2초)가 오므로, 회복 타이밍을 관리해야 한다.</p>
   <p>또한 전원에게 타겟 마커 1~3과 「혼돈의 땅」이 부여되며, 마커는 1번이 3명, 2번이 3명, 3번이 2명에게 붙는다.<br>
-  이것은 HP가 1이 되지 않으면 해제할 수 없는 디버프로, 마커 순서대로 HP가 1이 되는 공격을 받아 해제해 나가는 기믹이다.</p>
+  이것은 HP가 1이 되지 않으면 해제할 수 없는 디버프이다.<br>
+  마커 순서대로 블랙홀에서 뻗어 나오는 선을 받아 빔을 3회 맞아 HP를 1로 만듦으로써 해제해 나간다.</p>
   <p>어택 1 마커가 붙은 3명은<br>
   <code>/mk attack &lt;me&gt;</code><br>
   <code>/micon "attack1" marking</code></p>
@@ -810,7 +876,7 @@
   <p>스톱 1 마커가 붙은 2명은<br>
   <code>/mk stop &lt;me&gt;</code><br>
   <code>/micon "stop1" marking</code></p>
-  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 <strong>케프카를 기준으로 시계 방향으로 우선순위 높은 사람부터</strong> 가져간다.<br>
+  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 <strong>출현하는 거대 케프카를 기준으로 시계 방향으로 우선순위 높은 사람부터</strong> 가져간다.<br>
   블랙홀은 총 4회 출현하며, 각 회차에서 선이 1본 2본 → 3본 3본 3본 → 3본 3본 3본 → 2본 1본 발생한다(합계 24본).<br>
   아래 표는 각 선을 어느 마커·어느 순서로 받아 혼돈의 땅을 해제해 나가는지를 나타낸 것이다.</p>
 
@@ -1056,25 +1122,45 @@
   <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 스톱2 선 처리 + 있는 그대로의 나 회피 배치도. 스톱2는 최외곽으로 빔 유도, 다른 멤버는 분단 AoE 회피.</div>
 
   <h2 class="mech" id="p3-dondoko">동동코 발구르기 <span class="jp">どんどこ地団駄</span></h2>
-  <p>전원 중앙에 집합하여 블리자가를 유도한다.<br>
+  <p>「있는 그대로의 나」를 시전한 곳을 북쪽으로 삼는다 (이미지에서는 마커 1에서 보크친이 왔으므로 1을 북쪽으로 설정하고 있다).<br>
+  전원 중앙에 집합하여 블리자가를 유도한다.<br>
   시전 완료 시 화면에 보이는 케프카의 발을 확인하여 <strong>북서 MT·H1 / 북동 ST·H2 / 남서 D1·D3 / 남동 D2·D4</strong>로 산개한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202549061-817085c4.webp" alt="동동코 발구르기 산개">
-  <div class="cap"><span class="h">🖼 이미지</span>동동코 발구르기 산개 위치. 거대 케프카 발 기준 북쪽 판단 및 롤별 산개 방향 표시.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781267486713-7fe99f0a.webp" alt="동동코 발구르기 산개">
+  <div class="cap"><span class="h">🖼 이미지</span>동동코 발구르기 초기 산개 위치. 거대 케프카 발 2개가 화면 위쪽에 보이고, 중앙에 보스(도넛+원형 범위). 마커 1을 북쪽 기준으로 삼아 롤별로 산개.
+    <ul>
+      <li>직업 아이콘=담당자, 바깥 숫자 <b>1·2·3·4</b>=방위 마커, 화살표=이동 방향</li>
+      <li>북서=MT·H1, 북동=ST·H2, 남서=D1·D3, 남동=D2·D4</li>
+    </ul>
+  </div>
   <p>쉐어 마커(착탄하라)가 붙으므로, 해당 롤은 중앙에서 쉐어로 처리한다.<br>
   쉐어가 붙지 않은 롤은 좌우에 2인용 타워가 출현하므로 그것에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202559488-68790d2b.webp" alt="동동코 발구르기 타워 1">
-  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어(착탄하라) / DPS 타워 패턴. 왼쪽 D1·D3, 오른쪽 D2·D4가 타워에 들어간다.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781267512571-7e09bc92.webp" alt="동동코 발구르기 타워 1">
+  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어(착탄하라) / DPS 타워 패턴. 중앙에 탱힐 쉐어 마커(파란 원 3개), 좌우에 타워(하늘색 원) 출현.
+    <ul>
+      <li>왼쪽 타워=D1·D3, 오른쪽 타워=D2·D4가 들어간다</li>
+      <li>직업 아이콘=담당자, 바깥 <b>1·2·3·4</b>=방위 마커</li>
+    </ul>
+  </div>
   <p>이번에는 탱힐이 쉐어를 하고, DPS가 왼쪽 D1·D3 / 오른쪽 D2·D4로 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202572431-9a930743.webp" alt="동동코 발구르기 타워 2">
-  <div class="cap"><span class="h">🖼 이미지</span>DPS 쉐어 / 탱힐 타워 패턴. 반드시 역 롤에게 쉐어가 붙는다. 왼쪽 MT·H1, 오른쪽 ST·H2가 타워에 들어간다.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781267627569-4272a851.webp" alt="동동코 발구르기 타워 2">
+  <div class="cap"><span class="h">🖼 이미지</span>DPS 쉐어(착탄하라) / 탱힐 타워 패턴. 반드시 역 롤에게 쉐어가 붙는다. 중앙에 DPS 쉐어 마커(빨간 원 2개), 좌우 타워(하늘색 원)에 탱힐이 들어간다.
+    <ul>
+      <li>왼쪽 타워=MT·H1, 오른쪽 타워=ST·H2</li>
+      <li>직업 아이콘=담당자, 바깥 <b>1·2·3·4</b>=방위 마커</li>
+    </ul>
+  </div>
   <p>반드시 반대 롤에게 쉐어가 부여되므로, 이번에는 DPS가 중앙에서 쉐어.<br>
   왼쪽 MT·H1 / 오른쪽 ST·H2가 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202585785-669c5838.webp" alt="동동코 발구르기 타워 3">
-  <div class="cap"><span class="h">🖼 이미지</span>돌격하라(突出せよ) 시전 후 배치. 착탄하라(着弾せよ) 위치에 타케노코(죽창)가 생성되므로 회피. 각 역할별 산개 방향 표시.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781267649750-c3267a49.webp" alt="동동코 발구르기 타워 3">
+  <div class="cap"><span class="h">🖼 이미지</span>돌격하라(突出せよ) 시전 후 배치. 착탄하라(着弾せよ) 위치에 타케노코(죽창)가 생성되므로 회피. 중앙 보스 주변 및 타워 위치와 회피 방향 표시.
+    <ul>
+      <li>직업 아이콘=담당자, 바깥 <b>1·2·3·4</b>=방위 마커, 화살표=이동 방향</li>
+    </ul>
+  </div>
   <p>「돌격하라」 시전 시작에서 착탄하라 위치에 타케노코가 생성되므로 피한다.<br>
   엑스데스가 강화 블리자가를 시전하므로 계속 움직인다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202598187-b5949262.webp" alt="동동코 발구르기 강화 블리자가">
-  <div class="cap"><span class="h">🖼 이미지</span>강화 블리자가 이동 경로 예시. 계속 이동하며 피하는 동선 표시.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781267670598-b292d0fb.webp" alt="동동코 발구르기 강화 블리자가">
+  <div class="cap"><span class="h">🖼 이미지</span>강화 블리자가 처리 단계. 이동하면서 피하는 동선 표시. 직업 아이콘=담당자, 바깥 <b>1·2·3·4</b>=방위 마커.</div>
 </section>
 
 <!-- ===================== PHASE 4 ===================== -->
@@ -1275,6 +1361,7 @@
       </tbody>
     </table>
   </div>
+  <p>이 표에서 알 수 있듯, GC 3회차 시점에서 <strong>알라간 필드라면 이색에 맞는다, 죽음의 초월이라면 동색에 맞는다</strong>를 염두에 두고, 무의 범람이 진짜인지 가짜인지만 보면 판단이 가능하다.</p>
 
   <h2 class="mech" id="p4-magic">매직 차지 <span class="jp">マジックチャージ</span></h2>
   <p>이후에 시전하는 <strong>모리모리 선더가</strong>와 <strong>히로게루 블리자가</strong>의 진짜/가짜를 기억해 둔다.<br>
