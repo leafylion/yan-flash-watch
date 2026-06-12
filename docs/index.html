@@ -193,6 +193,17 @@
   <a href="#p3-baul">바울 오브 아고니 (정공법)</a>
   <a href="#p3-ultima">알테마 블라스터 (주사위)</a>
 
+  <div class="grp">PHASE 3-2</div>
+  <a href="#p3-kessen2">결전 2회차</a>
+  <a href="#p3-binbinta">빈빈빈타</a>
+  <a href="#p3-blackhole1">블랙홀 1회차</a>
+  <a href="#p3-blackhole2">블랙홀 2회차</a>
+  <a href="#p3-blackhole3">블랙홀 3회차</a>
+  <a href="#p3-blackhole4">블랙홀 4회차</a>
+  <a href="#p3-dondoko">동동코 발구르기</a>
+  <a href="#p3-blackhole">블랙홀 선 유도 순서</a>
+  <a href="#p3-timeline">P3 타임라인</a>
+
   <div class="grp">PHASE 4</div>
   <a href="#p4-debuffs">디버프 일람</a>
   <a href="#p4-ochokuri">요코도리 소울</a>
@@ -208,17 +219,6 @@
   <a href="#p4-hiroger">히로게루 블리자가 처리</a>
   <a href="#p4-sakebi">저주의 포효 처리</a>
   <a href="#p4-magicout">매직 아웃 처리</a>
-
-  <div class="grp">PHASE 3-2</div>
-  <a href="#p3-kessen2">결전 2회차</a>
-  <a href="#p3-binbinta">빈빈빈타</a>
-  <a href="#p3-blackhole1">블랙홀 1회차</a>
-  <a href="#p3-blackhole2">블랙홀 2회차</a>
-  <a href="#p3-blackhole3">블랙홀 3회차</a>
-  <a href="#p3-blackhole4">블랙홀 4회차</a>
-  <a href="#p3-dondoko">동동코 발구르기</a>
-  <a href="#p3-blackhole">블랙홀 선 유도 순서</a>
-  <a href="#p3-timeline">P3 타임라인</a>
 </nav>
 
 <main>
@@ -788,6 +788,295 @@
 /micon "1" Waymark</code></pre>
 </section>
 
+<!-- ===================== PHASE 3-2 (Phase 7) ===================== -->
+<section class="phase" id="phase-7">
+  <h2 class="phase-title">PHASE 3-2</h2>
+
+  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目</span></h2>
+  <p>1회차와 같은 라이트 파티로 나눈다.<br>
+  그 후 엑스데스로부터 선더가(엑스데스에서 가까운 사람)가 오므로, 탱커는 무적을 사용한다(또는 스위치).</p>
+  <p>다음에 카오스가 지진을 시전하며 전체 공격 + 디버프를 부여한다.<br>
+  탱힐과 DPS에서 각각 1명씩 「혼돈의 오니」가 부여된다.<br>
+  이것은 체력을 전부 회복하지 않으면 즉사하는 특수 디버프로, 순서대로 전부 회복시켜 해제해 나간다.<br>
+  디버프 해제 타이밍에 중앙의 땅 크리스탈로부터 전체 공격 + 땅 피해 증가가 오므로, 회복 타이밍을 관리해야 한다.</p>
+  <p>또한 전원에게 타겟 마커 1~3과 「혼돈의 땅」이 부여되며, 마커는 1번이 3명, 2번이 3명, 3번이 2명에게 붙는다.<br>
+  이것은 HP가 1이 되지 않으면 해제할 수 없는 디버프로, 마커 순서대로 HP가 1이 되는 공격을 받아 해제해 나가는 기믹이다.</p>
+  <p>어택 1 마커가 붙은 3명은<br>
+  <code>/mk attack &lt;me&gt;</code><br>
+  <code>/micon "attack1" marking</code></p>
+  <p>바인드 1 마커가 붙은 3명은<br>
+  <code>/mk bind &lt;me&gt;</code><br>
+  <code>/micon "bind1" marking</code></p>
+  <p>스톱 1 마커가 붙은 2명은<br>
+  <code>/mk stop &lt;me&gt;</code><br>
+  <code>/micon "stop1" marking</code></p>
+  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 <strong>케프카를 기준으로 시계 방향으로 우선순위 높은 사람부터</strong> 가져간다.<br>
+  블랙홀은 총 4회 출현하며, 각 회차에서 선이 1본 2본 → 3본 3본 3본 → 3본 3본 3본 → 2본 1본 발생한다(합계 24본).<br>
+  아래 표는 각 선을 어느 마커·어느 순서로 받아 혼돈의 땅을 해제해 나가는지를 나타낸 것이다.</p>
+
+  <div class="tablewrap">
+    <table class="tl">
+      <thead>
+        <tr>
+          <th colspan="2">블랙홀 1회차</th>
+          <th colspan="3">블랙홀 2회차</th>
+          <th colspan="3">블랙홀 3회차</th>
+          <th colspan="2">블랙홀 4회차</th>
+        </tr>
+        <tr>
+          <th>1번째 선</th><th>2번째 선</th>
+          <th>1번째 선</th><th>2번째 선</th><th>3번째 선</th>
+          <th>1번째 선</th><th>2번째 선</th><th>3번째 선</th>
+          <th>1번째 선</th><th>2번째 선</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="https://yan-flash.com/api/uploads/1780829643280-28387947.webp" alt="블랙홀1 1번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829667929-8eeb0562.webp" alt="블랙홀1 2번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829675507-5bd24377.webp" alt="블랙홀2 1번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829725893-7e7d1cfe.webp" alt="블랙홀2 2번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829733146-55c34a28.webp" alt="블랙홀2 3번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829739830-d6673c50.webp" alt="블랙홀3 1번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829975591-1f0cf637.webp" alt="블랙홀3 2번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829982914-25e36b0b.webp" alt="블랙홀3 3번째"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829999694-2051aa8c.webp" alt="블랙홀4 1번째"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829682509-fd79c79b.webp" alt="블랙홀1 2번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829689947-9d3729d0.webp" alt="블랙홀2 1번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829696660-ab401a9b.webp" alt="블랙홀2 2번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829909662-3986639a.webp" alt="블랙홀2 3번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829916980-32fddc61.webp" alt="블랙홀3 1번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829924515-8224c709.webp" alt="블랙홀3 2번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780830006586-7b0f347f.webp" alt="블랙홀3 3번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780830013988-561edf96.webp" alt="블랙홀4 1번째 하"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780830020753-2c9a21de.webp" alt="블랙홀4 2번째 하"></td>
+        </tr>
+        <tr>
+          <td></td><td></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829704100-e65c0c30.webp" alt="블랙홀2 1번째 하2"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829710640-db7e0ade.webp" alt="블랙홀2 2번째 하2"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829717225-0d33712b.webp" alt="블랙홀2 3번째 하2"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829934989-181b048b.webp" alt="블랙홀3 1번째 하2"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829949528-6e411003.webp" alt="블랙홀3 2번째 하2"></td>
+          <td><img src="https://yan-flash.com/api/uploads/1780829962056-b7b2233f.webp" alt="블랙홀3 3번째 하2"></td>
+          <td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cap"><span class="h">🖼 이미지 (표 내)</span>블랙홀 1~4회차 각 선 처리 배치도. 직업 아이콘=담당자, 숫자=순번, 마커 아이콘=어택/바인드/스톱 마커.</div>
+
+  <p>주의점으로, 선의 교환이 총 4회 발생한다.</p>
+  <ul>
+    <li>블랙홀 2회차 2번째 선에서 <strong>어택1과 바인드1</strong>이 선을 교환한다.</li>
+    <li>블랙홀 2회차 3번째 선에서 <strong>어택2와 바인드2</strong>가 선을 교환한다.</li>
+    <li>블랙홀 3회차 2번째 선에서 <strong>바인드1과 스톱1</strong>이 선을 교환한다.</li>
+    <li>블랙홀 3회차 3번째 선에서 <strong>바인드2와 스톱2</strong>가 선을 교환한다.</li>
+  </ul>
+  <p>선이 나오는 블랙홀은 반드시 동서남북에 출현한다. <strong>케프카를 기준으로 시계 방향</strong> 우선순위로 가져가고, 빔 방향은 시계 방향이 되도록 향하게 한다.<br>
+  이하는 블랙홀의 출현 위치이다.</p>
+
+  <h2 class="mech" id="p3-blackhole">블랙홀 출현 위치 <span class="jp">ブラックホール出現位置</span></h2>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1780997709588-3f9376bb.webp" alt="블랙홀 출현 위치 1">
+    <img src="https://yan-flash.com/api/uploads/1780997724441-c6fe7ced.webp" alt="블랙홀 출현 위치 2">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 출현 위치 다이어그램. 동서남북 4방향에 블랙홀 출현, 케프카를 기준으로 시계 방향으로 우선순위 지정.</div>
+
+  <h2 class="mech" id="p3-timeline">P3-2 타임라인 <span class="jp">フェーズ3タイムライン</span></h2>
+  <div class="tablewrap">
+    <table class="tl">
+      <thead><tr><th>기믹명</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>결전</td>
+          <td>1회차와 같은 라이트 파티로 나눈다</td>
+        </tr>
+        <tr>
+          <td>선더가(범위 탱버스터) →<br>지진</td>
+          <td>탱버스터(엑스데스에서 가까운 사람)<br>전체 공격 + 혼돈의 오니·혼돈의 땅 부여 (타겟 번호 부여)<br>전체 회복으로 되돌리면서 혼돈의 오니를 하나씩 해제</td>
+        </tr>
+        <tr>
+          <td>빈빈빈타 <span class="jp">ビンビンビンタ</span></td>
+          <td>케프카 정면에서 봐서 왼쪽 손을 올리면 오른쪽 안지 + 중앙에서 부채꼴 쉐어,<br>오른쪽 손을 올리면 왼쪽 안지 + 중앙에서 부채꼴 롤 산개</td>
+        </tr>
+        <tr>
+          <td><strong>블랙홀 1회차</strong></td>
+          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
+        </tr>
+        <tr>
+          <td>선더가(범위 탱버스터)</td>
+          <td>탱버스터(엑스데스에서 가까운 사람)</td>
+        </tr>
+        <tr>
+          <td>빈빈빈타 +<br>다밍 이딕트 <span class="jp">ダミングイーディクト</span></td>
+          <td>카오스가 반갈 장판(랜덤 타겟)을 시전하므로 안지 쪽으로 이동, 케프카의 공격을 피한다<br>케프카를 봐서 왼쪽 손을 올리면 오른쪽 안지 + 중앙에서 부채꼴 쉐어,<br>오른쪽 손을 올리면 왼쪽 안지 + 중앙에서 부채꼴 롤 산개</td>
+        </tr>
+        <tr>
+          <td><strong>블랙홀 2회차</strong></td>
+          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
+        </tr>
+        <tr>
+          <td>다밍 이딕트 +<br>있는 그대로의 나 <span class="jp">ダミングイーディクト+ありのままのボクチン</span></td>
+          <td>케프카가 중앙을 분단하는 AoE를 발생시키고, 추가로 카오스가 반갈 공격</td>
+        </tr>
+        <tr>
+          <td>선더가(범위 탱버스터)</td>
+          <td>탱버스터(엑스데스에서 가까운 사람)</td>
+        </tr>
+        <tr>
+          <td><strong>블랙홀 3회차</strong></td>
+          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
+        </tr>
+        <tr>
+          <td>빈빈빈타 +<br>화이트홀 +<br>호리즌탈 or<br>버티컬 임플로전</td>
+          <td>카오스를 45도 기울여 호리즌탈/버티컬 중 안지로 이동하기 쉽게 한다<br>빈빈빈타를 시전하므로 손을 확인한다<br>화이트홀은 <strong>HP 최대 상태</strong>로 받지 않으면 석화하므로, 힐러는 HP를 채워둘 것</td>
+        </tr>
+        <tr>
+          <td><strong>블랙홀 4회차</strong></td>
+          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
+        </tr>
+        <tr>
+          <td>있는 그대로의 나 <span class="jp">ありのままのボクチン</span></td>
+          <td>케프카가 중앙을 분단하는 AoE를 발생시킨다. <strong>마지막 선 담당자는 주의.</strong></td>
+        </tr>
+        <tr>
+          <td>블리자가 + 동동코 발구르기 + 착탄하라</td>
+          <td>거대 케프카의 발을 보고 북쪽을 판단하여, 롤 2:2 산개<br>쉐어나 타워 처리를 한다</td>
+        </tr>
+        <tr>
+          <td>강화 블리자가 + 돌격하라</td>
+          <td>「돌격하라」는 시전이 보이는 순간 산개한다<br>무의 힘을 흡수한 강화 블리자가가 오므로 계속 움직인다</td>
+        </tr>
+        <tr>
+          <td>메테오 &amp; 바울 오브 아고니 시간 초과</td>
+          <td>시간 초과</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>또한 아래 매크로를 블랙홀 1회차부터 사용하면 파티에 알림을 보낼 수 있어 막공에서 유용하다.</p>
+  <pre><code>/mlock
+/p 《Attack１》선 취득&lt;se.1&gt;&lt;wait.5&gt;
+/p 《Attack１》《Attack２》선 취득&lt;se.1&gt;&lt;wait.23&gt;
+/p 《Attack１》《Attack２》《Attack３》선 취득&lt;se.1&gt;&lt;wait.7&gt;
+/p 《Bind１》、《Attack１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
+/p 《Bind２》、《Attack２》의 선 받을 준비&lt;se.1&gt;&lt;wait.23&gt;
+/p 《Bind１》《Bind２》《Bind３》선 취득&lt;se.1&gt;&lt;wait.7&gt;
+/p 《stop1》、《Bind１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
+/p 《stop２》、《Bind２》의 선 받을 준비&lt;se.1&gt;&lt;wait.20&gt;
+/p 《stop１》《stop２》선 취득&lt;se.1&gt;&lt;wait.5&gt;
+/p 《stop２》선 취득&lt;se.1&gt;</code></pre>
+  <p><a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고 글 (로드스톤)</a></p>
+
+  <h2 class="mech" id="p3-binbinta">빈빈빈타 <span class="jp">ビンビンビンタ</span></h2>
+  <p>빈빈빈타는 케프카를 봐서 향해 왼쪽 손(케프카의 오른손)을 올리는지, 향해 오른쪽 손(케프카의 왼손)을 올리는지에 따라 <strong>롤 산개</strong> 또는 <strong>쉐어</strong>로 변화하는 기믹이다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781027712406-786a3570.webp" alt="빈빈빈타 1">
+    <img src="https://yan-flash.com/api/uploads/1781027720140-e98f7cf7.webp" alt="빈빈빈타 2">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>빈빈빈타 손 확인 패턴:
+    <ul>
+      <li>왼쪽 이미지: 케프카가 왼손 올림 → 오른쪽 안지 + 부채꼴 쉐어</li>
+      <li>오른쪽 이미지: 케프카가 오른손 올림 → 왼쪽 안지 + 롤 산개</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
+  <p>빈빈빈타 후 엑스데스가 블랙홀을 발생시킨다.<br>
+  블랙홀 1회차 1번째 선은 <strong>어택1</strong>이 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201830317-cf64f0cf.webp" alt="블랙홀 1회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선 처리 위치. 어택1 담당자(검붉 마커)가 블랙홀 선을 가져가는 배치도. 케프카를 기준으로 시계 방향 우선순위 적용.</div>
+  <p>2번째 선은 어택1과 어택2가 가져간다.<br>
+  어택2는 1번째 선의 반대쪽에 있는 선을 취득한다(어택1이 가까운 선을 취득하기 때문).</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201842876-9c7c2bf4.webp" alt="블랙홀 1회차 2번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선 처리 위치. 어택1·어택2 배치도. 어택2는 어택1의 반대쪽 블랙홀 선을 취득.</div>
+  <p>2번째 선을 처리 후 바로 선더가가 오므로 주의.<br>
+  탱커 이외의 멤버는 엑스데스에서 멀어지도록 한다.</p>
+  <p>선더가가 터진 뒤 케프카가 이동하므로 카오스의 다밍(랜덤 타겟)에 주의하면서,<br>
+  케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201876147-baf3f6ae.webp" alt="블랙홀 1회차 선더가 후 안지">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 선더가 후 안지 이동 및 쉐어/롤 산개 위치 예시. 케프카의 손 방향에 따른 안지 판단.</div>
+
+  <h2 class="mech" id="p3-blackhole2">블랙홀 2회차 <span class="jp">ブラックホール2回目</span></h2>
+  <p>어택1·어택2·어택3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201930187-5c67451d.webp" alt="블랙홀 2회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선 처리 배치도. 어택1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
+  <p>어택1이 바인드1에게 선을 넘겨준다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201951668-53e68184.webp" alt="블랙홀 2회차 선 교환 1">
+  <div class="cap"><span class="h">🖼 이미지</span>어택1→바인드1 선 교환 배치도. 어택1이 바인드1의 위치로 이동하여 선을 전달.</div>
+  <p>어택2가 바인드2에게 선을 넘겨준다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201967742-d2acb910.webp" alt="블랙홀 2회차 선 교환 2">
+  <div class="cap"><span class="h">🖼 이미지</span>어택2→바인드2 선 교환 배치도. 어택2가 바인드2의 위치로 이동하여 선을 전달.</div>
+  <p>케프카가 이동하므로 카오스를 케프카를 향하거나 등지도록 유도한다.<br>
+  필드를 분단하는 AoE를 발생시키므로 카오스와 케프카를 보고 안지를 판단한다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201993133-e93727ab.webp" alt="블랙홀 2회차 안지 이동">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 안지 이동 예시. 카오스·케프카 위치에 따른 안지 판단 및 다밍 이딕트(분단 AoE) 배치.</div>
+  <p>그 후 엑스데스의 선더가가 오므로 탱커 이외는 엑스데스에서 멀어진다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202003735-d93807c1.webp" alt="블랙홀 2회차 선더가 후">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선더가 후 이동 위치. 탱커만 엑스데스 근처, 나머지는 멀어짐.</div>
+
+  <h2 class="mech" id="p3-blackhole3">블랙홀 3회차 <span class="jp">ブラックホール3回目</span></h2>
+  <p>바인드1·바인드2·바인드3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202022527-33decaa1.webp" alt="블랙홀 3회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 선 처리 배치도. 바인드1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
+  <p>바인드1이 스톱1에게 선을 넘겨준다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202042832-29848eb3.webp" alt="블랙홀 3회차 선 교환 1">
+  <div class="cap"><span class="h">🖼 이미지</span>바인드1→스톱1 선 교환 배치도. 바인드1이 스톱1의 위치로 이동하여 선을 전달.</div>
+  <p>바인드2가 스톱2에게 선을 넘겨준다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202058125-bd72a361.webp" alt="블랙홀 3회차 선 교환 2">
+  <div class="cap"><span class="h">🖼 이미지</span>바인드2→스톱2 선 교환 배치도. 바인드2가 스톱2의 위치로 이동하여 선을 전달.</div>
+  <p>케프카가 이동하므로 카오스를 케프카에 대해 45도로 향하게 한다.<br>
+  케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.<br>
+  또한 이때 화이트홀이 오므로 HP를 전부 채워둔다.</p>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781202073339-796e6e05.webp" alt="블랙홀 3회차 안지 이동 1">
+    <img src="https://yan-flash.com/api/uploads/1781202081513-cbbbd56a.webp" alt="블랙홀 3회차 안지 이동 2">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 카오스 45도 유도 및 빈빈빈타 안지 이동 예시.
+    <ul>
+      <li>왼쪽: 카오스를 케프카에 대해 45도로 유도한 배치, 호리즌탈/버티컬 안지 확인</li>
+      <li>오른쪽: 빈빈빈타 손 방향에 따른 안지 이동 + 화이트홀 HP 관리 타이밍</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p3-blackhole4">블랙홀 4회차 <span class="jp">ブラックホール4回目</span></h2>
+  <p>스톱1과 스톱2가 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202094363-8f254d3c.webp" alt="블랙홀 4회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 선 처리 배치도. 스톱1·스톱2가 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
+  <p>스톱2만 선을 가져가면서 「있는 그대로의 나」에 주의한다.<br>
+  이때 최외곽으로 빔을 유도하면 사고가 적다.<br>
+  다른 멤버는 「있는 그대로의 나」를 피한다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202105124-5d12c3cc.webp" alt="블랙홀 4회차 2번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 스톱2 선 처리 + 있는 그대로의 나 회피 배치도. 스톱2는 최외곽으로 빔 유도, 다른 멤버는 분단 AoE 회피.</div>
+
+  <h2 class="mech" id="p3-dondoko">동동코 발구르기 <span class="jp">どんどこ地団駄</span></h2>
+  <p>전원 중앙에 집합하여 블리자가를 유도한다.<br>
+  시전 완료 시 화면에 보이는 케프카의 발을 확인하여 <strong>북서 MT·H1 / 북동 ST·H2 / 남서 D1·D3 / 남동 D2·D4</strong>로 산개한다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202549061-817085c4.webp" alt="동동코 발구르기 산개">
+  <div class="cap"><span class="h">🖼 이미지</span>동동코 발구르기 산개 위치. 거대 케프카 발 기준 북쪽 판단 및 롤별 산개 방향 표시.</div>
+  <p>쉐어 마커(착탄하라)가 붙으므로, 해당 롤은 중앙에서 쉐어로 처리한다.<br>
+  쉐어가 붙지 않은 롤은 좌우에 2인용 타워가 출현하므로 그것에 들어간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202559488-68790d2b.webp" alt="동동코 발구르기 타워 1">
+  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어(착탄하라) / DPS 타워 패턴. 왼쪽 D1·D3, 오른쪽 D2·D4가 타워에 들어간다.</div>
+  <p>이번에는 탱힐이 쉐어를 하고, DPS가 왼쪽 D1·D3 / 오른쪽 D2·D4로 타워에 들어간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202572431-9a930743.webp" alt="동동코 발구르기 타워 2">
+  <div class="cap"><span class="h">🖼 이미지</span>DPS 쉐어 / 탱힐 타워 패턴. 반드시 역 롤에게 쉐어가 붙는다. 왼쪽 MT·H1, 오른쪽 ST·H2가 타워에 들어간다.</div>
+  <p>반드시 반대 롤에게 쉐어가 부여되므로, 이번에는 DPS가 중앙에서 쉐어.<br>
+  왼쪽 MT·H1 / 오른쪽 ST·H2가 타워에 들어간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202585785-669c5838.webp" alt="동동코 발구르기 타워 3">
+  <div class="cap"><span class="h">🖼 이미지</span>돌격하라(突出せよ) 시전 후 배치. 착탄하라(着弾せよ) 위치에 타케노코(죽창)가 생성되므로 회피. 각 역할별 산개 방향 표시.</div>
+  <p>「돌격하라」 시전 시작에서 착탄하라 위치에 타케노코가 생성되므로 피한다.<br>
+  엑스데스가 강화 블리자가를 시전하므로 계속 움직인다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202598187-b5949262.webp" alt="동동코 발구르기 강화 블리자가">
+  <div class="cap"><span class="h">🖼 이미지</span>강화 블리자가 이동 경로 예시. 계속 이동하며 피하는 동선 표시.</div>
+</section>
+
 <!-- ===================== PHASE 4 ===================== -->
 <section class="phase" id="phase-4">
   <h2 class="phase-title">PHASE 4</h2>
@@ -1091,295 +1380,6 @@
   <p>매직 차지 중:</p>
   <pre><code>/echo 선더가 가짜</code></pre>
   <pre><code>/echo 블리자가 가짜</code></pre>
-</section>
-
-<!-- ===================== PHASE 3-2 (Phase 7) ===================== -->
-<section class="phase" id="phase-7">
-  <h2 class="phase-title">PHASE 3-2</h2>
-
-  <h2 class="mech" id="p3-kessen2">결전 2회차 <span class="jp">決戦2回目</span></h2>
-  <p>1회차와 같은 라이트 파티로 나눈다.<br>
-  그 후 엑스데스로부터 선더가(엑스데스에서 가까운 사람)가 오므로, 탱커는 무적을 사용한다(또는 스위치).</p>
-  <p>다음에 카오스가 지진을 시전하며 전체 공격 + 디버프를 부여한다.<br>
-  탱힐과 DPS에서 각각 1명씩 「혼돈의 오니」가 부여된다.<br>
-  이것은 체력을 전부 회복하지 않으면 즉사하는 특수 디버프로, 순서대로 전부 회복시켜 해제해 나간다.<br>
-  디버프 해제 타이밍에 중앙의 땅 크리스탈로부터 전체 공격 + 땅 피해 증가가 오므로, 회복 타이밍을 관리해야 한다.</p>
-  <p>또한 전원에게 타겟 마커 1~3과 「혼돈의 땅」이 부여되며, 마커는 1번이 3명, 2번이 3명, 3번이 2명에게 붙는다.<br>
-  이것은 HP가 1이 되지 않으면 해제할 수 없는 디버프로, 마커 순서대로 HP가 1이 되는 공격을 받아 해제해 나가는 기믹이다.</p>
-  <p>어택 1 마커가 붙은 3명은<br>
-  <code>/mk attack &lt;me&gt;</code><br>
-  <code>/micon "attack1" marking</code></p>
-  <p>바인드 1 마커가 붙은 3명은<br>
-  <code>/mk bind &lt;me&gt;</code><br>
-  <code>/micon "bind1" marking</code></p>
-  <p>스톱 1 마커가 붙은 2명은<br>
-  <code>/mk stop &lt;me&gt;</code><br>
-  <code>/micon "stop1" marking</code></p>
-  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 <strong>케프카를 기준으로 시계 방향으로 우선순위 높은 사람부터</strong> 가져간다.<br>
-  블랙홀은 총 4회 출현하며, 각 회차에서 선이 1본 2본 → 3본 3본 3본 → 3본 3본 3본 → 2본 1본 발생한다(합계 24본).<br>
-  아래 표는 각 선을 어느 마커·어느 순서로 받아 혼돈의 땅을 해제해 나가는지를 나타낸 것이다.</p>
-
-  <div class="tablewrap">
-    <table class="tl">
-      <thead>
-        <tr>
-          <th colspan="2">블랙홀 1회차</th>
-          <th colspan="3">블랙홀 2회차</th>
-          <th colspan="3">블랙홀 3회차</th>
-          <th colspan="2">블랙홀 4회차</th>
-        </tr>
-        <tr>
-          <th>1번째 선</th><th>2번째 선</th>
-          <th>1번째 선</th><th>2번째 선</th><th>3번째 선</th>
-          <th>1번째 선</th><th>2번째 선</th><th>3번째 선</th>
-          <th>1번째 선</th><th>2번째 선</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="https://yan-flash.com/api/uploads/1780829643280-28387947.webp" alt="블랙홀1 1번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829667929-8eeb0562.webp" alt="블랙홀1 2번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829675507-5bd24377.webp" alt="블랙홀2 1번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829725893-7e7d1cfe.webp" alt="블랙홀2 2번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829733146-55c34a28.webp" alt="블랙홀2 3번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829739830-d6673c50.webp" alt="블랙홀3 1번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829975591-1f0cf637.webp" alt="블랙홀3 2번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829982914-25e36b0b.webp" alt="블랙홀3 3번째"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829999694-2051aa8c.webp" alt="블랙홀4 1번째"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829682509-fd79c79b.webp" alt="블랙홀1 2번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829689947-9d3729d0.webp" alt="블랙홀2 1번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829696660-ab401a9b.webp" alt="블랙홀2 2번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829909662-3986639a.webp" alt="블랙홀2 3번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829916980-32fddc61.webp" alt="블랙홀3 1번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829924515-8224c709.webp" alt="블랙홀3 2번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780830006586-7b0f347f.webp" alt="블랙홀3 3번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780830013988-561edf96.webp" alt="블랙홀4 1번째 하"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780830020753-2c9a21de.webp" alt="블랙홀4 2번째 하"></td>
-        </tr>
-        <tr>
-          <td></td><td></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829704100-e65c0c30.webp" alt="블랙홀2 1번째 하2"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829710640-db7e0ade.webp" alt="블랙홀2 2번째 하2"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829717225-0d33712b.webp" alt="블랙홀2 3번째 하2"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829934989-181b048b.webp" alt="블랙홀3 1번째 하2"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829949528-6e411003.webp" alt="블랙홀3 2번째 하2"></td>
-          <td><img src="https://yan-flash.com/api/uploads/1780829962056-b7b2233f.webp" alt="블랙홀3 3번째 하2"></td>
-          <td></td><td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="cap"><span class="h">🖼 이미지 (표 내)</span>블랙홀 1~4회차 각 선 처리 배치도. 직업 아이콘=담당자, 숫자=순번, 마커 아이콘=어택/바인드/스톱 마커.</div>
-
-  <p>주의점으로, 선의 교환이 총 4회 발생한다.</p>
-  <ul>
-    <li>블랙홀 2회차 2번째 선에서 <strong>어택1과 바인드1</strong>이 선을 교환한다.</li>
-    <li>블랙홀 2회차 3번째 선에서 <strong>어택2와 바인드2</strong>가 선을 교환한다.</li>
-    <li>블랙홀 3회차 2번째 선에서 <strong>바인드1과 스톱1</strong>이 선을 교환한다.</li>
-    <li>블랙홀 3회차 3번째 선에서 <strong>바인드2와 스톱2</strong>가 선을 교환한다.</li>
-  </ul>
-  <p>선이 나오는 블랙홀은 반드시 동서남북에 출현한다. <strong>케프카를 기준으로 시계 방향</strong> 우선순위로 가져가고, 빔 방향은 시계 방향이 되도록 향하게 한다.<br>
-  이하는 블랙홀의 출현 위치이다.</p>
-
-  <h2 class="mech" id="p3-blackhole">블랙홀 출현 위치 <span class="jp">ブラックホール出現位置</span></h2>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1780997709588-3f9376bb.webp" alt="블랙홀 출현 위치 1">
-    <img src="https://yan-flash.com/api/uploads/1780997724441-c6fe7ced.webp" alt="블랙홀 출현 위치 2">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 출현 위치 다이어그램. 동서남북 4방향에 블랙홀 출현, 케프카를 기준으로 시계 방향으로 우선순위 지정.</div>
-
-  <h2 class="mech" id="p3-timeline">P3-2 타임라인 <span class="jp">フェーズ3タイムライン</span></h2>
-  <div class="tablewrap">
-    <table class="tl">
-      <thead><tr><th>기믹명</th><th>내용</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>결전</td>
-          <td>1회차와 같은 라이트 파티로 나눈다</td>
-        </tr>
-        <tr>
-          <td>선더가(범위 탱버스터) →<br>지진</td>
-          <td>탱버스터(엑스데스에서 가까운 사람)<br>전체 공격 + 혼돈의 오니·혼돈의 땅 부여 (타겟 번호 부여)<br>전체 회복으로 되돌리면서 혼돈의 오니를 하나씩 해제</td>
-        </tr>
-        <tr>
-          <td>빈빈빈타 <span class="jp">ビンビンビンタ</span></td>
-          <td>케프카 정면에서 봐서 왼쪽 손을 올리면 오른쪽 안지 + 중앙에서 부채꼴 쉐어,<br>오른쪽 손을 올리면 왼쪽 안지 + 중앙에서 부채꼴 롤 산개</td>
-        </tr>
-        <tr>
-          <td><strong>블랙홀 1회차</strong></td>
-          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
-        </tr>
-        <tr>
-          <td>선더가(범위 탱버스터)</td>
-          <td>탱버스터(엑스데스에서 가까운 사람)</td>
-        </tr>
-        <tr>
-          <td>빈빈빈타 +<br>다밍 이딕트 <span class="jp">ダミングイーディクト</span></td>
-          <td>카오스가 반갈 장판(랜덤 타겟)을 시전하므로 안지 쪽으로 이동, 케프카의 공격을 피한다<br>케프카를 봐서 왼쪽 손을 올리면 오른쪽 안지 + 중앙에서 부채꼴 쉐어,<br>오른쪽 손을 올리면 왼쪽 안지 + 중앙에서 부채꼴 롤 산개</td>
-        </tr>
-        <tr>
-          <td><strong>블랙홀 2회차</strong></td>
-          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
-        </tr>
-        <tr>
-          <td>다밍 이딕트 +<br>있는 그대로의 나 <span class="jp">ダミングイーディクト+ありのままのボクチン</span></td>
-          <td>케프카가 중앙을 분단하는 AoE를 발생시키고, 추가로 카오스가 반갈 공격</td>
-        </tr>
-        <tr>
-          <td>선더가(범위 탱버스터)</td>
-          <td>탱버스터(엑스데스에서 가까운 사람)</td>
-        </tr>
-        <tr>
-          <td><strong>블랙홀 3회차</strong></td>
-          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
-        </tr>
-        <tr>
-          <td>빈빈빈타 +<br>화이트홀 +<br>호리즌탈 or<br>버티컬 임플로전</td>
-          <td>카오스를 45도 기울여 호리즌탈/버티컬 중 안지로 이동하기 쉽게 한다<br>빈빈빈타를 시전하므로 손을 확인한다<br>화이트홀은 <strong>HP 최대 상태</strong>로 받지 않으면 석화하므로, 힐러는 HP를 채워둘 것</td>
-        </tr>
-        <tr>
-          <td><strong>블랙홀 4회차</strong></td>
-          <td>위 표 또는 아래 기믹 처리 이미지를 참고하여 처리</td>
-        </tr>
-        <tr>
-          <td>있는 그대로의 나 <span class="jp">ありのままのボクチン</span></td>
-          <td>케프카가 중앙을 분단하는 AoE를 발생시킨다. <strong>마지막 선 담당자는 주의.</strong></td>
-        </tr>
-        <tr>
-          <td>블리자가 + 동동코 발구르기 + 착탄하라</td>
-          <td>거대 케프카의 발을 보고 북쪽을 판단하여, 롤 2:2 산개<br>쉐어나 타워 처리를 한다</td>
-        </tr>
-        <tr>
-          <td>강화 블리자가 + 돌격하라</td>
-          <td>「돌격하라」는 시전이 보이는 순간 산개한다<br>무의 힘을 흡수한 강화 블리자가가 오므로 계속 움직인다</td>
-        </tr>
-        <tr>
-          <td>메테오 &amp; 바울 오브 아고니 시간 초과</td>
-          <td>시간 초과</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>또한 아래 매크로를 블랙홀 1회차부터 사용하면 파티에 알림을 보낼 수 있어 막공에서 유용하다.</p>
-  <pre><code>/mlock
-/p 《Attack１》선 취득&lt;se.1&gt;&lt;wait.5&gt;
-/p 《Attack１》《Attack２》선 취득&lt;se.1&gt;&lt;wait.23&gt;
-/p 《Attack１》《Attack２》《Attack３》선 취득&lt;se.1&gt;&lt;wait.7&gt;
-/p 《Bind１》、《Attack１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
-/p 《Bind２》、《Attack２》의 선 받을 준비&lt;se.1&gt;&lt;wait.23&gt;
-/p 《Bind１》《Bind２》《Bind３》선 취득&lt;se.1&gt;&lt;wait.7&gt;
-/p 《stop1》、《Bind１》의 선 받을 준비&lt;se.1&gt;&lt;wait.5&gt;
-/p 《stop２》、《Bind２》의 선 받을 준비&lt;se.1&gt;&lt;wait.20&gt;
-/p 《stop１》《stop２》선 취득&lt;se.1&gt;&lt;wait.5&gt;
-/p 《stop２》선 취득&lt;se.1&gt;</code></pre>
-  <p><a class="ext" href="https://jp.finalfantasyxiv.com/lodestone/character/28379497/blog/5694717/" target="_blank" rel="noopener">🔗 참고 글 (로드스톤)</a></p>
-
-  <h2 class="mech" id="p3-binbinta">빈빈빈타 <span class="jp">ビンビンビンタ</span></h2>
-  <p>빈빈빈타는 케프카를 봐서 향해 왼쪽 손(케프카의 오른손)을 올리는지, 향해 오른쪽 손(케프카의 왼손)을 올리는지에 따라 <strong>롤 산개</strong> 또는 <strong>쉐어</strong>로 변화하는 기믹이다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781027712406-786a3570.webp" alt="빈빈빈타 1">
-    <img src="https://yan-flash.com/api/uploads/1781027720140-e98f7cf7.webp" alt="빈빈빈타 2">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>빈빈빈타 손 확인 패턴:
-    <ul>
-      <li>왼쪽 이미지: 케프카가 왼손 올림 → 오른쪽 안지 + 부채꼴 쉐어</li>
-      <li>오른쪽 이미지: 케프카가 오른손 올림 → 왼쪽 안지 + 롤 산개</li>
-    </ul>
-  </div>
-
-  <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
-  <p>빈빈빈타 후 엑스데스가 블랙홀을 발생시킨다.<br>
-  블랙홀 1회차 1번째 선은 <strong>어택1</strong>이 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201830317-cf64f0cf.webp" alt="블랙홀 1회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선 처리 위치. 어택1 담당자(검붉 마커)가 블랙홀 선을 가져가는 배치도. 케프카를 기준으로 시계 방향 우선순위 적용.</div>
-  <p>2번째 선은 어택1과 어택2가 가져간다.<br>
-  어택2는 1번째 선의 반대쪽에 있는 선을 취득한다(어택1이 가까운 선을 취득하기 때문).</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201842876-9c7c2bf4.webp" alt="블랙홀 1회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선 처리 위치. 어택1·어택2 배치도. 어택2는 어택1의 반대쪽 블랙홀 선을 취득.</div>
-  <p>2번째 선을 처리 후 바로 선더가가 오므로 주의.<br>
-  탱커 이외의 멤버는 엑스데스에서 멀어지도록 한다.</p>
-  <p>선더가가 터진 뒤 케프카가 이동하므로 카오스의 다밍(랜덤 타겟)에 주의하면서,<br>
-  케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201876147-baf3f6ae.webp" alt="블랙홀 1회차 선더가 후 안지">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 선더가 후 안지 이동 및 쉐어/롤 산개 위치 예시. 케프카의 손 방향에 따른 안지 판단.</div>
-
-  <h2 class="mech" id="p3-blackhole2">블랙홀 2회차 <span class="jp">ブラックホール2回目</span></h2>
-  <p>어택1·어택2·어택3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201930187-5c67451d.webp" alt="블랙홀 2회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선 처리 배치도. 어택1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
-  <p>어택1이 바인드1에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201951668-53e68184.webp" alt="블랙홀 2회차 선 교환 1">
-  <div class="cap"><span class="h">🖼 이미지</span>어택1→바인드1 선 교환 배치도. 어택1이 바인드1의 위치로 이동하여 선을 전달.</div>
-  <p>어택2가 바인드2에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201967742-d2acb910.webp" alt="블랙홀 2회차 선 교환 2">
-  <div class="cap"><span class="h">🖼 이미지</span>어택2→바인드2 선 교환 배치도. 어택2가 바인드2의 위치로 이동하여 선을 전달.</div>
-  <p>케프카가 이동하므로 카오스를 케프카를 향하거나 등지도록 유도한다.<br>
-  필드를 분단하는 AoE를 발생시키므로 카오스와 케프카를 보고 안지를 판단한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781201993133-e93727ab.webp" alt="블랙홀 2회차 안지 이동">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 안지 이동 예시. 카오스·케프카 위치에 따른 안지 판단 및 다밍 이딕트(분단 AoE) 배치.</div>
-  <p>그 후 엑스데스의 선더가가 오므로 탱커 이외는 엑스데스에서 멀어진다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202003735-d93807c1.webp" alt="블랙홀 2회차 선더가 후">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선더가 후 이동 위치. 탱커만 엑스데스 근처, 나머지는 멀어짐.</div>
-
-  <h2 class="mech" id="p3-blackhole3">블랙홀 3회차 <span class="jp">ブラックホール3回目</span></h2>
-  <p>바인드1·바인드2·바인드3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202022527-33decaa1.webp" alt="블랙홀 3회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 선 처리 배치도. 바인드1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
-  <p>바인드1이 스톱1에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202042832-29848eb3.webp" alt="블랙홀 3회차 선 교환 1">
-  <div class="cap"><span class="h">🖼 이미지</span>바인드1→스톱1 선 교환 배치도. 바인드1이 스톱1의 위치로 이동하여 선을 전달.</div>
-  <p>바인드2가 스톱2에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202058125-bd72a361.webp" alt="블랙홀 3회차 선 교환 2">
-  <div class="cap"><span class="h">🖼 이미지</span>바인드2→스톱2 선 교환 배치도. 바인드2가 스톱2의 위치로 이동하여 선을 전달.</div>
-  <p>케프카가 이동하므로 카오스를 케프카에 대해 45도로 향하게 한다.<br>
-  케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.<br>
-  또한 이때 화이트홀이 오므로 HP를 전부 채워둔다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781202073339-796e6e05.webp" alt="블랙홀 3회차 안지 이동 1">
-    <img src="https://yan-flash.com/api/uploads/1781202081513-cbbbd56a.webp" alt="블랙홀 3회차 안지 이동 2">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 카오스 45도 유도 및 빈빈빈타 안지 이동 예시.
-    <ul>
-      <li>왼쪽: 카오스를 케프카에 대해 45도로 유도한 배치, 호리즌탈/버티컬 안지 확인</li>
-      <li>오른쪽: 빈빈빈타 손 방향에 따른 안지 이동 + 화이트홀 HP 관리 타이밍</li>
-    </ul>
-  </div>
-
-  <h2 class="mech" id="p3-blackhole4">블랙홀 4회차 <span class="jp">ブラックホール4回目</span></h2>
-  <p>스톱1과 스톱2가 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202094363-8f254d3c.webp" alt="블랙홀 4회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 선 처리 배치도. 스톱1·스톱2가 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
-  <p>스톱2만 선을 가져가면서 「있는 그대로의 나」에 주의한다.<br>
-  이때 최외곽으로 빔을 유도하면 사고가 적다.<br>
-  다른 멤버는 「있는 그대로의 나」를 피한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202105124-5d12c3cc.webp" alt="블랙홀 4회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 스톱2 선 처리 + 있는 그대로의 나 회피 배치도. 스톱2는 최외곽으로 빔 유도, 다른 멤버는 분단 AoE 회피.</div>
-
-  <h2 class="mech" id="p3-dondoko">동동코 발구르기 <span class="jp">どんどこ地団駄</span></h2>
-  <p>전원 중앙에 집합하여 블리자가를 유도한다.<br>
-  시전 완료 시 화면에 보이는 케프카의 발을 확인하여 <strong>북서 MT·H1 / 북동 ST·H2 / 남서 D1·D3 / 남동 D2·D4</strong>로 산개한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202549061-817085c4.webp" alt="동동코 발구르기 산개">
-  <div class="cap"><span class="h">🖼 이미지</span>동동코 발구르기 산개 위치. 거대 케프카 발 기준 북쪽 판단 및 롤별 산개 방향 표시.</div>
-  <p>쉐어 마커(착탄하라)가 붙으므로, 해당 롤은 중앙에서 쉐어로 처리한다.<br>
-  쉐어가 붙지 않은 롤은 좌우에 2인용 타워가 출현하므로 그것에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202559488-68790d2b.webp" alt="동동코 발구르기 타워 1">
-  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어(착탄하라) / DPS 타워 패턴. 왼쪽 D1·D3, 오른쪽 D2·D4가 타워에 들어간다.</div>
-  <p>이번에는 탱힐이 쉐어를 하고, DPS가 왼쪽 D1·D3 / 오른쪽 D2·D4로 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202572431-9a930743.webp" alt="동동코 발구르기 타워 2">
-  <div class="cap"><span class="h">🖼 이미지</span>DPS 쉐어 / 탱힐 타워 패턴. 반드시 역 롤에게 쉐어가 붙는다. 왼쪽 MT·H1, 오른쪽 ST·H2가 타워에 들어간다.</div>
-  <p>반드시 반대 롤에게 쉐어가 부여되므로, 이번에는 DPS가 중앙에서 쉐어.<br>
-  왼쪽 MT·H1 / 오른쪽 ST·H2가 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202585785-669c5838.webp" alt="동동코 발구르기 타워 3">
-  <div class="cap"><span class="h">🖼 이미지</span>돌격하라(突出せよ) 시전 후 배치. 착탄하라(着弾せよ) 위치에 타케노코(죽창)가 생성되므로 회피. 각 역할별 산개 방향 표시.</div>
-  <p>「돌격하라」 시전 시작에서 착탄하라 위치에 타케노코가 생성되므로 피한다.<br>
-  엑스데스가 강화 블리자가를 시전하므로 계속 움직인다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781202598187-b5949262.webp" alt="동동코 발구르기 강화 블리자가">
-  <div class="cap"><span class="h">🖼 이미지</span>강화 블리자가 이동 경로 예시. 계속 이동하며 피하는 동선 표시.</div>
 </section>
 
 <footer>
