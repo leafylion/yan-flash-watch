@@ -388,6 +388,16 @@ def main() -> None:
         out = out[:j + len("</html>")]
     out = out.strip()
 
+    # 잘림 방지(핵심): </html> 로 끝나지 않으면 스트림이 중간에 끊긴 불완전 HTML이다.
+    # stop_reason 이 max_tokens 가 아니어도(연결 드롭 등) 잘릴 수 있어 위 트림으로는 못 거른다.
+    # 구조로 검증해 거부한다(과거 잘린 HTML 이 커밋되던 회귀의 근본 차단).
+    if not out.lower().endswith("</html>"):
+        log_tokens(usage, stop_reason, "truncated", cost)
+        alert("⚠️ yan-flash 번역 출력이 </html> 로 끝나지 않음(스트림 잘림 추정) → index.html 미적용.")
+        record_failure(g, src, now, "출력이 </html> 로 끝나지 않음(잘림)")
+        print("ERROR: 응답이 </html>로 끝나지 않음(잘림). index.html 변경 안 함.", file=sys.stderr)
+        sys.exit(1)
+
     if not out.lower().startswith("<!doctype html") or len(out) < 5000:
         log_tokens(usage, stop_reason, "bad_html", cost)
         record_failure(g, src, now, "응답이 올바른 HTML 이 아님")

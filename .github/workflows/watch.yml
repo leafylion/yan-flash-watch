@@ -82,6 +82,9 @@ jobs:
           TRANSLATE_COOLDOWN_HOURS: "6"
           TRANSLATE_COST_ALERT_USD: "1.0"
         run: |
+          # 신규 phase 파일(예: P4 신설)도 diff에 잡히도록 intent-to-add 선처리.
+          # (git diff 는 기본적으로 untracked 신규 파일을 표시하지 않아 새 페이즈가 누락됐었다)
+          git add -N state/guide 2>/dev/null || true
           git diff -- state/guide/ > /tmp/guide.diff || true
           if [[ ! -s /tmp/guide.diff ]]; then
             echo "本文に変更なし — 翻訳スキップ。"
