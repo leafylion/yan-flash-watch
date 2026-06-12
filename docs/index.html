@@ -153,7 +153,6 @@
   table.tl th,table.tl td{border:1px solid var(--border); padding:7px 9px; vertical-align:top; text-align:left}
   table.tl th{background:var(--card2); color:var(--accent2)}
   table.tl td img{display:block; width:auto; height:auto; max-width:42px; max-height:42px; cursor:zoom-in}
-  /* 컬럼 많은 표는 가로 스크롤 래퍼로 감싸 모바일 가로 오버플로 방지 */
   .tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px 0}
   .tablewrap > table.tl{margin:0}
   @media (max-width:860px){
@@ -176,7 +175,8 @@
   <a href="#p1-barira">바리바리 루인가</a>
   <a href="#p1-statue1">신들의 상 (1회차)</a>
   <a href="#p1-statue2">신들의 상 (2회차) + 중력탄</a>
-  <a href="#p1-zubi">즈비즈바 텔레포</a>
+  <a href="#p1-zubi-anyone">즈비즈바 텔레포 (누구나 공격)</a>
+  <a href="#p1-zubi-stable">즈비즈바 텔레포 (안정형)</a>
   <a href="#p1-sankai">산개 최신</a>
   <a href="#p1-enrage">시간 초과</a>
   <a href="#p1-practice">P2 미싱 연습용</a>
@@ -191,6 +191,7 @@
   <a href="#p3-kessen1">결전 1회차</a>
   <a href="#p3-baul-tlb3">바울 오브 아고니 (TLB3)</a>
   <a href="#p3-baul">바울 오브 아고니 (정공법)</a>
+  <a href="#p3-ultima">알테마 블라스터 (주사위)</a>
 
   <div class="grp">PHASE 4</div>
   <a href="#p4-debuffs">디버프 일람</a>
@@ -201,6 +202,12 @@
   <a href="#p4-tsunami2">쓰나미 or 불꽃 2회차</a>
   <a href="#p4-gc3">그랜드 크로스 3회차</a>
   <a href="#p4-magic">매직 차지</a>
+  <a href="#p4-suiatsu">물 속성 압축+가속도 폭탄 처리</a>
+  <a href="#p4-morimori">모리모리 선더가+포효 처리</a>
+  <a href="#p4-dokidoki">두근두근 알테마+혼돈 처리</a>
+  <a href="#p4-hiroger">히로게루 블리자가 처리</a>
+  <a href="#p4-sakebi">저주의 포효 처리</a>
+  <a href="#p4-magicout">매직 아웃 처리</a>
 
   <div class="grp">PHASE 3-2</div>
   <a href="#p3-kessen2">결전 2회차</a>
@@ -247,7 +254,7 @@
     <img src="https://yan-flash.com/api/uploads/1780415157693-a7688115.webp" alt="신들의 상 1회차 4">
     <img src="https://yan-flash.com/api/uploads/1780477037893-6dd133d7.webp" alt="신들의 상 1회차 5">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>각 컷이 처리 흐름(빔→타워→디버프 전달). 직업 아이콘=담당자, 숫자=순번, 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 화살표=이동/넉백 방향. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
+  <div class="cap"><span class="h">🖼 이미지</span>각 컷이 처리 흐름(빔→타워→디버프 전달). 직업 아이콘=담당자, 숫자=순번, 바깥 <b>A·B·C·1~4</b>=필드 마커 방위, 화살표=이동/넉백 방향.</div>
   <ol>
     <li>탱힐 또는 딜러에게 <strong>선</strong>이 붙고, 그 뒤 상(像)으로부터 <strong>넉백</strong>이 발생한다.</li>
     <li>블리자가 + 파이가의 <strong>진짜/가짜 장판</strong> (산개인지 쉐어인지 주의) <span class="note">※ 산개는 상하 반전</span></li>
@@ -272,7 +279,7 @@
     <img src="https://yan-flash.com/api/uploads/1780472058998-ff131a24.webp" alt="신들의 상 2회차 2">
     <img src="https://yan-flash.com/api/uploads/1780472076721-5727ee1c.webp" alt="신들의 상 2회차 3">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>상(像) 색 구분에 따른 쉐어/유도 위치 다이어그램. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
+  <div class="cap"><span class="h">🖼 이미지</span>상(像) 색 구분에 따른 쉐어/유도 위치 다이어그램. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
   <p>전원에게 <strong>선</strong>이 붙는다.</p>
   <ul>
     <li>상을 봤을 때 <strong>오른쪽 아래(노랑)</strong> → 남쪽에서 쉐어 처리 후 각자 산개</li>
@@ -298,9 +305,9 @@
   <h2 class="mech">하이퍼드라이브 <span class="jp">ハイパードライブ（무영창）</span></h2>
   <p>탱버스터 3회.</p>
 
-  <h2 class="mech" id="p1-zubi">즈비즈바 텔레포 <span class="jp">ずびずばテレポ</span></h2>
+  <h2 class="mech" id="p1-zubi-anyone">즈비즈바 텔레포 — 누구나 공격 타입 <span class="jp">ずびずばテレポ だれでも殴れるやつ</span></h2>
   <img class="shot" src="https://yan-flash.com/api/uploads/1780493537210-5286b4f9.webp" alt="즈비즈바 텔레포 기준 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>화살표 디버프 아이콘 모음(기준표). 일본어 문장은 없고, 각 칸이 화살표 방향별 디버프를 나타냄.</div>
+  <div class="cap"><span class="h">🖼 이미지</span>화살표 디버프 아이콘 모음(기준표). 각 칸이 화살표 방향별 디버프를 나타냄.</div>
   <ul>
     <li><strong>같은</strong> 화살표 디버프인 경우 → <span style="color:var(--warn)">빨간 테두리</span> 포지션으로</li>
     <li><strong>다른</strong> 화살표 디버프인 경우 → <span style="color:var(--accent)">파란 테두리</span> 포지션으로</li>
@@ -311,9 +318,31 @@
     <img src="https://yan-flash.com/api/uploads/1780476939044-17801152.webp" alt="즈비즈바 산개 2">
     <img src="https://yan-flash.com/api/uploads/1780479425670-abfcee5c.webp" alt="즈비즈바 산개 3">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>같은/다른 화살표 경우별 산개 위치 다이어그램. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위, 빨강/파랑 테두리=위 본문 기준. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
+  <div class="cap"><span class="h">🖼 이미지</span>같은/다른 화살표 경우별 산개 위치 다이어그램. 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위, 빨강/파랑 테두리=위 본문 기준.</div>
   <p>선과 관계없이 <strong>이미지대로 산개</strong>.</p>
   <p>그 후 상으로부터 <strong>시선 기믹</strong> + 진짜/가짜 선더가 + 진짜/가짜 파이가.</p>
+
+  <h2 class="mech" id="p1-zubi-stable">즈비즈바 텔레포 — 안정형 <span class="jp">ずびずばテレポ 安定型</span><span class="pill">권장</span></h2>
+  <div class="callout">
+    <span class="tag">수정 안내</span><br>
+    수면(睡眠)·혼란(混乱)을 판단하고 텔레포하면 성공률이 크게 올랐다.<br>
+    누구나 공격 타입은 6/12(금) HotFix에 적용되지 않으면 삭제 예정이다.
+  </div>
+  <ul>
+    <li>상을 봤을 때 <strong>오른쪽 아래</strong> → <strong>내측 대기 (수면)</strong></li>
+    <li>상을 봤을 때 <strong>왼쪽 위</strong> → <strong>외측 대기 (혼란)</strong></li>
+  </ul>
+  <div class="imgrow">
+    <img src="https://yan-flash.com/api/uploads/1781192772023-ce17de3f.webp" alt="즈비즈바 텔레포 안정형 1">
+    <img src="https://yan-flash.com/api/uploads/1781192713887-ec2645d9.webp" alt="즈비즈바 텔레포 안정형 2">
+  </div>
+  <div class="cap"><span class="h">🖼 이미지</span>즈비즈바 텔레포 안정형 배치도.
+    <ul>
+      <li>왼쪽 이미지: 상(像)이 오른쪽 아래 방향일 때 → 탱커(방패 아이콘)·힐러(십자 아이콘)·딜러 모두 내측(중앙 근처) 대기. 수면 판정.</li>
+      <li>오른쪽 이미지: 상(像)이 왼쪽 위 방향일 때 → 전원 외측(바깥쪽) 대기. 혼란 판정.</li>
+      <li>빨간 테두리=빨간 포지션(같은 화살표), 파란 테두리=파란 포지션(다른 화살표). 직업 아이콘=담당자, <b>A·B·C·1~4</b>=방위.</li>
+    </ul>
+  </div>
   <p><a class="ext" href="https://forum.square-enix.com/ffxiv/threads/529064" target="_blank" rel="noopener noreferrer nofollow">🔗 https://forum.square-enix.com/ffxiv/threads/529064</a></p>
 
   <h2 class="mech" id="p1-sankai">산개 최신 <span class="jp">散開最新 ※ 즈비즈바 텔레포 기준</span><span class="pill">권장</span></h2>
@@ -337,7 +366,7 @@
   <p>안전하게 미싱 시도 횟수를 늘리고 싶은 사람용.<br>
   아무 생각 없이 <strong>십자(十)로 서 있기만</strong> 하면 됨. <span class="note">(데미지는 아프니 주의)</span></p>
   <img class="shot" src="https://yan-flash.com/api/uploads/1780513699114-3c580a86.webp" alt="P2 미싱 연습용 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>연습용 십자(十) 대기 위치. <span class="note">(이미지 안 일본어 문장은 없음)</span></div>
+  <div class="cap"><span class="h">🖼 이미지</span>연습용 십자(十) 대기 위치.</div>
   <a class="ext" href="https://x.com/Ran_DBanG/status/2061839545449201775" target="_blank" rel="noopener">🎬 참고 영상: 즈비즈바 텔레포 완전 뇌사법 — @Ran_DBanG</a>
 </section>
 
@@ -371,8 +400,15 @@
       · 부채꼴이 붙은 경우: <code>/mk bind &lt;me&gt;</code> / <code>/micon "bind1" marking</code><br>
       8회차 타워 처리는 <strong>마커 숫자 기준(왼쪽1 / 오른쪽2)</strong>으로 처리</li>
   </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781071196447-39fa8204.webp" alt="미싱 ① 처리 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>① 미싱 배치도. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위, 원/부채꼴 마크=디버프 종류.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781204620867-9e6114dd.webp" alt="미싱 ① 처리 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>① 미싱 배치도 (8회차 타워 전체 흐름표). 각 회차별 타워 위치와 역할별 처리 순번 표시.
+    <ul>
+      <li>빨간 테두리 그룹=부채꼴(扇) AoE 담당자 모임, 파란 테두리 그룹=원형(円) AoE 담당자 모임</li>
+      <li>탱크(방패)·힐러(십자)·근접딜러(검붉)·원거리딜러(검파) 아이콘=담당자, 숫자 1~4=회차 내 처리 순번</li>
+      <li>중앙 별(★)=케프카 위치, 바깥 <b>A·B·C·1~4</b>=방위 마커</li>
+      <li>1~8 숫자 = 타워 출현 회차</li>
+    </ul>
+  </div>
 
   <h3 class="sub">과거의 종언 or 미래의 종언 <span class="jp">過去の終焉 or 未来の終焉</span></h3>
   <p>과거의 종언은 장판이 터진 뒤, 타워 사이에서 소멸의 다리 시전 시작까지 대기한다.<br>
@@ -380,14 +416,32 @@
   4회차 과거·미래는 A에 집합해 소멸의 다리를 기믹에 맞게 피한다.</p>
 
   <h3 class="sub">상세 위치 ※이미지를 클릭해서 확인하세요</h3>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781071217561-858ccdbe.webp" alt="미싱 ① 상세 위치 1">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781204662262-62a43331.webp" alt="미싱 ① 상세 위치 1">
+  <div class="cap"><span class="h">🖼 이미지</span>① 미싱 상세 위치도 (8회차 전체 흐름 이미지).
+    <ul>
+      <li>각 컷 제목(1~8回目)이 해당 타워 회차를 나타냄</li>
+      <li>각 컷 내 라벨: <b>頭→扇</b>(쉐어→부채꼴), <b>頭→円</b>(쉐어→원형), <b>扇→頭</b>(부채꼴→쉐어), <b>円→頭</b>(원형→쉐어), <b>扇→円</b>(부채꼴→원형), <b>円→扇</b>(원형→부채꼴), <b>扇→扇</b>(부채꼴→부채꼴), <b>円→円</b>(원형→원형) = 해당 위치의 처리 흐름</li>
+      <li>오른쪽 세로 띠 라벨: <b>未来過去誘導</b>=미래·과거 분신 유도, <b>消滅の脚誘導</b>=소멸의 다리 유도</li>
+      <li>직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위, 노란/파란/빨간 원=AoE 범위</li>
+    </ul>
+  </div>
   <img class="shot" src="https://yan-flash.com/api/uploads/1781071232583-b8905750.webp" alt="미싱 ① 상세 위치 2">
-  <div class="cap"><span class="h">🖼 이미지</span>① 미싱 상세 위치도. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
+  <div class="cap"><span class="h">🖼 이미지</span>① 미싱 홀수 회차 상세 위치도. 홀수 회차(奇数回) 오른쪽 타워 쉐어 위치 표시. 노란 원=부채꼴(扇) 범위, 파란 원=원형(円) 범위. 직업 아이콘=담당자.</div>
   <p class="note">※ 얀 메모<br>
   홀수 회차에서만 오른쪽 타워 쉐어가 멸망의 다리에 치인다는 보고 있음.<br>
   구 얀의 럭비공 오른쪽에 서면 안정적이라고 함.<br>
   또한 소멸의 다리를 유도할 때 타겟 서클에 너무 가까우면 각도가 생기기 쉬우니 주의.<br>
   맥스 멜리로 거리를 두면 각도를 유도하기 쉬움.</p>
+
+  <div style="border:1px solid var(--border); border-radius:12px; padding:14px; margin:14px 0; background:var(--card2)">
+    <div style="font-size:.8rem; color:var(--muted); margin-bottom:6px">
+      <a href="https://x.com/ff14_pylene99/status/2065007208870592937" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none">@ff14_pylene99 (ぴれん@FF14)</a>
+    </div>
+    <p style="margin:0; font-size:.9rem">홀수 회차 오른쪽 타워 쉐어가 소멸의 다리에 맞는다는 의견이 보여서 추기.<br>
+    다리 유도 시 살짝 반시계 방향(보스 기준 오른쪽)으로 이동하거나, 기존처럼 쉐어가 살짝 안쪽으로 들어가면 안전할 것으로 보인다.<br>
+    (단 왼쪽 타워 외부 탱커가 오른쪽 쉐어에 휘말린 사례도 있었으니 너무 가까이 가는 것도 주의)</p>
+    <img src="https://pbs.twimg.com/media/HKhhHBjboAA0tmG.jpg?name=orig" style="max-width:100%; border-radius:8px; margin-top:8px">
+  </div>
 
   <div style="border:1px solid var(--border); border-radius:12px; padding:14px; margin:14px 0; background:var(--card2)">
     <div style="font-size:.8rem; color:var(--muted); margin-bottom:6px">
@@ -414,25 +468,15 @@
       · 부채꼴이 붙은 경우: <code>/mk bind &lt;me&gt;</code> / <code>/micon "bind1" marking</code><br>
       8회차 타워 처리는 <strong>마커 숫자 기준(왼쪽1 / 오른쪽2)</strong>으로 처리</li>
   </ol>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781067324955-0ace01e3.webp" alt="미싱 ② 처리 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>② 미싱 배치도. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
-
-  <h3 class="sub">상세 위치 ※이미지를 클릭해서 확인하세요</h3>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781067345030-bde9e3b2.webp" alt="미싱 ② 상세 위치 1">
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781043082810-284a2bd4.webp" alt="미싱 ② 상세 위치 2">
-  <div class="cap"><span class="h">🖼 이미지</span>② 미싱 상세 위치도. 직업 아이콘=담당자, 숫자=순번, <b>A·B·C·1~4</b>=방위.</div>
-  <p class="note">※ 홀수 회차에서만 오른쪽 타워 쉐어가 멸망의 다리에 치인다는 보고 있음.<br>
-  구 얀의 럭비공 오른쪽에 서면 안정적이라고 함.</p>
-
-  <div style="border:1px solid var(--border); border-radius:12px; padding:14px; margin:14px 0; background:var(--card2)">
-    <div style="font-size:.8rem; color:var(--muted); margin-bottom:6px">
-      <a href="https://x.com/ff14_pylene99/status/2064553429968806148" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none">@ff14_pylene99 (ぴれん@FF14)</a>
-    </div>
-    <p style="margin:0; font-size:.9rem">감각적으로 알고 있던 분도 많을 거라 생각하지만 발안 유래는 이쪽.<br>
-    게다가 부채꼴의 각도가 90°이므로, 중심의 수직선 위라면 타워를 밟지 않는 한 원형 AoE에는 맞지 않음.<br>
-    ※ 너무 멀어지면 원형에 부채꼴이 날아가는 경우 있음.<br>
-    이를 이해하면 어딘가의 포지션이 조금 어긋나도 조정 가능한 경우도 있음.</p>
-    <img src="https://pbs.twimg.com/media/HKbEZtsbsAAHaxz.jpg?name=orig" style="max-width:100%; border-radius:8px; margin-top:8px">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781204684419-10dc2396.webp" alt="미싱 ② 처리 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>② 미싱 배치도 (8회차 타워 전체 흐름표).
+    <ul>
+      <li>각 회차별 타워 위치와 역할별 처리 순번 표시 (①~⑧ = 처리 순번)</li>
+      <li>빨간 테두리 그룹=부채꼴(扇) AoE 담당자, 파란 테두리 그룹=원형(円) AoE 담당자</li>
+      <li>탱크(방패)·힐러(십자)·근접딜러(검붉)·원거리딜러(검파) 아이콘=담당자</li>
+      <li>중앙 별=케프카, 바깥 <b>A·B·C·1~4</b>=방위 마커</li>
+      <li>① 미싱과 달리 쉐어(頭割り) 우선순위 조정이 남쪽 기준으로 이루어지는 점이 차이</li>
+    </ul>
   </div>
 
   <h2 class="mech" id="p2-trine">트라인 <span class="jp">トライン</span></h2>
@@ -485,8 +529,9 @@
   <div class="cap"><span class="h">🖼 이미지</span>혼돈의 물 처리 단계 배치도. 직업 아이콘=담당자, 화살표=이동 방향.</div>
   <p>혼돈의 물을 처리한다. 이쪽도 앞서와 동일하게 처리.</p>
   <img class="shot" src="https://yan-flash.com/api/uploads/1781106483622-6f903379.webp" alt="TLB3식 배치 3">
-  <div class="cap"><span class="h">🖼 이미지</span>D3가 카오스의 앰브라 매시를 유도하고, MT가 엑스데스를 바람 크리스탈로 유도하는 단계 배치도.</div>
-  <p>D3는 카오스의 앰브라 매시를 유도하고, MT는 엑스데스를 바람 크리스탈로 유도한다.</p>
+  <div class="cap"><span class="h">🖼 이미지</span>MT가 엑스데스를 바람 크리스탈로 유도하고, D3가 카오스의 앰브라 매시를 유도하는 단계 배치도.</div>
+  <p>MT는 엑스데스를 바람 크리스탈로 유도한다.<br>
+  D3는 카오스의 앰브라 매시를 유도한다(시전이 보이면 위치 확정).</p>
   <img class="shot" src="https://yan-flash.com/api/uploads/1781106504036-46590fa8.webp" alt="TLB3식 배치 4">
   <div class="cap"><span class="h">🖼 이미지</span>진공파 처리 단계 배치도. 넉백 방향 확인 및 집합 처리 위치 표시.</div>
   <p>진공파 시전 70% 정도에서 탱크 LB3을 발동하고, 넉백 방향에 주의하며 집합해서 처리한다.</p>
@@ -552,30 +597,195 @@
     </video>
   </div>
 
+  <h2 class="mech" id="p3-ultima">알테마 블라스터 — 주사위 배치 <span class="jp">アルテマブラスター サイコロ</span></h2>
   <p>알테마 블라스터는 <strong>진공파 도중에 확인</strong>하는 기믹이다.<br>
   케프카가 처음 돌진하여 그 도착 지점을 기준으로, 2회차 돌진이 <strong>시계 방향 · 반시계 방향</strong> 중 어느 쪽에서 오는지 확인한다.<br>
   주사위(サイコロ)는 그 돌진과 <strong>반대 방향</strong>으로 순서대로 나열한다.<br>
   이미지 예시에서는 케프카가 남서에서 북동으로 돌진하고, 그 후 반시계 방향으로 돌진하고 있으므로,<br>
   그것을 기준으로 1번부터 <strong>시계 방향</strong>으로 늘어선다.</p>
   <img class="shot" src="https://yan-flash.com/api/uploads/1781174669406-92acd8d8.webp" alt="알테마 블라스터 주사위 배치 예시">
-  <div class="cap"><span class="h">🖼 이미지</span>알테마 블라스터 주사위 배치 예시. 필드 위에 케프카의 돌진 방향을 화살표로 표시:
+  <div class="cap"><span class="h">🖼 이미지</span>알테마 블라스터 주사위 배치 예시.
     <ul>
       <li><b>가장 긴 선(화살표)</b> = 1발째 돌진 방향 (예: 남서→북동)</li>
-      <li><b>짧은 선(화살표)</b> = 2발째 돌진 방향 (예: 반시계 방향)</li>
-      <li>숫자 <b>1~8</b> = 주사위 번호가 배치되는 순번 (2발째 돌진과 반대 방향인 시계 방향으로 1부터 나열)</li>
-      <li>바깥 <b>1~8</b> 육각 마커 = 필드 방위 마커</li>
+      <li><b>짧은 선(화살표)</b> = 2발째 돌진 방향 (반시계 방향)</li>
+      <li>숫자 <b>①~⑧</b> = 주사위 번호 배치 순번 (2발째 돌진과 반대인 시계 방향으로 나열)</li>
+      <li>바깥 <b>A·B·C·D·1~4</b> = 필드 방위 마커</li>
     </ul>
     ※ 화살표는 케프카의 돌진 이미지. 가장 긴 선이 1발째, 짧은 선이 2발째 돌진.
   </div>
   <p class="note">※ 화살표는 케프카의 돌진을 이미지화한 것.<br>
   가장 긴 선이 1발째 돌진, 짧은 선이 2발째 돌진.</p>
 
-  <p>수동으로 마커를 찍고<br>
-  <code>/p 시계 방향</code><br>
-  <code>/p 반시계 방향</code><br>
-  이라고 매크로를 누르면 사고가 적다.</p>
-
   <p>그 후 엑스데스가 탱버스터 선더가(엑스데스에서 가까운 사람)를 시전해 온다.</p>
+
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781191349337-af776764.webp" alt="주사위 배치 매크로 인게임 확인">
+  <div class="cap"><span class="h">🖼 이미지</span>인게임 채팅창에 표시된 주사위 배치 매크로 예시. 케프카가 시계 방향, 주사위가 반시계 방향인 경우의 A 마커 기준 배치표. <b>①~⑧</b>=각 플레이어 배치 위치, <b>A·B·C·D·1~4</b>=방위 마커.</div>
+
+  <p>케프카가 시계 방향, 주사위가 반시계 방향인 경우의 매크로</p>
+  <pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ①　　⑧
+/p 　　１　　　　　２
+/p 　②　　　　　　　⑦
+/p  D　　　　　　　　　B
+/p  　③　　　　　　　⑥
+/p  　　４　　　　　３
+/p   　　　④　　⑤
+/p  　　　　　C
+/micon "A" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑧　　⑦
+/p 　　１　　　　　２
+/p 　①　　　　　　　⑥
+/p  D　　　　　　　　　B
+/p  　②　　　　　　　⑤
+/p  　　４　　　　　３
+/p   　　　③　　④
+/p  　　　　　C
+/micon "1" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑦　　⑥
+/p 　　１　　　　　２
+/p 　⑧　　　　　　　⑤
+/p  D　　　　　　　　　B
+/p  　①　　　　　　　④
+/p  　　４　　　　　３
+/p   　　　②　　③
+/p  　　　　　C
+/micon "D" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑥　　⑤
+/p 　　１　　　　　２
+/p 　⑦　　　　　　　④
+/p  D　　　　　　　　　B
+/p  　⑧　　　　　　　③
+/p  　　４　　　　　３
+/p   　　　①　　②
+/p  　　　　　C
+/micon "4" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑤　　④
+/p 　　１　　　　　２
+/p 　⑥　　　　　　　③
+/p  D　　　　　　　　　B
+/p  　⑦　　　　　　　②
+/p  　　４　　　　　３
+/p   　　　⑧　　①
+/p  　　　　　C
+/micon "C" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ④　　③
+/p 　　１　　　　　２
+/p 　⑤　　　　　　　②
+/p  D　　　　　　　　　B
+/p  　⑥　　　　　　　①
+/p  　　４　　　　　３
+/p   　　　⑦　　⑧
+/p  　　　　　C
+/micon "3" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ③　　②
+/p 　　１　　　　　２
+/p 　④　　　　　　　①
+/p  D　　　　　　　　　B
+/p  　⑤　　　　　　　⑧
+/p  　　４　　　　　３
+/p   　　　⑥　　⑦
+/p  　　　　　C
+/micon "B" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ②　　①
+/p 　　１　　　　　２
+/p 　③　　　　　　　⑧
+/p  D　　　　　　　　　B
+/p  　④　　　　　　　⑦
+/p  　　４　　　　　３
+/p   　　　⑤　　⑥
+/p  　　　　　C
+/micon "2" Waymark</code></pre>
+  <p>케프카가 반시계 방향, 주사위가 시계 방향인 경우의 매크로</p>
+  <pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑧　　①
+/p 　　１　　　　　２
+/p 　⑦　　　　　　　②
+/p  D　　　　　　　　　B
+/p  　⑥　　　　　　　③
+/p  　　４　　　　　３
+/p   　　　⑤　　④
+/p  　　　　　C
+/micon "A" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑦　　⑧
+/p 　　１　　　　　２
+/p 　⑥　　　　　　　①
+/p  D　　　　　　　　　B
+/p  　⑤　　　　　　　②
+/p  　　４　　　　　３
+/p   　　　④　　③
+/p  　　　　　C
+/micon "2" Waymark</code></pre><pre><code>
+/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑥　　⑦
+/p 　　１　　　　　２
+/p 　⑤　　　　　　　⑧
+/p  D　　　　　　　　　B
+/p  　④　　　　　　　①
+/p  　　４　　　　　３
+/p   　　　③　　②
+/p  　　　　　C
+/micon "B" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ⑤　　⑥
+/p 　　１　　　　　２
+/p 　④　　　　　　　⑦
+/p  D　　　　　　　　　B
+/p  　③　　　　　　　⑧
+/p  　　４　　　　　３
+/p   　　　②　　①
+/p  　　　　　C
+/micon "3" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ④　　⑤
+/p 　　１　　　　　２
+/p 　③　　　　　　　⑥
+/p  D　　　　　　　　　B
+/p  　②　　　　　　　⑦
+/p  　　４　　　　　３
+/p   　　　①　　⑧
+/p  　　　　　C
+/micon "C" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ③　　④
+/p 　　１　　　　　２
+/p 　②　　　　　　　⑤
+/p  D　　　　　　　　　B
+/p  　①　　　　　　　⑥
+/p  　　４　　　　　３
+/p   　　　⑧　　⑦
+/p  　　　　　C
+/micon "4" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ②　　③
+/p 　　１　　　　　２
+/p 　①　　　　　　　④
+/p  D　　　　　　　　　B
+/p  　⑧　　　　　　　⑤
+/p  　　４　　　　　３
+/p   　　　⑦　　⑥
+/p  　　　　　C
+/micon "D" Waymark</code></pre><pre><code>/p -----------------------------------
+/p  　　　　　A
+/p  　　　 ①　　②
+/p 　　１　　　　　２
+/p 　⑧　　　　　　　③
+/p  D　　　　　　　　　B
+/p  　⑦　　　　　　　④
+/p  　　４　　　　　３
+/p   　　　⑥　　⑤
+/p  　　　　　C
+/micon "1" Waymark</code></pre>
 </section>
 
 <!-- ===================== PHASE 4 ===================== -->
@@ -592,7 +802,7 @@
   <div class="tablewrap" id="p4-debuffs">
     <table class="tl">
       <thead>
-        <tr><th></th><th>진짜(本当)</th><th>가짜(嘘)</th></tr>
+        <tr><th>디버프</th><th>진짜(本当)</th><th>가짜(嘘)</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -671,7 +881,7 @@
           <td>
             <img src="https://yan-flash.com/api/uploads/1781174118522-6b0c92f4.webp" alt="アラガンフィールド"><br>
             알라간 필드<br>
-            <span class="note">받은 데미지만큼 전체 공격이 되므로<br>데미지를 받지 않을 것.</span>
+            <span class="note">받은 데미지만큼 전체 공격이 되므로<br>데미지를 받지 않을 것 (이색에 맞을 것).</span>
           </td>
           <td>살아남는다</td>
           <td>죽는다</td>
@@ -680,7 +890,7 @@
           <td>
             <img src="https://yan-flash.com/api/uploads/1781174163488-b85ab16f.webp" alt="死の超越"><br>
             죽음의 초월<br>
-            <span class="note">빈사가 되지 않으면 자신이 죽으므로<br>데미지를 받을 것.</span>
+            <span class="note">빈사가 되지 않으면 자신이 죽으므로<br>데미지를 일부러 받을 것 (동색에 맞을 것).</span>
           </td>
           <td>죽는다</td>
           <td>살아남는다</td>
@@ -697,8 +907,8 @@
     <li>혼돈의 불꽃 — 진짜: 중앙 집합 후 죽창 회피 / 가짜: 중앙 집합 후 정지(도넛)</li>
     <li>살아있는 자의 상처(파랑형) — 같은 색=빈사, 반대 색=거의 무데미지. 진짜: 파랑 / 가짜: 보라</li>
     <li>살아있는 자의 상처(보라형) — 같은 색=빈사, 반대 색=거의 무데미지. 진짜: 보라 / 가짜: 파랑</li>
-    <li>알라간 필드 — 데미지 받으면 전체 공격. 진짜: 생존 / 가짜: 사망</li>
-    <li>죽음의 초월 — 빈사 상태가 되어야 해제. 진짜: 사망 / 가짜: 생존</li>
+    <li>알라간 필드 — 데미지 받으면 전체 공격. 이색에 맞을 것. 진짜: 생존 / 가짜: 사망</li>
+    <li>죽음의 초월 — 빈사 상태가 되어야 해제. 동색에 맞을 것. 진짜: 사망 / 가짜: 생존</li>
   </ul></div>
 
   <h2 class="mech" id="p4-ochokuri">요코도리 소울 <span class="jp">おちょくりソウル</span></h2>
@@ -707,39 +917,154 @@
   <h3 class="sub">수수께끼 매직 <span class="jp">なぞなぞマジック</span></h3>
 
   <h2 class="mech" id="p4-gc1">그랜드 크로스 1회차 <span class="jp">グランドクロス 1回目</span></h2>
-  <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효(선)</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781177574599-d03d925d.webp" alt="그랜드 크로스 1회차 배치">
-  <div class="cap"><span class="h">🖼 이미지</span>그랜드 크로스 1회차 디버프 처리 배치도. 필드 중앙에 케프카(황금 마스크) 아이콘, 좌측 카오스·우측 케프카&엑스데스가 외주에 배치됨.
+  <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효 <strong>(早: 빠른 타이밍)</strong> 가 부여된다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781181286165-2f3570e3.webp" alt="그랜드 크로스 1회차 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>그랜드 크로스 1회차 디버프 부여 배치도.
     <ul>
-      <li>왼쪽 세로 목록: 역할별(탱크·힐러·DPS) 처리 담당자와 각자의 디버프 아이콘 조합 표시 (숫자 1~4=처리 순번)</li>
-      <li>중앙 붉은 원=타겟 서클, 중앙 아이콘 군(탱크·딜러 아이콘+숫자 1~4)=집합/처리 위치</li>
-      <li>우측 상단 붉은 물음표 구체=가짜 이펙트, 파란 구체=진짜 이펙트 구분</li>
-      <li>직업 아이콘=담당자, 숫자=처리 순번, 디버프 아이콘=각 담당자에게 붙은 디버프 종류</li>
+      <li>왼쪽 하단 역할별 목록: 탱크(방패①), 탱크(방패②), 힐러(십자①), 힐러(십자②), 근접딜(검①), 근접딜(검②), 딜(검③), 딜(검④) = 각자 부여될 디버프 조합</li>
+      <li>각 줄의 <b>早</b>(노랑, 빠른 타이밍) 또는 <b>遅</b>(파랑, 느린 타이밍) 라벨 = 저주의 포효 해제 타이밍</li>
+      <li>둥근 물음표 아이콘(빨강·노랑) = 진짜/가짜 이펙트 구체</li>
+      <li>중앙 별=케프카, 바깥 <b>A·B·C·1~4</b>=방위 마커</li>
     </ul>
   </div>
 
   <h2 class="mech" id="p4-tsunami1">쓰나미 or 불꽃 1회차 <span class="jp">つなみ or ほのお 1回目</span></h2>
-  <p>혼돈의 물 or 혼돈의 불꽃</p>
+  <p>혼돈의 물 or 혼돈의 불꽃이 부여된다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781181305506-1671d839.webp" alt="쓰나미 or 불꽃 1회차 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>쓰나미 or 불꽃 1회차 디버프 부여 상태.
+    <ul>
+      <li>왼쪽 하단 역할별 목록: 각 역할에 부여된 기존 디버프 목록에 혼돈의 물/불꽃 디버프 아이콘이 추가됨</li>
+      <li><b>早/遅</b>=저주의 포효 타이밍, 빨간 인간 실루엣 아이콘=혼돈의 불꽃, 파란 물방울 아이콘=혼돈의 물</li>
+    </ul>
+  </div>
 
   <h2 class="mech" id="p4-gc2">그랜드 크로스 2회차 <span class="jp">グランドクロス 2回目</span></h2>
-  <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효(후)</p>
+  <p>가속도 폭탄 + 포크 라이트닝 + 물 속성 압축 + 저주의 포효 <strong>(遅: 느린 타이밍)</strong> 가 부여된다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781205479283-6059fcf2.webp" alt="그랜드 크로스 2회차 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>그랜드 크로스 2회차 디버프 부여 배치도.
+    <ul>
+      <li>왼쪽 하단 역할별 목록: 1회차에 이어 추가 디버프가 쌓인 상태 표시</li>
+      <li><b>早/遅</b>=저주의 포효 타이밍, 물방울/인간 실루엣 아이콘=혼돈의 물/불꽃, 구체 아이콘=가속도 폭탄</li>
+      <li>중앙 별=케프카, 바깥 <b>A·B·C·1~4</b>=방위 마커</li>
+    </ul>
+  </div>
 
   <h2 class="mech" id="p4-tsunami2">쓰나미 or 불꽃 2회차 <span class="jp">つなみ or ほのお 2回目</span></h2>
-  <p>혼돈의 물 or 혼돈의 불꽃</p>
+  <p>혼돈의 물 or 혼돈의 불꽃이 부여된다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781181338740-09563e46.webp" alt="쓰나미 or 불꽃 2회차 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>쓰나미 or 불꽃 2회차 디버프 부여 상태. 왼쪽 하단 역할별 목록: 기존 디버프에 2회차 혼돈의 물/불꽃이 추가된 상태.</div>
   <p>수수께끼 매직 <span class="jp">なぞなぞマジック</span></p>
 
   <h2 class="mech" id="p4-gc3">그랜드 크로스 3회차 <span class="jp">グランドクロス 3回目</span></h2>
-  <p>살아있는 자의 상처(파랑 or 보라) + 알라간 필드 or 죽음의 초월</p>
+  <p>살아있는 자의 상처(파랑 or 보라) + 알라간 필드 or 죽음의 초월이 부여된다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781181352692-30c9e613.webp" alt="그랜드 크로스 3회차 배치">
+  <div class="cap"><span class="h">🖼 이미지</span>그랜드 크로스 3회차 디버프 부여 배치도. 왼쪽 하단 목록: 살아있는 자의 상처(청/보라 원 아이콘), 알라간 필드/죽음의 초월(방패형·인형 아이콘)이 각 역할에 부여됨.</div>
   <p>알라간 필드 or 죽음의 초월 해제</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781185833424-0ae88cdc.webp" alt="GC3 해제 배치 + 표">
+  <div class="cap"><span class="h">🖼 이미지</span>알라간 필드·죽음의 초월 해제 단계 배치도 및 색 결과 표.
+    <ul>
+      <li>화면은 필드가 좌(파랑)·우(보라)로 분할된 상태</li>
+      <li>왼쪽(파랑)=진짜 영역, 오른쪽(보라)=가짜 영역</li>
+      <li>각 직업 아이콘 위치=해당 역할의 이동 위치</li>
+    </ul>
+  </div>
+
+  <div class="tablewrap">
+    <table class="tl">
+      <thead>
+        <tr><th>디버프</th><th>GC 3회차</th><th>무의 범람</th><th>색 결과</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>살아남는다 (알라간 필드)</td><td>진짜</td><td>진짜</td><td>이색</td></tr>
+        <tr><td>살아남는다 (알라간 필드)</td><td>진짜</td><td>가짜</td><td>동색</td></tr>
+        <tr><td>살아남는다 (알라간 필드)</td><td>가짜</td><td>진짜</td><td>이색</td></tr>
+        <tr><td>살아남는다 (알라간 필드)</td><td>가짜</td><td>가짜</td><td>동색</td></tr>
+        <tr><td>죽는다 (죽음의 초월)</td><td>진짜</td><td>진짜</td><td>동색</td></tr>
+        <tr><td>죽는다 (죽음의 초월)</td><td>진짜</td><td>가짜</td><td>이색</td></tr>
+        <tr><td>죽는다 (죽음의 초월)</td><td>가짜</td><td>진짜</td><td>동색</td></tr>
+        <tr><td>죽는다 (죽음의 초월)</td><td>가짜</td><td>가짜</td><td>이색</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2 class="mech" id="p4-magic">매직 차지 <span class="jp">マジックチャージ</span></h2>
-  <p>물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리</p>
-  <p>모리모리 선더가 + 저주의 포효 처리</p>
-  <p>두근두근 알테마 <span class="jp">どきどきアルテマ</span></p>
-  <p>혼돈의 불꽃 or 혼돈의 물 처리</p>
-  <p>히로게루 블리자가 + 물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리</p>
-  <p>저주의 포효 처리</p>
-  <p>매직 아웃 + 혼돈의 불꽃 or 혼돈의 물 처리</p>
+  <p>이후에 시전하는 <strong>모리모리 선더가</strong>와 <strong>히로게루 블리자가</strong>의 진짜/가짜를 기억해 둔다.<br>
+  마지막에 시전하는 <strong>매직 아웃</strong>에 그것이 반영된다.</p>
+
+  <div class="tablewrap">
+    <table class="tl">
+      <thead>
+        <tr><th>모리모리 선더가 /<br>히로게루 블리자가</th><th>매직 아웃</th><th>결과</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>진짜</td><td>진짜</td><td>진짜</td></tr>
+        <tr><td>진짜</td><td>가짜</td><td>가짜</td></tr>
+        <tr><td>가짜</td><td>진짜</td><td>가짜</td></tr>
+        <tr><td>가짜</td><td>가짜</td><td>진짜</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="mech" id="p4-suiatsu">물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리</h2>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781182517344-3170ed6e.webp" alt="물 속성 압축+포크 라이트닝+가속도 폭탄 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>물 속성 압축·포크 라이트닝·가속도 폭탄 처리 단계 배치도.
+    <ul>
+      <li>왼쪽 하단 역할별 목록 열람: 각 역할의 현재 보유 디버프 목록 (진짜/가짜 분기 포함)</li>
+      <li>필드가 좌(파랑)/우(보라)로 분할되어 있음 — 각자 이동 위치 확인</li>
+      <li>중앙 위쪽 아이콘: 쉐어(두 인물 겹침 아이콘)=쉐어 처리 그룹, 인물 단독=산개 처리</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p4-morimori">모리모리 선더가 + 저주의 포효 처리 <span class="jp">もりもりサンダガ+呪詛の叫声 処理</span></h2>
+  <p>포효 보유자는 중앙에 집합하여 GC 1회차의 진짜/가짜를 확인하고 처리한다.<br>
+  또한 이 모리모리 선더가의 진짜/가짜는 이후의 매직 아웃에 영향을 준다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781188459365-9fce5986.webp" alt="모리모리 선더가+저주의 포효 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>모리모리 선더가 + 저주의 포효 처리 단계 배치도.
+    <ul>
+      <li>왼쪽 하단 역할별 목록: 포효 보유자(早/遅 아이콘)가 중앙 집합, 나머지는 산개</li>
+      <li>필드 중앙 집합 위치: 포효 보유자가 중앙에 모여 진짜/가짜 에펙트 확인</li>
+      <li>진짜=보지 않음, 가짜=본다</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p4-dokidoki">두근두근 알테마 + 혼돈의 불꽃 or 혼돈의 물 처리 <span class="jp">どきどきアルテマ + 混沌の炎 or 混沌の水 処理</span></h2>
+  <p>전체 공격.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781188935493-da50ef37.webp" alt="두근두근 알테마+혼돈 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>두근두근 알테마 + 혼돈의 불꽃/물 처리 단계 배치도.
+    <ul>
+      <li>전체 공격(두근두근 알테마) 후 혼돈의 불꽃·물 처리</li>
+      <li>왼쪽 하단 역할별 목록: 각 역할의 현재 디버프 목록 (혼돈의 물=파란 물방울, 혼돈의 불꽃=빨간 인물 실루엣)</li>
+      <li>중앙=집합 후 처리 위치, 죽창(タケノコ) 또는 도넛 회피</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p4-hiroger">히로게루 블리자가 + 물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리 <span class="jp">ひろげるブリザガ + 水属性圧縮 + フォールライトニング + 加速度爆弾 処理</span></h2>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781205832777-12d234b9.webp" alt="히로게루 블리자가 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>히로게루 블리자가 + 물 속성 압축 + 포크 라이트닝 + 가속도 폭탄 처리 단계 배치도.
+    <ul>
+      <li>왼쪽 하단 역할별 목록: 각 역할의 현재 디버프 조합 확인 (물방울=물 속성 압축, 번개=포크 라이트닝, 구체=가속도 폭탄)</li>
+      <li>필드 좌우 분할 + 중앙 안지를 확인하여 이동</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p4-sakebi">저주의 포효 처리 <span class="jp">呪詛の叫声 処理</span></h2>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781189992102-82fe2540.webp" alt="저주의 포효 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>저주의 포효(遅: 느린 타이밍) 처리 단계 배치도.
+    <ul>
+      <li>왼쪽 하단 역할별 목록: 포효(遅) 보유자가 중앙 집합하여 진짜/가짜 확인</li>
+      <li>진짜=보지 않음(시선 회피), 가짜=본다</li>
+    </ul>
+  </div>
+
+  <h2 class="mech" id="p4-magicout">매직 아웃 + 혼돈의 불꽃 or 혼돈의 물 처리 <span class="jp">マジックアウト + 混沌の炎 or 混沌の水 処理</span></h2>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781190552829-90af35ee.webp" alt="매직 아웃 처리">
+  <div class="cap"><span class="h">🖼 이미지</span>매직 아웃 + 혼돈의 불꽃/물 처리 단계 배치도.
+    <ul>
+      <li>매직 차지에서 기억한 선더가/블리자가 진짜/가짜 × 매직 아웃 진짜/가짜 조합으로 결과 결정</li>
+      <li>왼쪽 하단 역할별 목록: 최종 처리 디버프 조합 확인</li>
+      <li>중앙=집합 후 죽창/도넛 회피</li>
+    </ul>
+  </div>
   <p>두근두근 알테마<br><strong>24.9% 이하</strong>에서 최종 페이즈</p>
 
   <p>아래 매크로를 준비해두면 좋다.</p>
@@ -790,7 +1115,7 @@
   <p>스톱 1 마커가 붙은 2명은<br>
   <code>/mk stop &lt;me&gt;</code><br>
   <code>/micon "stop1" marking</code></p>
-  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 우선순위 높은 사람부터 시계 방향으로 가져간다.<br>
+  <p>이 마커에 따라 블랙홀에서 뻗어 나오는 선을 <strong>케프카를 기준으로 시계 방향으로 우선순위 높은 사람부터</strong> 가져간다.<br>
   블랙홀은 총 4회 출현하며, 각 회차에서 선이 1본 2본 → 3본 3본 3본 → 3본 3본 3본 → 2본 1본 발생한다(합계 24본).<br>
   아래 표는 각 선을 어느 마커·어느 순서로 받아 혼돈의 땅을 해제해 나가는지를 나타낸 것이다.</p>
 
@@ -857,14 +1182,15 @@
     <li>블랙홀 3회차 2번째 선에서 <strong>바인드1과 스톱1</strong>이 선을 교환한다.</li>
     <li>블랙홀 3회차 3번째 선에서 <strong>바인드2와 스톱2</strong>가 선을 교환한다.</li>
   </ul>
-  <p>선이 나오는 블랙홀은 반드시 동서남북에 출현하므로, 북쪽부터 시계 방향 우선순위로 가져가고, 빔 방향은 반드시 시계 방향이 되도록 향하게 한다.</p>
+  <p>선이 나오는 블랙홀은 반드시 동서남북에 출현한다. <strong>케프카를 기준으로 시계 방향</strong> 우선순위로 가져가고, 빔 방향은 시계 방향이 되도록 향하게 한다.<br>
+  이하는 블랙홀의 출현 위치이다.</p>
 
   <h2 class="mech" id="p3-blackhole">블랙홀 출현 위치 <span class="jp">ブラックホール出現位置</span></h2>
   <div class="imgrow">
     <img src="https://yan-flash.com/api/uploads/1780997709588-3f9376bb.webp" alt="블랙홀 출현 위치 1">
     <img src="https://yan-flash.com/api/uploads/1780997724441-c6fe7ced.webp" alt="블랙홀 출현 위치 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 출현 위치 다이어그램. 동서남북 4방향에 블랙홀 출현, 북쪽부터 시계 방향으로 우선순위 지정.</div>
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 출현 위치 다이어그램. 동서남북 4방향에 블랙홀 출현, 케프카를 기준으로 시계 방향으로 우선순위 지정.</div>
 
   <h2 class="mech" id="p3-timeline">P3-2 타임라인 <span class="jp">フェーズ3タイムライン</span></h2>
   <div class="tablewrap">
@@ -969,88 +1295,90 @@
   <h2 class="mech" id="p3-blackhole1">블랙홀 1회차 <span class="jp">ブラックホール1回目</span></h2>
   <p>빈빈빈타 후 엑스데스가 블랙홀을 발생시킨다.<br>
   블랙홀 1회차 1번째 선은 <strong>어택1</strong>이 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989562748-ab723416.webp" alt="블랙홀 1회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선 처리 위치. 어택1 담당자가 블랙홀 선을 가져가는 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201830317-cf64f0cf.webp" alt="블랙홀 1회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 1번째 선 처리 위치. 어택1 담당자(검붉 마커)가 블랙홀 선을 가져가는 배치도. 케프카를 기준으로 시계 방향 우선순위 적용.</div>
   <p>2번째 선은 어택1과 어택2가 가져간다.<br>
-  1번째 선이 나올 때 이미 선이 나올 블랙홀이 결정되어 있으므로 어택2는 미리 준비해 둔다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780989896543-9d3aed60.webp" alt="블랙홀 1회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선 처리 위치. 어택1·어택2 담당자 배치도.</div>
+  어택2는 1번째 선의 반대쪽에 있는 선을 취득한다(어택1이 가까운 선을 취득하기 때문).</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201842876-9c7c2bf4.webp" alt="블랙홀 1회차 2번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 2번째 선 처리 위치. 어택1·어택2 배치도. 어택2는 어택1의 반대쪽 블랙홀 선을 취득.</div>
   <p>2번째 선을 처리 후 바로 선더가가 오므로 주의.<br>
   탱커 이외의 멤버는 엑스데스에서 멀어지도록 한다.</p>
   <p>선더가가 터진 뒤 케프카가 이동하므로 카오스의 다밍(랜덤 타겟)에 주의하면서,<br>
   케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.</p>
-  <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781028085574-1d1255ff.webp" alt="블랙홀 1회차 3">
-    <img src="https://yan-flash.com/api/uploads/1780990332952-97553e42.webp" alt="블랙홀 1회차 4">
-  </div>
-  <div class="cap"><span class="h">🖼 이미지</span>선더가 후 안지 이동 및 쉐어/롤 산개 위치 예시.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201876147-baf3f6ae.webp" alt="블랙홀 1회차 선더가 후 안지">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 1회차 선더가 후 안지 이동 및 쉐어/롤 산개 위치 예시. 케프카의 손 방향에 따른 안지 판단.</div>
 
   <h2 class="mech" id="p3-blackhole2">블랙홀 2회차 <span class="jp">ブラックホール2回目</span></h2>
-  <p>어택1·어택2·어택3이 시계 방향 우선순위로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1780990594556-834921ff.webp" alt="블랙홀 2회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 1번째 선 처리 위치. 어택1·2·3 배치도.</div>
+  <p>어택1·어택2·어택3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201930187-5c67451d.webp" alt="블랙홀 2회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선 처리 배치도. 어택1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
   <p>어택1이 바인드1에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019036241-a1946d39.webp" alt="블랙홀 2회차 선 교환 1">
-  <div class="cap"><span class="h">🖼 이미지</span>어택1→바인드1 선 교환 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201951668-53e68184.webp" alt="블랙홀 2회차 선 교환 1">
+  <div class="cap"><span class="h">🖼 이미지</span>어택1→바인드1 선 교환 배치도. 어택1이 바인드1의 위치로 이동하여 선을 전달.</div>
   <p>어택2가 바인드2에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019146677-e66ded57.webp" alt="블랙홀 2회차 선 교환 2">
-  <div class="cap"><span class="h">🖼 이미지</span>어택2→바인드2 선 교환 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201967742-d2acb910.webp" alt="블랙홀 2회차 선 교환 2">
+  <div class="cap"><span class="h">🖼 이미지</span>어택2→바인드2 선 교환 배치도. 어택2가 바인드2의 위치로 이동하여 선을 전달.</div>
   <p>케프카가 이동하므로 카오스를 케프카를 향하거나 등지도록 유도한다.<br>
   필드를 분단하는 AoE를 발생시키므로 카오스와 케프카를 보고 안지를 판단한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781019443203-71952f21.webp" alt="블랙홀 2회차 안지 이동">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 안지 이동 예시. 카오스·케프카 위치에 따른 안지 판단.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781201993133-e93727ab.webp" alt="블랙홀 2회차 안지 이동">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 안지 이동 예시. 카오스·케프카 위치에 따른 안지 판단 및 다밍 이딕트(분단 AoE) 배치.</div>
   <p>그 후 엑스데스의 선더가가 오므로 탱커 이외는 엑스데스에서 멀어진다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781021343604-938b665d.webp" alt="블랙홀 2회차 선더가 후">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선더가 후 이동 위치.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202003735-d93807c1.webp" alt="블랙홀 2회차 선더가 후">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 2회차 선더가 후 이동 위치. 탱커만 엑스데스 근처, 나머지는 멀어짐.</div>
 
   <h2 class="mech" id="p3-blackhole3">블랙홀 3회차 <span class="jp">ブラックホール3回目</span></h2>
-  <p>바인드1·바인드2·바인드3이 시계 방향 우선순위로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781023322683-d8eb4e9b.webp" alt="블랙홀 3회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 1번째 선 처리 위치. 바인드1·2·3 배치도.</div>
+  <p>바인드1·바인드2·바인드3이 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202022527-33decaa1.webp" alt="블랙홀 3회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 선 처리 배치도. 바인드1·2·3이 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
   <p>바인드1이 스톱1에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781025639533-4530da7b.webp" alt="블랙홀 3회차 선 교환 1">
-  <div class="cap"><span class="h">🖼 이미지</span>바인드1→스톱1 선 교환 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202042832-29848eb3.webp" alt="블랙홀 3회차 선 교환 1">
+  <div class="cap"><span class="h">🖼 이미지</span>바인드1→스톱1 선 교환 배치도. 바인드1이 스톱1의 위치로 이동하여 선을 전달.</div>
   <p>바인드2가 스톱2에게 선을 넘겨준다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781025677873-db28c00c.webp" alt="블랙홀 3회차 선 교환 2">
-  <div class="cap"><span class="h">🖼 이미지</span>바인드2→스톱2 선 교환 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202058125-bd72a361.webp" alt="블랙홀 3회차 선 교환 2">
+  <div class="cap"><span class="h">🖼 이미지</span>바인드2→스톱2 선 교환 배치도. 바인드2가 스톱2의 위치로 이동하여 선을 전달.</div>
   <p>케프카가 이동하므로 카오스를 케프카에 대해 45도로 향하게 한다.<br>
   케프카의 올린 손을 확인하여 안지로 이동하고, 쉐어 또는 롤 산개를 한다.<br>
   또한 이때 화이트홀이 오므로 HP를 전부 채워둔다.</p>
   <div class="imgrow">
-    <img src="https://yan-flash.com/api/uploads/1781027805827-dfd44c30.webp" alt="블랙홀 3회차 안지 이동 1">
-    <img src="https://yan-flash.com/api/uploads/1781028238050-aea10c7d.webp" alt="블랙홀 3회차 안지 이동 2">
+    <img src="https://yan-flash.com/api/uploads/1781202073339-796e6e05.webp" alt="블랙홀 3회차 안지 이동 1">
+    <img src="https://yan-flash.com/api/uploads/1781202081513-cbbbd56a.webp" alt="블랙홀 3회차 안지 이동 2">
   </div>
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 카오스 45도 유도 및 빈빈빈타 안지 이동 예시. 화이트홀 HP 관리 타이밍.</div>
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 3회차 카오스 45도 유도 및 빈빈빈타 안지 이동 예시.
+    <ul>
+      <li>왼쪽: 카오스를 케프카에 대해 45도로 유도한 배치, 호리즌탈/버티컬 안지 확인</li>
+      <li>오른쪽: 빈빈빈타 손 방향에 따른 안지 이동 + 화이트홀 HP 관리 타이밍</li>
+    </ul>
+  </div>
 
   <h2 class="mech" id="p3-blackhole4">블랙홀 4회차 <span class="jp">ブラックホール4回目</span></h2>
-  <p>스톱1과 스톱2가 시계 방향 우선순위로 선을 가져간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781028901155-6f399769.webp" alt="블랙홀 4회차 1번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 1번째 선 처리 위치. 스톱1·스톱2 배치도.</div>
+  <p>스톱1과 스톱2가 <strong>케프카를 기준으로 시계 방향</strong>으로 선을 가져간다.</p>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202094363-8f254d3c.webp" alt="블랙홀 4회차 1번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 선 처리 배치도. 스톱1·스톱2가 케프카를 기준으로 시계 방향 우선순위로 선을 취득.</div>
   <p>스톱2만 선을 가져가면서 「있는 그대로의 나」에 주의한다.<br>
   이때 최외곽으로 빔을 유도하면 사고가 적다.<br>
   다른 멤버는 「있는 그대로의 나」를 피한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781030323092-0803ab08.webp" alt="블랙홀 4회차 2번째 선">
-  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 스톱2 선 처리 + 있는 그대로의 나 회피 배치도.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202105124-5d12c3cc.webp" alt="블랙홀 4회차 2번째 선">
+  <div class="cap"><span class="h">🖼 이미지</span>블랙홀 4회차 스톱2 선 처리 + 있는 그대로의 나 회피 배치도. 스톱2는 최외곽으로 빔 유도, 다른 멤버는 분단 AoE 회피.</div>
 
   <h2 class="mech" id="p3-dondoko">동동코 발구르기 <span class="jp">どんどこ地団駄</span></h2>
   <p>전원 중앙에 집합하여 블리자가를 유도한다.<br>
   시전 완료 시 화면에 보이는 케프카의 발을 확인하여 <strong>북서 MT·H1 / 북동 ST·H2 / 남서 D1·D3 / 남동 D2·D4</strong>로 산개한다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781084883495-670b3f90.webp" alt="동동코 발구르기 산개">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202549061-817085c4.webp" alt="동동코 발구르기 산개">
   <div class="cap"><span class="h">🖼 이미지</span>동동코 발구르기 산개 위치. 거대 케프카 발 기준 북쪽 판단 및 롤별 산개 방향 표시.</div>
-  <p>쉐어 마커가 붙으므로, 해당 롤은 중앙에서 쉐어로 처리한다.<br>
+  <p>쉐어 마커(착탄하라)가 붙으므로, 해당 롤은 중앙에서 쉐어로 처리한다.<br>
   쉐어가 붙지 않은 롤은 좌우에 2인용 타워가 출현하므로 그것에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781034532821-14da8cc1.webp" alt="동동코 발구르기 타워 1">
-  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어 / DPS 타워 패턴. 왼쪽 D1·D3, 오른쪽 D2·D4가 타워에 들어간다.</div>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202559488-68790d2b.webp" alt="동동코 발구르기 타워 1">
+  <div class="cap"><span class="h">🖼 이미지</span>탱힐 쉐어(착탄하라) / DPS 타워 패턴. 왼쪽 D1·D3, 오른쪽 D2·D4가 타워에 들어간다.</div>
   <p>이번에는 탱힐이 쉐어를 하고, DPS가 왼쪽 D1·D3 / 오른쪽 D2·D4로 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781034545016-4183ed88.webp" alt="동동코 발구르기 타워 2">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202572431-9a930743.webp" alt="동동코 발구르기 타워 2">
   <div class="cap"><span class="h">🖼 이미지</span>DPS 쉐어 / 탱힐 타워 패턴. 반드시 역 롤에게 쉐어가 붙는다. 왼쪽 MT·H1, 오른쪽 ST·H2가 타워에 들어간다.</div>
   <p>반드시 반대 롤에게 쉐어가 부여되므로, 이번에는 DPS가 중앙에서 쉐어.<br>
   왼쪽 MT·H1 / 오른쪽 ST·H2가 타워에 들어간다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781034555522-653aabf4.webp" alt="동동코 발구르기 타워 3">
-  <div class="cap"><span class="h">🖼 이미지</span>돌격하라 시전 후 산개 위치. 각 역할별 산개 방향 표시.</div>
-  <p>「돌격하라」 시전 시작에서 죽창 생성 위치가 확정되므로 산개한다.<br>
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202585785-669c5838.webp" alt="동동코 발구르기 타워 3">
+  <div class="cap"><span class="h">🖼 이미지</span>돌격하라(突出せよ) 시전 후 배치. 착탄하라(着弾せよ) 위치에 타케노코(죽창)가 생성되므로 회피. 각 역할별 산개 방향 표시.</div>
+  <p>「돌격하라」 시전 시작에서 착탄하라 위치에 타케노코가 생성되므로 피한다.<br>
   엑스데스가 강화 블리자가를 시전하므로 계속 움직인다.</p>
-  <img class="shot" src="https://yan-flash.com/api/uploads/1781085949308-c118c44a.webp" alt="동동코 발구르기 강화 블리자가">
+  <img class="shot" src="https://yan-flash.com/api/uploads/1781202598187-b5949262.webp" alt="동동코 발구르기 강화 블리자가">
   <div class="cap"><span class="h">🖼 이미지</span>강화 블리자가 이동 경로 예시. 계속 이동하며 피하는 동선 표시.</div>
 </section>
 
