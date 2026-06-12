@@ -11,6 +11,7 @@ watch.py(check.py)が「更新履歴」リストを監視するのに対し、�
     git diff state/guide/                 # 前回からの変更を確認
 """
 import codecs
+import json
 import re
 import sys
 import urllib.request
@@ -82,6 +83,13 @@ def main() -> None:
               file=sys.stderr)
         sys.exit(1)
     OUT.mkdir(parents=True, exist_ok=True)
+    # phases 는 원문 데이터 배열 순서(=사이트 표시·전투 순서)대로 들어 있다.
+    # 파일은 안정적 diff 를 위해 phaseN.html(번호 그대로)로 저장하되, **표시 순서**는
+    # order.json 에 따로 기록한다. 번역본의 섹션 순서가 이 순서를 따라야 하기 때문
+    # (번호순이 아니라 원문 배열 순서. 예: 1,2,3,7,4 처럼 번호와 순서가 다를 수 있다).
+    src_order = list(phases.keys())
+    (OUT / "order.json").write_text(json.dumps(src_order) + "\n", encoding="utf-8")
+    print(f"source order(배열 순서): {src_order}")
     for phase, body in sorted(phases.items(), key=lambda kv: int(kv[0])):
         (OUT / f"phase{phase}.html").write_text(pretty(body), encoding="utf-8")
         imgs = len(re.findall(r'/api/uploads/', body))

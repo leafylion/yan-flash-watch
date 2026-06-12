@@ -62,6 +62,16 @@ SYSTEM = """\
 너는 FFXIV 절 「妖精乱舞(요성난무)」 공략의 한국어 번역본 docs/index.html을 유지보수한다.
 원문(일본어)이 바뀌면, 바뀐 부분만 번역본에 반영한다.
 
+대원칙(다른 모든 규칙에 우선):
+이 페이지는 원문 페이지의 **번역본**이다. 전체 섹션(페이즈)의 **순서**, **이미지와 그 순서**,
+**공략 절차·구조**는 반드시 원문을 그대로 따른다. 임의로 순서를 바꾸거나, 섹션/이미지를 빼거나,
+없는 처리법을 지어내지 않는다.
+- 번역 품질을 위해 자연스러운 한국어로 의역하거나, 이해를 돕는 보충 설명을 더하는 것은 허용된다.
+  단 그것이 원문의 순서·이미지·공략 내용 자체를 바꾸어선 안 된다.
+- 섹션(페이즈) 배치 순서는 사용자 메시지의 "원문 섹션 표시 순서"와 **정확히 일치**해야 한다
+  (phaseN 번호순이 아니라 그 순서. 번호와 표시 순서가 다를 수 있다).
+- 새 페이즈가 추가되면 그 순서상의 **올바른 위치에 삽입**한다(끝에 무조건 붙이지 않는다).
+
 반드시 지킬 것:
 1. 변경 diff가 요구하는 부분만 수정한다. 그 외 기존 HTML(구조·스타일·스크립트·문구)은 그대로 둔다.
 2. 첨부된 용어집(TRANSLATION.md)의 로컬라이징 용어를 따른다.
@@ -324,9 +334,21 @@ def main() -> None:
 
     current = INDEX.read_text(encoding="utf-8")
     glossary = GLOSSARY.read_text(encoding="utf-8")
+
+    # 원문 배열 순서(=사이트 표시·전투 순서)대로 본문을 제시한다. 번역본의 섹션 순서가
+    # 이 순서를 그대로 따라야 하기 때문(phaseN 번호순 정렬이 아니라 원문 배열 순서).
+    files = {p.name: p for p in GUIDE_DIR.glob("phase*.html")}
+    try:
+        src_order = json.loads((GUIDE_DIR / "order.json").read_text(encoding="utf-8"))
+    except Exception:
+        src_order = []
+    ordered = [f"phase{n}.html" for n in src_order if f"phase{n}.html" in files]
+    for name in sorted(files):  # order.json 에 없는 파일은 안전망으로 뒤에 번호순 첨부
+        if name not in ordered:
+            ordered.append(name)
+    order_hint = " → ".join(n[:-5] for n in ordered)  # 예: phase1 → phase2 → phase3 → phase7 → phase4
     guide = "\n\n".join(
-        f"===== {p.name} =====\n{p.read_text(encoding='utf-8')}"
-        for p in sorted(GUIDE_DIR.glob("phase*.html"))
+        f"===== {name} =====\n{files[name].read_text(encoding='utf-8')}" for name in ordered
     )
 
     prompt = f"""\
@@ -338,13 +360,17 @@ def main() -> None:
 {diff}
 ```
 
-# 변경 반영된 현재 원문 본문 전체 (참고용)
+# 변경 반영된 현재 원문 본문 전체 (참고용 · **아래 제시된 순서 = 원문 사이트 표시 순서**)
 {guide}
+
+# 원문 섹션(페이즈) 표시 순서 — 번역본의 섹션·목차도 반드시 이 순서를 따른다
+{order_hint}
 
 # 현재 번역본 docs/index.html (이것을 수정 대상으로 삼아라)
 {current}
 
-위 변경분을 번역본에 반영한 완성된 index.html 전체를 출력하라."""
+위 변경분을 번역본에 반영한 완성된 index.html 전체를 출력하라.
+섹션과 좌측 목차(nav.toc)의 순서는 위 "원문 섹션 표시 순서"와 정확히 일치해야 한다."""
 
     # 변경/추가된 이미지를 비전으로 첨부 → 캡션을 보고 작성/갱신
     imgs = changed_images(diff)
