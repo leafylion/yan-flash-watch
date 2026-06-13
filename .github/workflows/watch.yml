@@ -80,7 +80,7 @@ jobs:
           # 가드 튜닝: 같은 본문 N회 연속 실패 → 서킷 오픈, 이후 COOLDOWN 간격 프로브만.
           TRANSLATE_MAX_FAILS: "3"
           TRANSLATE_COOLDOWN_HOURS: "6"
-          TRANSLATE_COST_ALERT_USD: "1.0"
+          TRANSLATE_COST_ALERT_USD: "3.0"   # P4 추가로 페이지가 커져 회당 ~$1 → 알림 임계 상향
         run: |
           # 신규 phase 파일(예: P4 신설)도 diff에 잡히도록 intent-to-add 선처리.
           # (git diff 는 기본적으로 untracked 신규 파일을 표시하지 않아 새 페이즈가 누락됐었다)

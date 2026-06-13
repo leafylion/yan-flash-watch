@@ -43,7 +43,7 @@ TOKENLOG_KEEP = 500  # 최근 N줄만 유지
 
 MAX_FAILS = int(os.environ.get("TRANSLATE_MAX_FAILS", "3"))
 COOLDOWN_HOURS = float(os.environ.get("TRANSLATE_COOLDOWN_HOURS", "6"))
-COST_ALERT_USD = float(os.environ.get("TRANSLATE_COST_ALERT_USD", "1.0"))
+COST_ALERT_USD = float(os.environ.get("TRANSLATE_COST_ALERT_USD", "3.0"))
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK", "")
 
 API_URL = "https://api.anthropic.com/v1/messages"
