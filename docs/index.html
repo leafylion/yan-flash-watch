@@ -154,7 +154,7 @@
   table.tl th{background:var(--card2); color:var(--accent2)}
   /* 표 안의 작은 인라인 아이콘(디버프·마커 등)만 42px로 제한 */
   table.tl td img:not(.shot){display:block; width:auto; height:auto; max-width:42px; max-height:42px; cursor:zoom-in}
-  /* 표 셀에 들어간 공략 도해(.shot)는 일반 도해처럼 크게 — 눌러야만 보이던 문제 해결 */
+  /* 표 셀에 들어간 공략 도해(.shot)는 일반 도해처럼 크게 */
   table.tl td img.shot{max-width:100%; max-height:78vh; margin:8px 0}
   .tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px 0}
   .tablewrap > table.tl{margin:0}
@@ -282,7 +282,7 @@
   </div>
   <div class="cap"><span class="h">🖼 이미지 (표 내)</span>신들의 상 1회차 산개/쉐어 배치도.
     <ul>
-      <li><b>왼쪽(산개)</b>: 개별 마커가 붙은 경우의 8인 산개 위치. 필드를 반갈로 나눈 좌우에 역할별로 배치. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위 마커.</li>
+      <li><b>왼쪽(산개)</b>: 개별 마커가 붙은 경우의 8인 산개 위치. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위 마커.</li>
       <li><b>오른쪽(쉐어)</b>: 쉐어 마커가 붙은 경우. 쉐어 처리 그룹이 중앙 근처에 집합. 직업 아이콘=담당자, 바깥 <b>A·B·C·1~4</b>=방위 마커.</li>
     </ul>
   </div>
@@ -345,7 +345,7 @@
           <td>
             <img class="shot" src="https://yan-flash.com/api/uploads/1781516434698-c12e0630.webp" alt="신들의 상 1회차 디버프 전달">
             <p>「츠기츠기 트랩」 시전 완료로 랜덤 2명(탱힐 1명·딜러 1명)에게 디버프가 붙으며, 이것을 페이즈 1에서 전달해 나간다.<br>
-            효과 시간 0초에 자기 중심으로 폭발(쉐어) + 주변 넉백이 발생하므로, <strong>디버프 보유자는 타겟 서클 밖에서 대기</strong>하고, 다른 사람은 탱힐·딜러로 나뉘어 넉백과 쉐어를 받는다.</p>
+            효과 시간 0초에 자기 중심으로 폭발(쉐어) + 넉백이 발생하므로, <strong>디버프 보유자는 타겟 서클 밖에서 대기</strong>하고, 다른 사람은 탱힐·딜러로 나뉘어 넉백과 쉐어를 받는다.</p>
           </td>
           <td>
             <img class="shot" src="https://yan-flash.com/api/uploads/1781516443506-427179a6.webp" alt="신들의 상 1회차 수수께끼 매직">
@@ -524,7 +524,7 @@
       <thead>
         <tr>
           <th style="text-align:center">산개</th>
-          <th style="text-align:center">쉐어 (4인 카운트)</th>
+          <th style="text-align:center">쉐어</th>
         </tr>
       </thead>
       <tbody>
@@ -544,7 +544,7 @@
   <div class="cap"><span class="h">🖼 이미지 (표 내)</span>시선 기믹 + 진짜/가짜 선더가·파이가 처리 배치도.
     <ul>
       <li><b>왼쪽(산개)</b>: 근접 조 — MT→4, ST→3, D1→1, D2→2. 원거리 조 — H1→남, H2→동, D3→서, D4→북.</li>
-      <li><b>오른쪽(쉐어 4인)</b>: 탱힐 그룹이 마커 3, DPS 그룹이 마커 1에서 쉐어 처리. 공격할 수 없는 패턴 주의.</li>
+      <li><b>오른쪽(쉐어)</b>: 탱힐 그룹이 마커 3, DPS 그룹이 마커 1에서 쉐어 처리. 공격할 수 없는 패턴 주의.</li>
     </ul>
   </div>
 
@@ -555,7 +555,7 @@
   <div class="callout warn">
     <span class="tag">⚠ 6/18(목) 삭제 예정 처리법</span><br>
     이 처리법은 텔레포가 제대로 이루어지지 않을 가능성이 높다.<br>
-    P3 이후 연습을 염두에 두고 있다면, 수면·혼란 선을 보고 판단하는 방법을 권장한다.
+    페이즈 3 이후 연습을 염두에 두고 있다면, 수면·혼란 선을 보고 판단하는 방법을 권장한다.
   </div>
   <p><a class="ext" href="https://forum.square-enix.com/ffxiv/threads/529064" target="_blank" rel="noopener">🔗 참고 링크</a></p>
   <img class="shot" src="https://yan-flash.com/api/uploads/1780479425670-abfcee5c.webp" alt="즈비즈바 텔레포 모두 공격 가능형 산개">
@@ -601,9 +601,8 @@
   <div class="cap"><span class="h">🖼 이미지</span>① 미싱 배치도 (8회차 타워 전체 흐름표). 각 회차별 타워 위치와 역할별 처리 순번 표시.
     <ul>
       <li>8개의 컷(1回目~8回目): 각 타워 회차에서의 위치 배치</li>
-      <li>각 컷 안의 텍스트: <b>頭→扇</b>=쉐어→부채꼴, <b>頭→円</b>=쉐어→원형, <b>扇→頭</b>=부채꼴→쉐어, <b>円→頭</b>=원형→쉐어, <b>扇→円</b>=부채꼴→원형, <b>円→扇</b>=원형→부채꼴, <b>円→円</b>=원형→원형, <b>扇→扇</b>=부채꼴→부채꼴 등 (타워 처리 후 다음 디버프로의 전환을 의미)</li>
+      <li>각 컷 안의 텍스트: <b>頭→扇</b>=쉐어→부채꼴, <b>頭→円</b>=쉐어→원형 등 (타워 처리 후 다음 디버프로의 전환을 의미)</li>
       <li>세로 흰 띠: <b>未来過去誘導</b>=미래·과거 분신 유도 타이밍, <b>消滅の脚誘導</b>=소멸의 다리 유도 타이밍</li>
-      <li>필드 좌측(파란 쪽)=쉐어/부채꼴 영역, 우측(붉은 쪽)=원형 영역</li>
     </ul>
   </div>
 
